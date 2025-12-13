@@ -76,6 +76,14 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "svelte5-runes",
+      "source": "./.claude-plugin/svelte5-runes",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
     }
   ]
 }

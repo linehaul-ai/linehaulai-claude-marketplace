@@ -9,12 +9,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `quickbooks-api-integration`: QuickBooks Online API integration guidance for ERP/CRM/TMS systems
 - `golang-orchestrator`: Subagent orchestration for production Golang backends with Echo framework
 - `sveltekit-spa`: SvelteKit SPA development patterns and configuration
-- `shadcn-svelte-skill`: shadcn-svelte UI components with Tailwind CSS v4.1 and TypeScript
+- `shadcn-svelte-skill`: Svelte UI component management with shadcn-svelte, Skeleton UI, and Melt UI guidance (Tailwind CSS v4.1 + TypeScript)
 - `svelte-flow`: Interactive node-based editors and flow diagrams with @xyflow/svelte (workflow editors, DAG editors, mindmaps)
 - `layerchart`: Pre-built chart components for rapid data visualization (bar, line, pie, tree maps, geographic charts)
 - `layercake`: Headless visualization framework for unlimited custom visualizations (maximum flexibility)
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
 - `supabase-rls-policy`: Expert guidance for Supabase PostgreSQL row-level security (RLS) policies and access control patterns
+- `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -55,10 +56,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   ├── skills/              # SvelteKit skills
 │   └── README.md
 ├── shadcn-svelte-skill/
+│   ├── commands/            # Slash commands
+│   │   └── shadcn.md        # Component development assistant
 │   ├── references/          # Reference documentation
 │   │   ├── datatable-tanstack-svelte5.md
-│   │   └── shadcn-datatable.md
-│   └── SKILL.md             # Main skill definition
+│   │   ├── shadcn-datatable.md
+│   │   └── workflows.md     # Complex multi-component build workflows
+│   └── SKILL.md             # Main skill definition (shadcn-svelte + Skeleton UI + Melt UI)
 ├── svelte-flow/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
@@ -82,22 +86,38 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   ├── QUICK_START.md
 │   └── PLUGIN_OVERVIEW.md
 ├── layercake/
-    │   ├── .claude-plugin/
-    │   │   └── plugin.json      # Plugin manifest
-    │   ├── agents/
-    │   │   └── layercake-expert.md   # Custom visualization framework expert
-    │   ├── skills/
-    │   │   └── layercake/SKILL.md    # Layer Cake framework documentation
-    │   ├── README.md
-    │   ├── QUICK_START.md
-    │   └── PLUGIN_OVERVIEW.md
-    ├── sequential-thinking/
-        │   ├── SKILL.md             # Main skill definition (MCP-based reasoning)
-        │   └── references/
-        │       ├── advanced.md      # Revision and branching patterns
-        │       └── examples.md      # Real-world use cases
-        └── supabase-rls-policy/
-            └── SKILL.md             # RLS policy expert guidance
+│   ├── .claude-plugin/
+│   │   └── plugin.json      # Plugin manifest
+│   ├── agents/
+│   │   └── layercake-expert.md   # Custom visualization framework expert
+│   ├── skills/
+│   │   └── layercake/SKILL.md    # Layer Cake framework documentation
+│   ├── README.md
+│   ├── QUICK_START.md
+│   └── PLUGIN_OVERVIEW.md
+├── sequential-thinking/
+│   ├── SKILL.md             # Main skill definition (MCP-based reasoning)
+│   └── references/
+│       ├── advanced.md      # Revision and branching patterns
+│       └── examples.md      # Real-world use cases
+├── supabase-rls-policy/
+│   └── SKILL.md             # RLS policy expert guidance
+└── svelte5-runes/
+    ├── commands/            # Slash commands
+    │   └── runes.md         # Runes assistant for reactivity and migration
+    ├── agents/              # Specialized subagents
+    │   └── runes-expert.md  # Svelte 5 runes implementation expert
+    ├── references/          # Reference documentation
+    │   ├── common-mistakes.md     # Anti-patterns with fixes
+    │   ├── component-api.md       # $props, $bindable patterns
+    │   ├── migration-gotchas.md   # Svelte 4 → 5 translation
+    │   ├── reactivity-patterns.md # When to use each rune
+    │   └── snippets-vs-slots.md   # New snippet syntax
+    ├── examples/            # Code examples
+    │   ├── bindable-props.svelte
+    │   └── effect-vs-derived.svelte
+    ├── SKILL.md             # Main skill definition
+    └── README.md
 ```
 
 **Structure**:
@@ -107,9 +127,9 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake): Commands + Skills + Manifest + Agents
-2. **Skill Plugins** (shadcn-svelte-skill, sequential-thinking, supabase-rls-policy): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (sveltekit-spa): Skills + Commands, minimal structure
+1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes): Commands + Skills + Agents
+2. **Skill Plugins** (sequential-thinking, supabase-rls-policy): Standalone skills with reference docs, no manifest needed
+3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
 
 **Golang Orchestrator Pattern**:
 - Two-agent orchestration: Golang Expert (architecture) + Echo Router Expert (HTTP layer)
@@ -134,10 +154,26 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Full plugin structure: plugin.json + agents/ + skills/ + documentation
 
 **shadcn-svelte-skill Pattern**:
-- Skill-only plugin focused on UI component development
-- References subdirectory contains specialized documentation (DataTable examples)
-- Tailwind CSS v4.1 with Vite integration patterns
+- Hybrid plugin with skill + command for Svelte UI component development
+- Primary focus: shadcn-svelte with Tailwind CSS v4.1 and TypeScript
+- Also covers: Skeleton UI and Melt UI for library selection guidance
+- Command: /shadcn for guided component development (add, form, table, dialog, theme, debug)
+- References subdirectory contains specialized documentation:
+  - DataTable examples (TanStack Table v8 integration)
+  - Complex multi-component build workflows
 - TypeScript-first with Svelte 5 reactive variables
+
+**svelte5-runes Pattern**:
+- Full plugin for Svelte 5 reactivity system guidance
+- Command: /runes for topic-based assistance (state, derived, effect, props, migrate, snippets, debug)
+- Agent: runes-expert for deep implementation decisions and migration strategies
+- Comprehensive reference documentation:
+  - Reactivity patterns ($state vs $derived vs $effect decisions)
+  - Migration gotchas (Svelte 4 → 5 translation)
+  - Component API ($props, $bindable patterns)
+  - Snippet syntax (replacing legacy slots)
+  - Common mistakes with fixes
+- Code examples for bindable props and effect vs derived patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
@@ -174,6 +210,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install layercake
 /plugin install sequential-thinking
 /plugin install supabase-rls-policy
+/plugin install svelte5-runes
 ```
 
 ### Development
