@@ -34,7 +34,7 @@ This repository hosts a collection of reusable Claude Code plugins designed to a
 To add this marketplace to Claude Code, use the `/plugin marketplace add` command with the path to this repository:
 
 ```bash
-/plugin marketplace add <path-to-this-repo>
+/plugin marketplace add linehaul-ai/linehaulai-claude-marketplace
 ```
 
 For example:
@@ -47,7 +47,7 @@ For example:
 Once the marketplace is added, you can install specific plugins by name:
 
 ```bash
-/plugin install <plugin-name>
+/plugin install linehaulai-claude-marketplace
 ```
 
 Examples:
