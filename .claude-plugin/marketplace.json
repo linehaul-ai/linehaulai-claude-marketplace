@@ -1,0 +1,81 @@
+{
+  "name": "linehaulai-claude-marketplace",
+  "owner": {
+    "name":"fakebizprez",
+    "email":"anthony@linehaul.ai"
+  },
+  "plugins": [
+    {
+      "name": "quickbooks-api-integration",
+      "source": "./.claude-plugin/quickbooks-api-integration",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "golang-orchestrator",
+      "source": "./.claude-plugin/golang-orchestrator",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "sveltekit-spa",
+      "source": "./.claude-plugin/sveltekit-spa",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "shadcn-svelte-skill",
+      "source": "./.claude-plugin/shadcn-svelte-skill",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "svelte-flow",
+      "source": "./.claude-plugin/svelte-flow",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "layerchart",
+      "source": "./.claude-plugin/layerchart",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "layercake",
+      "source": "./.claude-plugin/layercake",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "sequential-thinking",
+      "source": "./.claude-plugin/sequential-thinking",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "supabase-rls-policy",
+      "source": "./.claude-plugin/supabase-rls-policy",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    }
+  ]
+}
