@@ -1,4 +1,4 @@
-# Linehaul AI Claude Marketplace
+# linehaul.ai Claude Marketplace
 
 A Claude Code plugin marketplace containing production-ready plugins for business system integrations and backend development orchestration.
 
