@@ -6,5 +6,12 @@
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
   },
-  "keywords": ["golang", "echo", "backend", "orchestrator", "rest-api"]
+  "keywords": ["golang", "echo", "backend", "orchestrator", "rest-api"],
+  "hooks": [
+    {
+      "event": "file:edit",
+      "glob": "**/*.go",
+      "script": "./hooks/golang-orchestrator-reminder.sh"
+    }
+  ]
 }
