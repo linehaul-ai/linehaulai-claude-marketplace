@@ -1,10 +1,18 @@
 #!/bin/bash
 # golang-orchestrator-reminder.sh
 # Hook for golang-orchestrator plugin
-# Triggers when editing Go files
+# Triggers after Write|Edit tools on Go files
 
-# Get the file path from Claude hook environment
-FILE_PATH="${CLAUDE_FILE_PATH:-$1}"
+# For PostToolUse hooks, file_path comes from tool input JSON via stdin
+# Try to extract file_path from JSON input
+if [ -t 0 ]; then
+  # No stdin, try environment variables
+  FILE_PATH="${CLAUDE_FILE_PATH:-$1}"
+else
+  # Read JSON from stdin and extract file_path
+  INPUT=$(cat)
+  FILE_PATH=$(echo "$INPUT" | grep -o '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"file_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/')
+fi
 
 # Exit silently if no file path
 [ -z "$FILE_PATH" ] && exit 0

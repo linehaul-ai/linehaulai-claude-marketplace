@@ -1,17 +1,23 @@
 {
   "name": "golang-echo-orchestrator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Orchestrates Golang and Echo Router subagents to collaboratively configure a backend system with best practices, patterns, and production-ready setup",
   "author": {
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
   },
   "keywords": ["golang", "echo", "backend", "orchestrator", "rest-api"],
-  "hooks": [
-    {
-      "event": "file:edit",
-      "glob": "**/*.go",
-      "script": "./hooks/golang-orchestrator-reminder.sh"
-    }
-  ]
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/golang-orchestrator-reminder.sh"
+          }
+        ]
+      }
+    ]
+  }
 }
