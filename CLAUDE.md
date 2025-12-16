@@ -242,7 +242,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install layerchart
 /plugin install layercake
 /plugin install sequential-thinking
-/plugin install supabase-rls-policy
+/plugin install supabase
 /plugin install svelte5-runes
 /plugin install git-worktree
 ```
