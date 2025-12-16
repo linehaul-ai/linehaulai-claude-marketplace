@@ -1,3 +1,8 @@
+---
+name: postgres-style-guide
+description: PostgreSQL SQL style guide for consistent, readable database code. Use when writing SQL queries, creating tables, defining constraints, or reviewing PostgreSQL code for style compliance.
+---
+
 # Postgres SQL Style Guide
 
 ## General Principles
@@ -381,7 +386,7 @@ with load_financials as (
     carrier_rate,
     customer_rate - carrier_rate as gross_profit,
     case
-      when customer_rate > 0 then 
+      when customer_rate > 0 then
         round(((customer_rate - carrier_rate) / customer_rate * 100), 2)
       else 0
     end as profit_margin_pct
@@ -441,7 +446,7 @@ create index idx_loads_created_at on public.loads using btree (created_at);
 create index idx_loads_load_status on public.loads using btree (load_status);
 
 -- Partial index (only non-deleted records)
-create index idx_loads_deleted_at on public.loads using btree (deleted_at) 
+create index idx_loads_deleted_at on public.loads using btree (deleted_at)
 where deleted_at is null;
 
 -- Composite index for common joins
@@ -477,7 +482,7 @@ constraint carriers_mc_number_key unique (mc_number),
 constraint accounts_account_number_key unique (account_number),
 
 -- Compound uniqueness (e.g., one record per load per reference type)
-constraint load_references_unique_type_per_load 
+constraint load_references_unique_type_per_load
   unique (load_id, reference_type_id)
 ```
 
@@ -490,16 +495,16 @@ constraint invoices_amount_paid_positive check (amount_paid >= 0),
 constraint invoices_amount_paid_not_exceed check (amount_paid <= amount),
 
 -- Enum-like validation
-constraint load_cognition_heading_degrees_check 
+constraint load_cognition_heading_degrees_check
   check (heading >= 0 and heading < 360),
-constraint load_cognition_latitude_check 
+constraint load_cognition_latitude_check
   check (latitude >= -90 and latitude <= 90),
-constraint load_cognition_longitude_check 
+constraint load_cognition_longitude_check
   check (longitude >= -180 and longitude <= 180),
 
 -- Business logic
-constraint factoring_company_required_check 
-  check ((uses_factoring_company = false) or 
+constraint factoring_company_required_check
+  check ((uses_factoring_company = false) or
          (uses_factoring_company = true and factoring_company_id is not null))
 ```
 
@@ -559,23 +564,23 @@ select
   carrier_rate,
   (coalesce(revenue, 0) - coalesce(carrier_spend, 0)) as gross_profit,
   case
-    when coalesce(revenue, 0) > 0 then 
+    when coalesce(revenue, 0) > 0 then
       round(((coalesce(revenue, 0) - coalesce(carrier_spend, 0)) / revenue * 100), 2)
     else 0
   end as gross_profit_percentage,
   case
-    when coalesce(total_miles, 0) > 0 then 
+    when coalesce(total_miles, 0) > 0 then
       round(coalesce(carrier_rate, 0) / total_miles, 2)
     else 0
   end as carrier_rpm,
   case
-    when coalesce(total_miles, 0) > 0 then 
+    when coalesce(total_miles, 0) > 0 then
       round(coalesce(customer_rate, 0) / total_miles, 2)
     else 0
   end as customer_rpm
 from public.loads l;
 
-comment on view public.loads_with_financials is 
+comment on view public.loads_with_financials is
   'Loads with calculated financial metrics. Uses security_invoker for RLS compliance.';
 ```
 
@@ -603,7 +608,7 @@ execute function public.update_timestamp();
 create function public.sync_load_billing_flags() returns trigger as $$
 begin
   update public.loads
-  set 
+  set
     pod_received = new.pod_received,
     carrier_bill_received = new.carrier_bill_received,
     updated_at = now()
@@ -612,7 +617,7 @@ begin
 end;
 $$ language plpgsql;
 
-comment on function public.sync_load_billing_flags() is 
+comment on function public.sync_load_billing_flags() is
   'Keeps loads.pod_received and loads.carrier_bill_received in sync with load_billing table';
 ```
 
@@ -678,7 +683,7 @@ create table public.loads (
 );
 
 -- Partial index for active records
-create index idx_loads_deleted_at on public.loads 
+create index idx_loads_deleted_at on public.loads
 where deleted_at is null;
 
 -- Standard query pattern (always filter)
@@ -694,24 +699,24 @@ order by created_at desc;
 ### Table Comments
 
 ```sql
-comment on table public.loads is 
+comment on table public.loads is
   'Core load/shipment records. See loads_with_financials view for calculated metrics.';
 ```
 
 ### Column Comments
 
 ```sql
-comment on column public.loads.is_cancelled is 
+comment on column public.loads.is_cancelled is
   'Whether this load has been cancelled. See load_cancellations for detailed reasons.';
 
-comment on column public.load_cognition.heading is 
+comment on column public.load_cognition.heading is
   'Direction of travel expressed in degrees from true north (0-359).';
 ```
 
 ### Function Comments
 
 ```sql
-comment on function public.log_load_event(...) is 
+comment on function public.log_load_event(...) is
   'Records state changes and events for load tracking and audit compliance.';
 ```
 
@@ -724,7 +729,7 @@ comment on function public.log_load_event(...) is
 select l.*, c.id from loads l join carriers c on l.carrier_id = c.id;
 
 -- ✓ Use table-qualified columns
-select 
+select
   loads.id, loads.load_number,
   carriers.id as carrier_id, carriers.name
 from public.loads

@@ -20,6 +20,11 @@
       "name": "supabase-rls-policy",
       "path": "./skills/supabase-rls-policy/SKILL.md",
       "description": "Expert guidance for writing Supabase PostgreSQL row-level security (RLS) policies. Use when creating, modifying, or troubleshooting RLS policies for Supabase databases, implementing access control patterns, or setting up table-level security rules."
+    },
+    {
+      "name": "postgres-style-guide",
+      "path": "./skills/postgres-style-guide/SKILL.md",
+      "description": "PostgreSQL SQL style guide for consistent, readable database code. Use when writing SQL queries, creating tables, defining constraints, or reviewing PostgreSQL code for style compliance."
     }
   ],
   "agents": [
