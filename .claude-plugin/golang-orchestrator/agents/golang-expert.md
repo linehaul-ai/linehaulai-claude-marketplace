@@ -1,6 +1,7 @@
 ---
 name: golang-expert
 description: Golang architecture specialist that applies effective-go best practices to design production-ready Go backends with proper structure, error handling, interfaces, and concurrency patterns
+model: opus
 ---
 
 # Golang Expert Agent

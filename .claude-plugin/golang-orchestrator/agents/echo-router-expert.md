@@ -1,6 +1,7 @@
 ---
 name: echo-router-expert
 description: Echo framework specialist that implements production-ready HTTP routing, middleware chains, request validation, and API endpoints using Echo v4 best practices
+model: opus
 ---
 
 # Echo Router Expert Agent

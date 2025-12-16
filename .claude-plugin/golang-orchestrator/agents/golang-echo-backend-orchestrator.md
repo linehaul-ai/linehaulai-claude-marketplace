@@ -1,6 +1,7 @@
 ---
 name: golang-echo-backend-orchestrator
 description: Orchestrates two specialized subagents - one with Golang expertise and one with Echo Router expertise - to collaboratively design, implement, and configure a production-ready Go backend with Echo routing framework
+model: opus
 ---
 
 # Golang Echo Backend Orchestrator

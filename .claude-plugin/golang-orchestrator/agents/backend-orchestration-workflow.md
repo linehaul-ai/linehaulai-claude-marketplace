@@ -1,6 +1,7 @@
 ---
 name: backend-orchestration-workflow
 description: Core orchestration workflow that spawns two specialized subagents to collaboratively design a production-ready Golang backend with Echo Router framework
+model: opus
 ---
 
 # Backend Orchestration Workflow
