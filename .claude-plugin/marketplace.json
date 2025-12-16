@@ -70,8 +70,8 @@
       }
     },
     {
-      "name": "supabase-rls-policy",
-      "source": "./.claude-plugin/supabase-rls-policy",
+      "name": "supabase",
+      "source": "./.claude-plugin/supabase",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
