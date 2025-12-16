@@ -179,6 +179,16 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Complex multi-component build workflows
 - TypeScript-first with Svelte 5 reactive variables
 
+**supabase Pattern**:
+- Full plugin with multiple specialized skills for Supabase/PostgreSQL development
+- Skills organized by concern:
+  - `postgres`: Schema design with PostgreSQL best practices
+  - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
+  - `supabase-rls-policy`: Row-level security policy patterns
+- Agent: postgres-table-design-expert for schema design decisions
+- Covers full Supabase development lifecycle: schema → functions → RLS policies
+- Each skill has comprehensive documentation with examples and anti-patterns
+
 **svelte5-runes Pattern**:
 - Full plugin for Svelte 5 reactivity system guidance
 - Command: /runes for topic-based assistance (state, derived, effect, props, migrate, snippets, debug)
