@@ -1,7 +1,6 @@
 {
   "name": "supabase",
   "version": "1.0.0",
-  "author": "fakebizprez",
   "description": "PostgreSQL and Supabase expertise for database design, schema architecture, and row-level security policies. Includes PostgreSQL table design best practices and Supabase RLS policy guidance.",
   "keywords": ["supabase", "postgresql", "database", "rls", "row-level-security", "schema-design", "postgres"],
   "categories": ["database", "security", "backend"],
