@@ -101,8 +101,18 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   └── references/
 │       ├── advanced.md      # Revision and branching patterns
 │       └── examples.md      # Real-world use cases
-├── supabase-rls-policy/
-│   └── SKILL.md             # RLS policy expert guidance
+├── supabase/
+│   ├── .claude-plugin/
+│   │   └── plugin.json      # Plugin manifest
+│   ├── agents/
+│   │   └── postgres-table-design-expert.md  # Schema design specialist
+│   └── skills/
+│       ├── postgres/
+│       │   └── SKILL.md     # PostgreSQL schema design guidance
+│       ├── postgres-functions/
+│       │   └── SKILL.MD     # PostgreSQL function creation with security
+│       └── supabase-rls-policy/
+│           └── SKILL.md     # RLS policy patterns and access control
 ├── svelte5-runes/
 │   ├── commands/            # Slash commands
 │   │   └── runes.md         # Runes assistant for reactivity and migration
