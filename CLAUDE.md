@@ -14,7 +14,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `layerchart`: Pre-built chart components for rapid data visualization (bar, line, pie, tree maps, geographic charts)
 - `layercake`: Headless visualization framework for unlimited custom visualizations (maximum flexibility)
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
-- `supabase-rls-policy`: Expert guidance for Supabase PostgreSQL row-level security (RLS) policies and access control patterns
+- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, and RLS policy guidance
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 - `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
 <!-- END AUTO-MANAGED -->
