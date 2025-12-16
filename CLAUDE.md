@@ -16,6 +16,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
 - `supabase-rls-policy`: Expert guidance for Supabase PostgreSQL row-level security (RLS) policies and access control patterns
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
+- `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -102,21 +103,26 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │       └── examples.md      # Real-world use cases
 ├── supabase-rls-policy/
 │   └── SKILL.md             # RLS policy expert guidance
-└── svelte5-runes/
-    ├── commands/            # Slash commands
-    │   └── runes.md         # Runes assistant for reactivity and migration
-    ├── agents/              # Specialized subagents
-    │   └── runes-expert.md  # Svelte 5 runes implementation expert
-    ├── references/          # Reference documentation
-    │   ├── common-mistakes.md     # Anti-patterns with fixes
-    │   ├── component-api.md       # $props, $bindable patterns
-    │   ├── migration-gotchas.md   # Svelte 4 → 5 translation
-    │   ├── reactivity-patterns.md # When to use each rune
-    │   └── snippets-vs-slots.md   # New snippet syntax
-    ├── examples/            # Code examples
-    │   ├── bindable-props.svelte
-    │   └── effect-vs-derived.svelte
-    ├── SKILL.md             # Main skill definition
+├── svelte5-runes/
+│   ├── commands/            # Slash commands
+│   │   └── runes.md         # Runes assistant for reactivity and migration
+│   ├── agents/              # Specialized subagents
+│   │   └── runes-expert.md  # Svelte 5 runes implementation expert
+│   ├── references/          # Reference documentation
+│   │   ├── common-mistakes.md     # Anti-patterns with fixes
+│   │   ├── component-api.md       # $props, $bindable patterns
+│   │   ├── migration-gotchas.md   # Svelte 4 → 5 translation
+│   │   ├── reactivity-patterns.md # When to use each rune
+│   │   └── snippets-vs-slots.md   # New snippet syntax
+│   ├── examples/            # Code examples
+│   │   ├── bindable-props.svelte
+│   │   └── effect-vs-derived.svelte
+│   ├── SKILL.md             # Main skill definition
+│   └── README.md
+└── git-worktree/
+    ├── scripts/             # Helper scripts
+    │   └── worktree-manager.sh  # Worktree management CLI
+    ├── SKILL.md             # Git worktree guidance
     └── README.md
 ```
 
@@ -128,7 +134,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 
 **Plugin Types**:
 1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, supabase-rls-policy): Standalone skills with reference docs, no manifest needed
+2. **Skill Plugins** (sequential-thinking, supabase-rls-policy, git-worktree): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
 
 **Golang Orchestrator Pattern**:
@@ -174,6 +180,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Snippet syntax (replacing legacy slots)
   - Common mistakes with fixes
 - Code examples for bindable props and effect vs derived patterns
+
+**git-worktree Pattern**:
+- Skill-only plugin with bundled helper scripts
+- Provides Git worktree management guidance
+- Includes bash script for common operations (create, list, switch, cleanup)
+- Follows "Skill with Bundled Resources" pattern
+- No plugin.json needed (pure skill plugin)
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
@@ -211,6 +224,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install sequential-thinking
 /plugin install supabase-rls-policy
 /plugin install svelte5-runes
+/plugin install git-worktree
 ```
 
 ### Development
