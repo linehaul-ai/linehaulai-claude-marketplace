@@ -105,7 +105,8 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
 │   ├── agents/
-│   │   └── postgres-table-design-expert.md  # Schema design specialist
+│   │   ├── postgres-table-design-expert.md  # Schema design specialist
+│   │   └── supabase-rls-expert.md           # RLS policy specialist
 │   └── skills/
 │       ├── postgres/
 │       │   └── SKILL.md     # PostgreSQL schema design guidance
@@ -185,7 +186,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - `postgres`: Schema design with PostgreSQL best practices
   - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
   - `supabase-rls-policy`: Row-level security policy patterns
-- Agent: postgres-table-design-expert for schema design decisions
+- Agents: postgres-table-design-expert (schema design) and supabase-rls-expert (RLS policies)
 - Covers full Supabase development lifecycle: schema → functions → RLS policies
 - Each skill has comprehensive documentation with examples and anti-patterns
 
