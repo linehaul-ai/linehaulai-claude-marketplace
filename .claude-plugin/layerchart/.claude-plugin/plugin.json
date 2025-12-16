@@ -1,24 +1,11 @@
 {
   "name": "layerchart",
   "version": "1.0.0",
-  "author": "fakebizprez",
   "description": "Pre-built, high-level chart components for rapid data visualization. Built on Layer Cake framework with support for diverse chart types: Cartesian (bar, line, area), radial (pie, donut, gauge), hierarchical (tree, sunburst), geo (map), and custom visualizations.",
+  "author": {
+    "name": "fakebizprez"
+  },
   "keywords": ["svelte", "charts", "visualization", "data", "layer-cake", "components"],
-  "categories": ["visualization", "ui-components", "data-viz"],
-  "skills": [
-    {
-      "name": "layerchart-skills",
-      "path": "./skills/layerchart/SKILL.md",
-      "description": "Expert guide for LayerChart - pre-built chart components for rapid data visualization"
-    }
-  ],
-  "agents": [
-    {
-      "name": "layerchart-expert",
-      "path": "./agents/layerchart-expert.md",
-      "description": "Specialized consultant for LayerChart component selection and data visualization implementation"
-    }
-  ],
   "documentation": {
     "readme": "./README.md",
     "quickStart": "./QUICK_START.md",

@@ -1,32 +1,9 @@
 {
   "name": "supabase",
   "version": "1.0.0",
-  "author": "fakebizprez",
   "description": "PostgreSQL and Supabase expertise for database design, schema architecture, and row-level security policies. Includes PostgreSQL table design best practices and Supabase RLS policy guidance.",
-  "keywords": ["supabase", "postgresql", "database", "rls", "row-level-security", "schema-design", "postgres"],
-  "categories": ["database", "security", "backend"],
-  "skills": [
-    {
-      "name": "postgresql-table-design",
-      "path": "./skills/postgres/SKILL.md",
-      "description": "Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features"
-    },
-    {
-      "name": "supabase-rls-policy",
-      "path": "./skills/supabase-rls-policy/SKILL.md",
-      "description": "Expert guidance for writing Supabase PostgreSQL row-level security (RLS) policies. Use when creating, modifying, or troubleshooting RLS policies for Supabase databases, implementing access control patterns, or setting up table-level security rules."
-    }
-  ],
-  "agents": [
-    {
-      "name": "postgres-expert",
-      "path": "./agents/postgres-expert.md",
-      "description": "PostgreSQL schema design expert for production-ready database architectures with best practices, data types, indexing, and performance patterns"
-    },
-    {
-      "name": "supabase-rls-expert",
-      "path": "./agents/supabase-rls-expert.md",
-      "description": "Supabase RLS policy expert for production-ready row-level security implementation, access control patterns, and policy optimization"
-    }
-  ]
+  "author": {
+    "name": "fakebizprez"
+  },
+  "keywords": ["supabase", "postgresql", "database", "rls", "row-level-security", "schema-design", "postgres"]
 }

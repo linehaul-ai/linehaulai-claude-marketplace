@@ -1,24 +1,11 @@
 {
   "name": "layercake",
   "version": "1.0.0",
-  "author": "fakebizprez",
   "description": "Headless visualization framework for custom data visualizations. Build any chart type imaginable with full control over rendering. Handles scales, dimensions, and data transformation while you bring your own SVG, Canvas, HTML, or WebGL components.",
+  "author": {
+    "name": "fakebizprez"
+  },
   "keywords": ["svelte", "visualization", "framework", "custom-charts", "d3", "data-viz"],
-  "categories": ["visualization", "ui-framework", "data-viz"],
-  "skills": [
-    {
-      "name": "layercake-skills",
-      "path": "./skills/layercake/SKILL.md",
-      "description": "Expert guide for Layer Cake - headless visualization framework with maximum customization"
-    }
-  ],
-  "agents": [
-    {
-      "name": "layercake-expert",
-      "path": "./agents/layercake-expert.md",
-      "description": "Specialized consultant for advanced custom visualization implementation with Layer Cake"
-    }
-  ],
   "documentation": {
     "readme": "./README.md",
     "quickStart": "./QUICK_START.md",

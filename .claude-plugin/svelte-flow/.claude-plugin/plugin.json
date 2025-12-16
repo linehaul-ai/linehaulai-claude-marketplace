@@ -1,31 +1,11 @@
 {
   "name": "svelte-flow",
   "version": "1.0.0",
-  "author": "fakebizprez",
   "description": "Build interactive node-based editors, flow diagrams, and interactive visualizations using Svelte Flow (@xyflow/svelte). Includes expert guidance for node/edge design, layout algorithms, and custom components.",
+  "author": {
+    "name": "fakebizprez"
+  },
   "keywords": ["svelte", "flow-editor", "node-editor", "diagrams", "workflow", "visualization", "graph"],
-  "categories": ["visualization", "ui-components", "interactive"],
-  "skills": [
-    {
-      "name": "svelte-flow",
-      "path": "./skills/svelte-flow/SKILL.md",
-      "description": "Expert guide for building node-based UIs with Svelte Flow (@xyflow/svelte)"
-    }
-  ],
-  "agents": [
-    {
-      "name": "svelte-flow-expert",
-      "path": "./agents/svelte-flow-expert.md",
-      "description": "Specialized consultant for interactive node-based editor implementation using Svelte Flow"
-    }
-  ],
-  "commands": [
-    {
-      "name": "create-editor",
-      "path": "./commands/create-editor.md",
-      "description": "Create an interactive node-based editor or diagram using Svelte Flow"
-    }
-  ],
   "documentation": {
     "readme": "./README.md",
     "quickStart": "./QUICK_START.md",
