@@ -84,6 +84,14 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "git-worktree",
+      "source": "./.claude-plugin/git-worktree",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
     }
   ]
 }

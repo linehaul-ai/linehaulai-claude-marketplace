@@ -1,5 +1,5 @@
 ---
-name: postgres-expert
+name: postgres-table-design-expert
 description: PostgreSQL schema design expert for production-ready database architectures with best practices, data types, indexing, and performance patterns
 model: opus
 ---

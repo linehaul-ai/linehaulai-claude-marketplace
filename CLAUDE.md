@@ -14,8 +14,9 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `layerchart`: Pre-built chart components for rapid data visualization (bar, line, pie, tree maps, geographic charts)
 - `layercake`: Headless visualization framework for unlimited custom visualizations (maximum flexibility)
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
-- `supabase-rls-policy`: Expert guidance for Supabase PostgreSQL row-level security (RLS) policies and access control patterns
+- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, and RLS policy guidance
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
+- `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -100,23 +101,39 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   └── references/
 │       ├── advanced.md      # Revision and branching patterns
 │       └── examples.md      # Real-world use cases
-├── supabase-rls-policy/
-│   └── SKILL.md             # RLS policy expert guidance
-└── svelte5-runes/
-    ├── commands/            # Slash commands
-    │   └── runes.md         # Runes assistant for reactivity and migration
-    ├── agents/              # Specialized subagents
-    │   └── runes-expert.md  # Svelte 5 runes implementation expert
-    ├── references/          # Reference documentation
-    │   ├── common-mistakes.md     # Anti-patterns with fixes
-    │   ├── component-api.md       # $props, $bindable patterns
-    │   ├── migration-gotchas.md   # Svelte 4 → 5 translation
-    │   ├── reactivity-patterns.md # When to use each rune
-    │   └── snippets-vs-slots.md   # New snippet syntax
-    ├── examples/            # Code examples
-    │   ├── bindable-props.svelte
-    │   └── effect-vs-derived.svelte
-    ├── SKILL.md             # Main skill definition
+├── supabase/
+│   ├── .claude-plugin/
+│   │   └── plugin.json      # Plugin manifest
+│   ├── agents/
+│   │   ├── postgres-table-design-expert.md  # Schema design specialist
+│   │   └── supabase-rls-expert.md           # RLS policy specialist
+│   └── skills/
+│       ├── postgres/
+│       │   └── SKILL.md     # PostgreSQL schema design guidance
+│       ├── postgres-functions/
+│       │   └── SKILL.MD     # PostgreSQL function creation with security
+│       └── supabase-rls-policy/
+│           └── SKILL.md     # RLS policy patterns and access control
+├── svelte5-runes/
+│   ├── commands/            # Slash commands
+│   │   └── runes.md         # Runes assistant for reactivity and migration
+│   ├── agents/              # Specialized subagents
+│   │   └── runes-expert.md  # Svelte 5 runes implementation expert
+│   ├── references/          # Reference documentation
+│   │   ├── common-mistakes.md     # Anti-patterns with fixes
+│   │   ├── component-api.md       # $props, $bindable patterns
+│   │   ├── migration-gotchas.md   # Svelte 4 → 5 translation
+│   │   ├── reactivity-patterns.md # When to use each rune
+│   │   └── snippets-vs-slots.md   # New snippet syntax
+│   ├── examples/            # Code examples
+│   │   ├── bindable-props.svelte
+│   │   └── effect-vs-derived.svelte
+│   ├── SKILL.md             # Main skill definition
+│   └── README.md
+└── git-worktree/
+    ├── scripts/             # Helper scripts
+    │   └── worktree-manager.sh  # Worktree management CLI
+    ├── SKILL.md             # Git worktree guidance
     └── README.md
 ```
 
@@ -127,8 +144,8 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, supabase-rls-policy): Standalone skills with reference docs, no manifest needed
+1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
+2. **Skill Plugins** (sequential-thinking, git-worktree): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
 
 **Golang Orchestrator Pattern**:
@@ -163,6 +180,16 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Complex multi-component build workflows
 - TypeScript-first with Svelte 5 reactive variables
 
+**supabase Pattern**:
+- Full plugin with multiple specialized skills for Supabase/PostgreSQL development
+- Skills organized by concern:
+  - `postgres`: Schema design with PostgreSQL best practices
+  - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
+  - `supabase-rls-policy`: Row-level security policy patterns
+- Agents: postgres-table-design-expert (schema design) and supabase-rls-expert (RLS policies)
+- Covers full Supabase development lifecycle: schema → functions → RLS policies
+- Each skill has comprehensive documentation with examples and anti-patterns
+
 **svelte5-runes Pattern**:
 - Full plugin for Svelte 5 reactivity system guidance
 - Command: /runes for topic-based assistance (state, derived, effect, props, migrate, snippets, debug)
@@ -174,6 +201,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Snippet syntax (replacing legacy slots)
   - Common mistakes with fixes
 - Code examples for bindable props and effect vs derived patterns
+
+**git-worktree Pattern**:
+- Skill-only plugin with bundled helper scripts
+- Provides Git worktree management guidance
+- Includes bash script for common operations (create, list, switch, cleanup)
+- Follows "Skill with Bundled Resources" pattern
+- No plugin.json needed (pure skill plugin)
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
@@ -209,8 +243,9 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install layerchart
 /plugin install layercake
 /plugin install sequential-thinking
-/plugin install supabase-rls-policy
+/plugin install supabase
 /plugin install svelte5-runes
+/plugin install git-worktree
 ```
 
 ### Development

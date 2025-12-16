@@ -25,7 +25,7 @@ This repository hosts a collection of reusable Claude Code plugins designed to a
 
 - **quickbooks-api-integration**: QuickBooks Online API integration guidance for ERP/CRM/TMS systems.
 - **sequential-thinking**: Systematic problem-solving through iterative reasoning with revision and branching.
-- **supabase-rls-policy**: Expert guidance for Supabase PostgreSQL row-level security (RLS) policies and access control patterns.
+- **supabase**: Supabase development plugin with PostgreSQL schema design, SQL style guide, function creation with security best practices, and RLS policy guidance.
 
 ## Usage
 
