@@ -92,6 +92,15 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "slack-block-kit-builder",
+      "source": "./.claude-plugin/slack-block-kit-builder",
+      "version": "1.0.0",
+      "description": "Build Slack Block Kit UIs for messages, modals, and Home tabs",
+      "author": {
+        "name": "fakebizprez"
+      }
     }
   ]
 }
