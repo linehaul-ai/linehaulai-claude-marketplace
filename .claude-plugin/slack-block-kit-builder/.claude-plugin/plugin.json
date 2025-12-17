@@ -1,0 +1,14 @@
+{
+  "name": "slack-block-kit-builder",
+  "version": "1.0.0",
+  "description": "Build Slack Block Kit UIs for messages, modals, and Home tabs. Includes expert guidance for blocks, elements, composition objects, and the slack-block-builder library.",
+  "author": {
+    "name": "fakebizprez"
+  },
+  "keywords": ["slack", "block-kit", "messages", "modals", "ui", "notifications", "bots"],
+  "documentation": {
+    "readme": "./README.md",
+    "quickStart": "./QUICK_START.md",
+    "overview": "./PLUGIN_OVERVIEW.md"
+  }
+}
