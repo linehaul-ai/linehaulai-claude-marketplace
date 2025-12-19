@@ -17,6 +17,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, and RLS policy guidance
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 - `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
+- `slack-block-kit-builder`: Slack Block Kit UI building for messages, modals, and Home tabs with comprehensive reference, guided command, and expert agent
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -130,11 +131,23 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   │   └── effect-vs-derived.svelte
 │   ├── SKILL.md             # Main skill definition
 │   └── README.md
-└── git-worktree/
-    ├── scripts/             # Helper scripts
-    │   └── worktree-manager.sh  # Worktree management CLI
-    ├── SKILL.md             # Git worktree guidance
-    └── README.md
+├── git-worktree/
+│   ├── scripts/             # Helper scripts
+│   │   └── worktree-manager.sh  # Worktree management CLI
+│   ├── SKILL.md             # Git worktree guidance
+│   └── README.md
+└── slack-block-kit-builder/
+    ├── .claude-plugin/
+    │   └── plugin.json      # Plugin manifest
+    ├── agents/              # Specialized subagents
+    │   └── block-kit-expert.md  # Block Kit implementation expert
+    ├── commands/            # Slash commands
+    │   └── block-kit.md     # Interactive UI builder
+    ├── skills/
+    │   └── slack-block-kit/SKILL.md  # Comprehensive Block Kit documentation
+    ├── README.md
+    ├── QUICK_START.md
+    └── PLUGIN_OVERVIEW.md
 ```
 
 **Structure**:
@@ -144,7 +157,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
+1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase, slack-block-kit-builder): Commands + Skills + Agents
 2. **Skill Plugins** (sequential-thinking, git-worktree): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
 
@@ -246,6 +259,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install supabase
 /plugin install svelte5-runes
 /plugin install git-worktree
+/plugin install slack-block-kit-builder
 ```
 
 ### Development
