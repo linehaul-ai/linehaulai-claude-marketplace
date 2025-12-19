@@ -10,14 +10,6 @@ Before installing this plugin, ensure you have:
    which claude
    ```
 
-2. **Your Golang skill installed**
-   - This is your custom skill for Golang best practices
-   - Verify it's available: `/skill list` in Claude Code
-
-3. **Your Echo Router skill installed**
-   - This is your custom skill for Echo framework patterns
-   - Verify it's available: `/skill list` in Claude Code
-
 ## Installation Steps
 
 ### Step 1: Install from Dotfiles (GitHub)
@@ -56,53 +48,47 @@ You should see `golang-echo-orchestrator` in the output.
 
 ### Step 3: Verify Skills Are Available
 
-Make sure your Golang and Echo Router skills are available:
+Verify that the skills are available:
 
 ```bash
 /skill list
 ```
 
-Look for both skills in the list. If either is missing, add them before using the plugin.
+You should see both skills:
+- `effective-go` - For Golang architecture guidance
+- `echo-router-skill` - For Echo routing patterns
 
 ## Testing the Plugin
 
-### Test 1: Use the Orchestrator Skill
+### Test 1: Try the effective-go Skill
 
-Try triggering the skill directly:
-
-```
-I need to configure a production REST API for a user authentication system using Golang and Echo Router.
-Features: user registration, login with JWT, profile management, and role-based access control.
-Database: PostgreSQL. Deployment: Docker.
-```
-
-The plugin should:
-1. Parse your requirements
-2. Spawn two subagents (Golang and Echo)
-3. Generate coordinated architecture and code
-
-### Test 2: Use the Command
-
-Try the `/backend-setup` command:
+Ask about Golang architecture:
 
 ```
-/backend-setup Configure a real-time chat application backend with:
-- User authentication and sessions
-- Chat room management
-- Message persistence (PostgreSQL)
-- WebSocket support for real-time messages
-- Production Docker setup
+/effective-go How should I structure a REST API backend with separate layers?
 ```
 
-### Test 3: Verify Agent Coordination
+You should receive guidance on project structure and package organization.
 
-The output should show:
-- ✅ Both agents' work coordinated
-- ✅ Type definitions that match between layers
-- ✅ Service interfaces that handlers depend on
-- ✅ Consistent error handling
-- ✅ Complete project structure
-- ✅ Integration examples
+### Test 2: Try the echo-router-skill
+
+Ask about Echo routing:
+
+```
+/echo-router-skill How do I set up middleware chains in Echo?
+```
+
+You should receive guidance on middleware setup and route organization.
+
+### Test 3: Use the Backend Setup Command
+
+Try the `/backend-setup` command for an overview:
+
+```
+/backend-setup What guidance is available for Golang and Echo development?
+```
+
+You should receive an overview of available skills and how to use them.
 
 ## Troubleshooting Installation
 
@@ -128,15 +114,15 @@ The output should show:
 # Close and reopen Claude Code
 ```
 
-### Skills Not Found When Plugin Runs
+### Skills Not Showing
 
-**Problem**: Agents don't have access to Golang or Echo Router skills
+**Problem**: Skills don't appear when you run `/skill list`
 
 **Solution**:
-1. Verify your skills are installed: `/skill list`
-2. Add missing skills if needed
-3. Restart Claude Code
-4. Try plugin again
+1. Verify plugin is installed: `/plugin list`
+2. Restart Claude Code completely
+3. Run `/skill list` again
+4. The skills should now be available
 
 ### Command Not Available
 
@@ -148,78 +134,58 @@ The output should show:
 3. Restart Claude Code
 4. Try a fresh session
 
-## Configuration (Optional)
+## Using the Skills
 
-### Update Agent Type References
-
-If your Golang and Echo Router skills have different agent types, update the plugin's command:
-
-1. Edit `/Users/fakebizprez/Developer/projects/golang-echo-orchestrator/commands/backend-setup-orchestration.md`
-2. Find the Task tool calls in Step 5
-3. Replace `[YOUR_GOLANG_AGENT_TYPE]` and `[YOUR_ECHO_AGENT_TYPE]` with your actual agent type names
-4. Save and restart Claude Code
-
-Example:
-```markdown
-Task("Golang Architecture Agent", "[GOLANG_BRIEF]", "effective-go-architect")
-Task("Echo Router Expert Agent", "[ECHO_BRIEF]", "echo-router-expert")
-```
-
-## Using the Plugin
-
-### Basic Usage
-
-Ask for a backend configuration:
+### Basic Usage - Ask About Architecture
 
 ```
-Configure a REST API backend for an e-commerce platform using Golang and Echo Router.
-Include product catalog, shopping cart, order processing, and Stripe payment integration.
-Use PostgreSQL for persistence and Redis for caching.
-Support Docker containerization.
+/effective-go How should I structure a REST API backend with handlers, services, and repositories?
 ```
 
-### Advanced Usage
-
-Specify architectural preferences:
+### Basic Usage - Ask About Routing
 
 ```
-/backend-setup Build a microservice-oriented user service using:
-- Golang with hexagonal architecture
-- Echo Router for HTTP interface
-- PostgreSQL with schema migrations
-- JWT authentication
-- Comprehensive unit and integration tests
-- Docker and Kubernetes manifests
+/echo-router-skill How do I set up middleware chains for authentication and logging?
+```
+
+### Advanced Usage - Ask About Patterns
+
+Specify what you want to build:
+
+```
+/effective-go I'm building a microservice-oriented user service. What architecture patterns should I use?
+Should I use hexagonal architecture or layered architecture?
 ```
 
 ### Iterative Development
 
-Build backends incrementally:
+Build knowledge incrementally:
 
 ```
-First, configure the basic REST API structure with user management.
-Then, add product catalog functionality.
-Finally, add order processing and payment handling.
+Step 1: /effective-go How should I organize packages for a REST API?
+Step 2: /echo-router-skill How do I set up my Echo server with middleware?
+Step 3: /effective-go What patterns should I use for error handling?
+Step 4: /echo-router-skill How do I implement request validation in Echo?
 ```
 
 ## Next Steps
 
 Once installed and verified:
 
-1. **Start with a simple backend** to get familiar with the output format
-2. **Review the generated architecture** carefully
-3. **Customize the agent briefs** if needed for your specific use case
-4. **Use the generated structure** as a starting point for your implementation
-5. **Iterate** with more complex requirements as you get comfortable
+1. **Try the effective-go skill** with a simple question about architecture
+2. **Try the echo-router-skill** with a question about routing
+3. **Combine both skills** for comprehensive guidance
+4. **Reference the skills** as you build your project
+5. **Iterate** with more specific questions as you develop
 
 ## Support
 
 If you encounter issues:
 
 1. Check the troubleshooting section above
-2. Verify all prerequisites are met
-3. Ensure Claude Code is fully restarted
-4. Check that your Golang and Echo Router skills are properly installed
+2. Ensure Claude Code is fully restarted
+3. Verify the plugin is installed: `/plugin list`
+4. Verify the skills are available: `/skill list`
 5. Review the plugin's README for additional context
 
 ## Uninstallation

@@ -86,17 +86,22 @@ golang-echo-orchestrator     v1.0.0     installed
 
 ## Step 5: Test It Works
 
-In Claude Code, type:
+In Claude Code, try one of the skills:
 
 ```
-Configure a production REST API for a user management system using Golang and Echo Router.
-Include JWT authentication, PostgreSQL integration, role-based access control, and Docker support.
+/effective-go How should I structure a REST API backend with handlers, services, and repositories?
 ```
 
-Or use the command:
+Or:
 
 ```
-/backend-setup Configure a REST API backend for a user management system using Golang and Echo Router.
+/echo-router-skill How do I set up middleware chains for authentication in Echo?
+```
+
+Or use the backend setup command for an overview:
+
+```
+/backend-setup What guidance is available for Golang and Echo development?
 ```
 
 ## If Something Goes Wrong
@@ -114,111 +119,82 @@ Or use the command:
 # Restart Claude Code
 ```
 
-### Plugin installs but command not available
+### Plugin installs but skills not available
 
 ```bash
 # Verify plugin loaded
 /plugin list
 
-# Make sure Golang and Echo Router skills are available
-/skill list
-
-# If skills missing, add them first
-# Then restart Claude Code
-```
-
-### Skills not found during execution
-
-```bash
 # Check if skills are available
 /skill list
 
-# Must see both:
-# - Your Golang skill
-# - Your Echo Router skill
-
-# If missing, install them before using the plugin
+# Both effective-go and echo-router-skill should be listed
+# If missing, restart Claude Code
 ```
 
-## Using the Plugin
+## Using the Skills
 
-### Method 1: Direct Prompt
+### Method 1: Direct Skill Call
 
-Simply ask Claude Code to configure a backend:
-
-```
-I need a production-ready REST API for [your project description]
-using Golang and Echo Router with [your requirements].
-```
-
-### Method 2: Command
-
-Use the built-in command:
+Ask effective-go for architecture guidance:
 
 ```
-/backend-setup [Your backend requirements]
+/effective-go How should I organize packages for a REST API backend?
+```
+
+Or ask echo-router-skill for routing guidance:
+
+```
+/echo-router-skill How do I set up middleware chains?
+```
+
+### Method 2: Backend Setup Command
+
+Use the built-in command for an overview:
+
+```
+/backend-setup I'm building a REST API, what guidance is available?
 ```
 
 ### What You'll Get
 
-The plugin will:
-1. Parse your requirements
-2. Spawn two subagents in parallel:
-   - **Golang Expert** - Designs architecture, services, data models
-   - **Echo Router Expert** - Implements routing, middleware, handlers
-3. Coordinate their outputs
-4. Deliver a complete backend design with:
-   - Project structure
-   - Type definitions
-   - Service interfaces
-   - Route definitions
-   - Middleware setup
-   - Configuration patterns
-   - Docker setup
-   - Testing strategy
-   - Integration examples
+The skills provide:
+- Architecture and design guidance
+- Implementation patterns and examples
+- Best practice recommendations
+- Common pitfall warnings
+- Code structure suggestions
+- Integration pattern examples
 
 ## Example Prompts to Try
 
-### Simple: Basic REST API
+### Ask About Project Structure
 ```
-Configure a REST API for a user management system with:
-- User registration and login
-- JWT authentication
-- PostgreSQL database
-- Docker support
-
-Use Golang and Echo Router.
+/effective-go How should I structure a REST API backend with separate layers (handlers, services, repositories)?
+What makes a good package organization?
 ```
 
-### Medium: E-Commerce Platform
+### Ask About Middleware
 ```
-/backend-setup Build a REST API backend for an e-commerce platform with:
-- Product catalog management
-- Shopping cart functionality
-- Order processing
-- Stripe payment integration
-- User authentication with JWT
-- PostgreSQL for data
-- Redis for caching
-- Docker containerization
-
-Use Golang with Echo routing.
+/echo-router-skill How do I implement middleware chains in Echo?
+What's the best order for authentication, logging, and error handling middleware?
 ```
 
-### Complex: Real-Time System
+### Ask About Error Handling
 ```
-Design a production backend for a real-time chat application using Golang and Echo Router:
-- WebSocket server for live messaging
-- User authentication and session management
-- Message persistence in PostgreSQL
-- Room-based chat organization
-- Typing indicators and online status
-- User profile management
-- Direct messaging between users
-- File attachment support
-- Comprehensive error handling
-- Docker and docker-compose setup for development
+/effective-go What patterns should I use for custom error types in a Go backend?
+How do I handle errors consistently across layers?
+```
+
+### Ask About Configuration
+```
+/effective-go How should I manage configuration for different environments (dev, staging, prod)?
+```
+
+### Ask About Testing
+```
+/effective-go What's a good testing strategy for a Go backend?
+How do I write testable handlers and services?
 ```
 
 ## Troubleshooting Command Reference
@@ -285,4 +261,4 @@ Refer to:
 
 ---
 
-**You're all set! Follow the steps above and you'll have a production-ready plugin orchestrating your Golang and Echo Router backend configurations.**
+**You're all set! Follow the steps above and you'll have expert guidance for Golang and Echo Router development available in Claude Code.**

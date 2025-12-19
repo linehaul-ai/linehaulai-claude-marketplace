@@ -14,10 +14,9 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 
 - [ ] `.claude-plugin/plugin.json` exists and is valid JSON
 - [ ] `.claude-plugin/marketplace.json` exists and is valid JSON
-- [ ] `skills/golang-echo-backend-orchestrator.md` exists
-- [ ] `skills/backend-orchestration-workflow.md` exists
+- [ ] `skills/effective-go/SKILL.md` exists
+- [ ] `skills/echo-router-skill/SKILL.md` exists
 - [ ] `commands/backend-setup.md` exists
-- [ ] `commands/backend-setup-orchestration.md` exists
 - [ ] `README.md` exists and is complete
 - [ ] `INSTALL.md` exists and updated for GitHub
 - [ ] `DOTFILES_SETUP.md` exists with integration steps
@@ -45,17 +44,17 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 
 ## Skills Verification
 
-- [ ] `golang-echo-backend-orchestrator.md` is comprehensive
-- [ ] `backend-orchestration-workflow.md` has clear orchestration pattern
-- [ ] Skills explain two-agent coordination clearly
-- [ ] Skills include example briefs for subagents
+- [ ] `effective-go/SKILL.md` provides Golang guidance
+- [ ] `echo-router-skill/SKILL.md` provides Echo routing guidance
+- [ ] Skills have clear examples and patterns
+- [ ] Skills cover best practices comprehensively
 
 ## Commands Verification
 
 - [ ] `backend-setup.md` explains command purpose
-- [ ] `backend-setup-orchestration.md` has step-by-step workflow
+- [ ] `backend-setup.md` describes available skills
 - [ ] Commands have clear examples
-- [ ] Command logic handles agent spawning
+- [ ] Command provides helpful guidance
 
 ## Installation Readiness
 
@@ -79,10 +78,10 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 
 ## Dependencies
 
-- [ ] Golang skill is mentioned as required
-- [ ] Echo Router skill is mentioned as required
-- [ ] Installation guide mentions these requirements
-- [ ] Troubleshooting section addresses missing skills
+- [ ] Installation guide mentions Claude Code is the only requirement
+- [ ] Skills are included with the plugin
+- [ ] No external dependencies required
+- [ ] Documentation is clear on what comes with the plugin
 
 ## Deployment Steps
 
@@ -171,17 +170,22 @@ On your machine (or a fresh clone):
 
 ### Step 5: Test Functionality
 
-In Claude Code:
+In Claude Code, test the skills:
 
 ```
-Configure a production REST API for a user management system using Golang and Echo Router.
-Include JWT authentication, PostgreSQL integration, and Docker support.
+/effective-go How should I structure a REST API backend?
 ```
 
-- [ ] Plugin responds to request
-- [ ] Generates architecture output
-- [ ] Shows coordination between agents
-- [ ] Output is coherent and useful
+And:
+
+```
+/echo-router-skill How do I set up middleware chains in Echo?
+```
+
+- [ ] Skills respond to questions
+- [ ] Provide clear guidance
+- [ ] Examples are relevant
+- [ ] Output is helpful and coherent
 
 ## Optional: Create Release Tag
 
@@ -240,17 +244,17 @@ Use this space to document any special considerations:
 ## Quick Summary
 
 **What this plugin does:**
-- Orchestrates two subagents (Golang + Echo Router expertise)
-- Generates production-ready backend architectures
-- Coordinates between architectural design and HTTP implementation
-- Produces complete project structure, type definitions, and integration patterns
+- Provides two expert-level skills for Golang and Echo Router development
+- Offers guidance on architecture, patterns, and best practices
+- Includes comprehensive reference documentation
+- Helps with both design and implementation decisions
 
 **How to use it:**
 1. Copy to dotfiles
 2. Commit and push
 3. Install from Claude Code
-4. Ask for backend configurations
-5. Get integrated, coordinated designs
+4. Ask skills for guidance on specific topics
+5. Get expert recommendations and patterns
 
 **Key files:**
 - `README.md` - What it does and how to use it
@@ -260,8 +264,7 @@ Use this space to document any special considerations:
 
 **Requirements:**
 - Claude Code installed
-- Golang skill available
-- Echo Router skill available
+- That's it!
 
 **Installation command:**
 ```bash

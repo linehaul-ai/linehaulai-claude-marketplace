@@ -25,65 +25,74 @@ git push
 
 Restart Claude Code.
 
-### 3. Start Using It
+### 3. Start Using the Skills
 
 ```
-Configure a REST API backend for a user management system using Golang and Echo Router.
-Include JWT authentication, PostgreSQL integration, and Docker support.
+/effective-go How should I structure a REST API backend with handlers, services, and repositories?
 ```
 
-Or use the command:
+Or:
 
 ```
-/backend-setup Build an e-commerce REST API with product catalog, shopping cart,
-and Stripe integration using Golang and Echo Router.
+/echo-router-skill How do I set up middleware chains and authentication in Echo?
 ```
 
-## What It Does
+## What It Provides
 
-The plugin spawns two specialized subagents:
-- **Golang Expert** - Designs architecture, services, data models
-- **Echo Router Expert** - Implements HTTP routing, middleware, handlers
+Two complementary skills for Golang and Echo Router development:
 
-They coordinate to generate production-ready backend designs.
+**`effective-go`** - Golang Best Practices
+- Project structure and package organization
+- Error handling patterns
+- Configuration management
+- Concurrency patterns
+- Testing strategies
+- Dependency injection
+
+**`echo-router-skill`** - Echo Framework Patterns
+- Server setup and configuration
+- Route definitions and organization
+- Middleware chains
+- Request validation and binding
+- Authentication patterns
+- Error handling and recovery
 
 ## What You Get
 
-After running the plugin, you'll have:
-- ✅ Complete project structure
-- ✅ Type definitions and service interfaces
-- ✅ Route definitions and handlers
-- ✅ Configuration management
-- ✅ Docker setup
-- ✅ Testing strategy
-- ✅ Integration examples
+When using the skills, you receive:
+- ✅ Architecture and design guidance
+- ✅ Implementation patterns and examples
+- ✅ Best practice recommendations
+- ✅ Common pitfall warnings
+- ✅ Code structure guidance
+- ✅ Integration patterns
 
 ## File Structure Reference
 
 ```
-golang-echo-orchestrator/
+golang-orchestrator/
 ├── .claude-plugin/
-│   ├── plugin.json           # Plugin manifest
-│   └── marketplace.json      # Dev marketplace config
+│   └── plugin.json                 # Plugin manifest
 ├── skills/
-│   ├── golang-echo-backend-orchestrator.md
-│   └── backend-orchestration-workflow.md
+│   ├── effective-go/
+│   │   └── SKILL.md                # Go best practices
+│   └── echo-router-skill/
+│       └── SKILL.md                # Echo routing patterns
 ├── commands/
-│   ├── backend-setup.md
-│   └── backend-setup-orchestration.md
-├── README.md                 # Full documentation
-├── INSTALL.md                # Installation guide
-├── DOTFILES_SETUP.md         # Dotfiles integration
-└── QUICK_START.md           # This file
+│   └── backend-setup.md            # Backend setup guidance
+├── README.md                        # Full documentation
+├── INSTALL.md                       # Installation guide
+├── PLUGIN_OVERVIEW.md              # Complete reference
+└── QUICK_START.md                  # This file
 ```
 
 ## Key Documentation Files
 
 | File | Purpose |
 |------|---------|
-| **README.md** | Feature overview and usage |
+| **README.md** | Feature overview and capabilities |
 | **INSTALL.md** | Installation & troubleshooting |
-| **DOTFILES_SETUP.md** | How to add to dotfiles |
+| **PLUGIN_OVERVIEW.md** | Complete reference guide |
 | **QUICK_START.md** | This quick reference |
 
 ## Troubleshooting
@@ -94,9 +103,9 @@ golang-echo-orchestrator/
 # Close and reopen the application
 ```
 
-**Commands/skills not working?**
-- Verify your Golang and Echo Router skills: `/skill list`
-- Both skills must be installed before using the plugin
+**Skills not working?**
+- Check available skills: `/skill list`
+- Verify effective-go and echo-router-skill are installed
 
 **Need to reinstall?**
 ```bash
@@ -106,91 +115,99 @@ golang-echo-orchestrator/
 /plugin install golang-echo-orchestrator
 ```
 
-## Example Prompts
+## Example Usage
 
-### Basic REST API
+### Ask About Project Structure
 ```
-Configure a production REST API for a user authentication system using Golang and Echo Router.
-Features: user registration, login with JWT, profile management, role-based access control.
-Database: PostgreSQL. Deployment: Docker.
+/effective-go How should I structure a REST API with separate handlers, services, and repositories layers?
 ```
 
-### E-Commerce Platform
+### Ask About Middleware
 ```
-/backend-setup Build a complete e-commerce backend with:
-- Product catalog management
-- Shopping cart
-- Order processing
-- Stripe payment integration
-- User authentication with JWT
-- Admin dashboard endpoints
-- PostgreSQL with proper indexing
-- Redis caching
-- Docker containerization
+/echo-router-skill How do I set up middleware for authentication, logging, and error handling?
 ```
 
-### Real-Time System
+### Ask About Error Handling
 ```
-Design a real-time chat application backend using Golang and Echo with:
-- WebSocket server for live messaging
-- User authentication and sessions
-- Message persistence in PostgreSQL
-- Room-based organization
-- Typing indicators
-- Media file uploads
-- Production error handling
-- Docker and docker-compose setup
+/effective-go What patterns should I use for custom error types and error handling in a Go backend?
+```
+
+### Ask About Configuration
+```
+/effective-go What's the best approach for managing environment-specific configuration in Go?
+```
+
+### Ask About Testing
+```
+/effective-go How should I structure unit and integration tests for a Go backend?
 ```
 
 ## Next Steps
 
-1. **Copy to dotfiles** - Add plugin to your GitHub dotfiles
-2. **Push to GitHub** - Make it available across machines
-3. **Install** - Run the installation commands above
-4. **Test** - Try a simple backend configuration
-5. **Review Output** - Understand the generated architecture
-6. **Use as Template** - Apply to your real projects
+1. **Install Plugin** - Follow the TL;DR above
+2. **Try a Skill** - Ask `/effective-go` or `/echo-router-skill` a question
+3. **Reference as Needed** - Use the skills while developing
+4. **Iterate** - Ask follow-up questions for clarification
+5. **Build Your Project** - Apply guidance to your real projects
+
+## How to Use These Skills
+
+### For Architecture Planning
+1. Ask `/effective-go` about project structure
+2. Get guidance on package organization
+3. Understand layer separation
+4. Plan your design
+
+### For Implementation
+1. Ask `/echo-router-skill` about specific patterns
+2. Get code examples
+3. Understand middleware ordering
+4. Implement with confidence
+
+### Combining Both
+1. Design architecture with `/effective-go`
+2. Implement HTTP layer with `/echo-router-skill`
+3. Iterate on both as needed
+4. Build complete solution
 
 ## Key Concepts
 
-### Agent Orchestration
-Two subagents work together:
-- Golang agent focuses on business logic, types, services
-- Echo agent focuses on HTTP routing, middleware, handlers
-- Clear contracts ensure they integrate seamlessly
+### Expert Guidance
+Both skills provide expert-level guidance based on:
+- golang.org/doc/effective_go (Golang best practices)
+- Echo v4 framework documentation (HTTP routing)
 
-### Type Safety
-Both agents agree on:
-- Request/response types
-- Error formats
-- Configuration structures
-- Interface contracts
-
-### Production Ready
-Generated code includes:
+### Production-Ready Patterns
+Guidance includes:
 - Proper error handling
-- Docker support
-- Testing structure
 - Configuration management
+- Testing structure
 - Security best practices
+- Concurrency patterns
+
+### Practical Examples
+Skills provide:
+- Code patterns and examples
+- Common pitfalls to avoid
+- Alternative approaches
+- Trade-off explanations
 
 ## Resources
 
-- **Official Docs**: Read skill files in `./skills/` directory
-- **Examples**: See `./commands/` for detailed orchestration logic
-- **Troubleshooting**: Check INSTALL.md for common issues
-- **Dotfiles**: See DOTFILES_SETUP.md for repository integration
+- **Golang Documentation**: Read effective-go SKILL.md
+- **Echo Documentation**: Read echo-router-skill SKILL.md
+- **Installation**: Check INSTALL.md for troubleshooting
+- **Complete Reference**: See PLUGIN_OVERVIEW.md
+- **Setup**: See DOTFILES_SETUP.md
 
 ## Remember
 
-The plugin is a **design tool**, not a code generator. It provides:
-- Architecture guidance
-- Integration patterns
-- Type structure
-- Middleware setup
-- Testing strategy
-
-Use the generated design as a starting point for your implementation.
+This plugin provides **expert guidance**, not code generation. Use the skills to:
+- Learn best practices
+- Design your architecture
+- Implement patterns correctly
+- Make informed decisions
+- Build production-ready solutions
 
 ---
 

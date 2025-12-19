@@ -1,22 +1,21 @@
 # Golang Echo Orchestrator Plugin
 
-**Orchestrate two specialized subagents to collaboratively design and configure production-ready Golang backends with Echo routing framework.**
+**Comprehensive guidance plugin for building production-ready Golang backends with Echo Router framework.**
 
 ## What This Plugin Does
 
-This Claude Code plugin leverages subagent orchestration to create production-grade Golang backend systems. It spawns two specialized agents:
+This Claude Code plugin provides expert-level guidance for Golang backend development using the Echo Router framework. It includes two complementary skills:
 
-1. **Golang Expert** - Applies Golang best practices, idioms, and architectural patterns
-2. **Echo Router Expert** - Specializes in Echo framework routing, middleware, and HTTP handling
+1. **effective-go** - Golang best practices, idioms, and architectural patterns from golang.org/doc/effective_go
+2. **echo-router-skill** - Echo framework routing, middleware, and HTTP handling patterns
 
-These agents collaborate to deliver:
+These skills help you build:
 - ✅ Well-structured Go project layouts
-- ✅ Type-safe routing configurations
+- ✅ Type-safe code with idiomatic patterns
 - ✅ Professional middleware stacks
 - ✅ Production-ready error handling
 - ✅ Integrated testing strategies
-- ✅ Docker and deployment configs
-- ✅ Complete API documentation structure
+- ✅ Best practices for configuration and concurrency
 
 ## Installation
 
@@ -42,207 +41,153 @@ Then restart Claude Code.
 
 ## Usage
 
-### Method 1: Use the Skill Directly
+### Using the Skills Directly
 
-Ask Claude Code to configure a backend:
+Ask Claude Code for guidance on specific topics:
+
+**For Golang architecture and patterns:**
+```
+/effective-go How should I structure a typical Go backend project with proper package organization?
+```
+
+**For Echo Router HTTP implementation:**
+```
+/echo-router-skill How do I set up middleware chains and implement authentication in Echo?
+```
+
+### Using the Backend Setup Command
+
+Get guidance on both skills together:
 
 ```
-Configure a production-ready REST API backend for a user management system using Golang and Echo Router.
-Include JWT authentication, PostgreSQL integration, role-based access control, and Docker support.
-```
-
-The orchestrator skill will spawn both agents to collaborate.
-
-### Method 2: Use the Command
-
-```
-/backend-setup Configure a real-time collaboration platform with WebSocket support, user authentication,
-and multi-tenant database design using Golang and Echo.
+/backend-setup I need to build a REST API for user management. What's a good project structure?
 ```
 
 ## Plugin Components
 
-### Agents
-
-**`golang-expert`**
-- Specializes in Go architecture and best practices (uses `effective-go` skill)
-- Designs project structure, type definitions, service layers
-- Defines interfaces for the HTTP layer to depend on
-- Handles core business logic and data access patterns
-
-**`echo-router-expert`**
-- Specializes in Echo framework HTTP routing (uses `echo-router-skill` skill)
-- Implements server setup, routes, middleware chains
-- Builds HTTP handlers that call Golang agent's service interfaces
-- Handles request validation, error responses, and security
-
 ### Skills
 
-**`effective-go`**
-- Go best practices from golang.org/doc/effective_go
-- Used by golang-expert agent for idiomatic code decisions
+**`effective-go`** - Golang Best Practices
+- Package organization and project structure
+- Error handling patterns and custom error types
+- Concurrency, goroutines, and parallelism
+- Configuration management
+- Dependency injection patterns
+- Testing strategies and conventions
+- Build and deployment considerations
 
-**`echo-router-skill`**
-- Echo v4 framework patterns and conventions
-- Used by echo-router-expert agent for HTTP layer implementation
+**`echo-router-skill`** - Echo Framework Patterns
+- Server setup and configuration
+- Route definitions and route grouping
+- Middleware chains and ordering
+- Request validation and binding
+- Authentication and authorization patterns
+- Error handling in HTTP context
+- CORS and security headers
 
 ### Commands
 
 **`/backend-setup`**
-- Quick entry point for backend configuration
-- Parses user requirements
-- Triggers two-agent orchestration in parallel
+- Overview of available skills
+- Guidance on using effective-go and echo-router-skill
+- Development workflow suggestions
 
-**`/backend-setup-orchestration`**
-- Detailed orchestration command with comprehensive checklists
-- Structured requirement analysis
-- Full agent coordination example
+## Example Usage Scenarios
 
-## Example Workflows
+### Building a REST API
 
-### Example 1: E-Commerce API
+Use `/effective-go` to plan your project structure, then `/echo-router-skill` for routing:
 
-```
-/backend-setup Build a production e-commerce REST API with:
-- Product catalog management
-- Shopping cart and order processing
-- Payment gateway integration (Stripe)
-- User authentication with JWT
-- Admin dashboard backend
-- PostgreSQL with proper indexing
-- Redis caching layer
-- Docker containerization
-```
+1. Ask about Go package organization for a typical REST API
+2. Get guidance on error handling patterns
+3. Ask about Echo route definitions and middleware
+4. Implement authentication middleware patterns
 
-### Example 2: Real-Time Chat System
+### Setting Up Middleware
 
-```
-Configure a real-time messaging backend with Golang and Echo Router:
-- WebSocket server for real-time messages
-- User authentication and session management
-- Message persistence in MongoDB
-- Room-based chat organization
-- Typing indicators and online status
-- Media file upload handling
-- Production-grade error handling
-- Docker Compose setup for dev environment
-```
+Use `/echo-router-skill` to get guidance on:
+- CORS middleware setup
+- Authentication middleware chains
+- Request validation middleware
+- Error recovery and logging
 
-### Example 3: Microservice Architecture
+### Concurrency Patterns
 
-```
-/backend-setup Design a microservice architecture using Golang and Echo with:
-- API Gateway pattern
-- Service-to-service communication
-- Shared authentication service
-- Event-driven updates (event bus)
-- Circuit breaker patterns
-- Distributed tracing setup
-- Kubernetes deployment configs
-- Prometheus metrics integration
-```
+Use `/effective-go` for guidance on:
+- Goroutine management
+- Channel patterns for communication
+- Worker pool implementations
+- Avoiding common concurrency pitfalls
 
-## How Agent Orchestration Works
+### Database Integration
 
-1. **You provide requirements** via skill or command
-2. **Orchestrator parses** the requirements into structured components
-3. **Two subagents spawn in parallel**:
-   - Golang agent gets: architecture, structure, and core logic requirements
-   - Echo agent gets: routing, middleware, and HTTP handling requirements
-4. **Agents share context** through:
-   - Coordinated interface definitions
-   - Shared type contracts
-   - Common error handling patterns
-5. **Results are synthesized** into a complete, integrated backend design
+Use `/effective-go` to design your data layer, then `/echo-router-skill` for:
+- Request binding and validation
+- Response serialization
+- Transaction handling in handlers
 
-## What You Get
+## What You Can Achieve
 
-For a typical backend configuration, you'll receive:
+With these skills, you can:
 
-### Architecture & Structure
-- Complete project layout
-- Package organization diagram
-- Dependency graph
-- Layer separation strategy
+### Architecture Planning
+- Determine appropriate project structure
+- Design package organization
+- Plan layer separation (handlers, services, repositories)
+- Define error handling strategy
 
-### Code Examples
-- Main application setup
-- Route definitions with middleware
-- Handler function patterns
-- Model and type definitions
-- Error handling utilities
-- Configuration management
+### Implementation Patterns
+- Set up Echo server with proper initialization
+- Implement middleware chains
+- Build handler functions with validation
+- Create consistent error responses
+- Handle authentication and authorization
 
-### Infrastructure
-- Dockerfile and docker-compose.yml
-- Environment configuration templates
-- Database schema and migrations
-- Build scripts
-
-### Testing
-- Unit test patterns
-- Integration test setup
-- Mock implementations
-- Test coverage targets
-
-### Documentation
-- API endpoint listing
-- Quick start guide
-- Configuration reference
-- Deployment instructions
+### Best Practices
+- Write idiomatic Go code
+- Follow Go conventions and idioms
+- Apply proven patterns from the Go community
+- Implement proper configuration management
+- Set up testable code structures
 
 ## Plugin Structure
 
 ```
 golang-echo-orchestrator/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest
-│   └── marketplace.json         # Development marketplace
+│   └── plugin.json              # Plugin manifest
 ├── skills/
-│   └── golang-echo-backend-orchestrator.md  # Orchestration skill
+│   ├── effective-go/
+│   │   └── SKILL.md             # Go best practices skill
+│   └── echo-router-skill/
+│       └── SKILL.md             # Echo routing skill
 ├── commands/
-│   └── backend-setup.md         # Backend setup command
+│   └── backend-setup.md         # Backend setup guidance
 ├── docs/
-│   └── [additional documentation]
+│   └── [reference documentation]
 └── README.md                     # This file
 ```
 
-## Customization
+## Using These Skills Effectively
 
-### For Different Architecture Styles
+### Golang Design Decisions
 
-Specify your preferred architecture in requirements:
-- Layered (traditional)
-- Hexagonal (ports & adapters)
-- DDD (domain-driven design)
-- Clean Architecture
-- Event-Driven Architecture
+Ask `/effective-go` when deciding on:
+- **Project Structure**: Package organization for your specific use case
+- **Error Handling**: How to define and handle errors consistently
+- **Configuration**: Methods for managing environment-specific settings
+- **Testing**: Strategies for unit and integration testing
+- **Concurrency**: Goroutine patterns and channels for your workload
 
-### For Different Databases
+### Echo Implementation Decisions
 
-Agents support:
-- PostgreSQL
-- MySQL
-- MongoDB
-- Redis
-- DynamoDB
-- Firestore
-
-### For Different Authentication Methods
-
-- JWT (bearer tokens)
-- OAuth2
-- Session-based
-- API keys
-- Multi-factor authentication
-
-### For Deployment Targets
-
-- Docker/Docker Compose
-- Kubernetes (Helm charts)
-- AWS (ECS, Lambda)
-- GCP (Cloud Run)
-- Azure (Container Instances)
+Ask `/echo-router-skill` when implementing:
+- **Server Setup**: Initial Echo server configuration
+- **Routes**: Organizing routes for scalability
+- **Middleware**: Building middleware stacks in the right order
+- **Validation**: Request validation and binding strategies
+- **Authentication**: Implementing auth middleware patterns
+- **Error Responses**: Consistent error response formatting
 
 ## Troubleshooting
 
@@ -253,62 +198,54 @@ Agents support:
 /plugin list
 
 # Reinstall
-/plugin uninstall golang-echo-orchestrator@golang-echo-dev
-/plugin install golang-echo-orchestrator@golang-echo-dev
+/plugin uninstall golang-echo-orchestrator
+/plugin install golang-echo-orchestrator
 
 # Restart Claude Code
 ```
 
-### Agents Not Spawning
+### Skills Not Available
 
-Ensure your requirements are clear and specific:
-- ❌ "Build a backend" (too vague)
-- ✅ "Build a REST API for user management with JWT auth and PostgreSQL"
+Verify the skills are properly installed:
+- Run `/effective-go` to test the Golang skill
+- Run `/echo-router-skill` to test the Echo skill
+- If either fails, reinstall the plugin
 
-### Missing Skill Context
+### Getting Better Guidance
 
-Make sure your Golang and Echo Router skills are properly installed and available before using this plugin.
+Be specific with your questions:
+- ❌ "How do I structure a Go project?" (too general)
+- ✅ "How should I organize a REST API backend with separate handlers, services, and repositories?" (specific)
 
-## Advanced Usage
+## Tips for Using These Skills
 
-### Batch Multiple Configurations
+### Combine Both Skills
 
-Request multiple backend configurations in sequence or parallel:
+Many problems benefit from guidance from both skills:
 
-```
-/backend-setup First, configure the user service with authentication.
-Then, configure the order service with payment processing.
-Finally, design the API gateway to connect them.
-```
+1. Ask `/effective-go` about architecture and project structure
+2. Then ask `/echo-router-skill` about implementing HTTP handlers for that structure
 
-### Incremental Development
+### Reference the Skills While Implementing
 
-Start with a basic configuration, then expand:
+Keep both skills available as you code:
+- Check `/effective-go` when making design decisions
+- Refer to `/echo-router-skill` when implementing handlers
+- Use both for error handling patterns
 
-```
-Initial: Basic REST API structure
-Add: Authentication layer
-Add: Database with migrations
-Add: Caching layer
-Add: Docker setup
-Add: Kubernetes manifests
-```
+### Iterate on Patterns
 
-### Integration with Other Plugins
+1. Get initial guidance from a skill
+2. Implement based on that guidance
+3. Ask for clarification or alternatives if needed
+4. Refine your approach based on feedback
 
-The generated code is compatible with other Claude Code plugins for:
-- Testing (use testing suite plugins)
-- Git workflow (use git-flow plugins)
-- CI/CD (use deployment plugins)
+## Integration with Other Plugins
 
-## Contributing
-
-To improve this plugin:
-
-1. Test new agent briefs for better collaboration
-2. Add new example workflows
-3. Extend documentation
-4. Submit improvements via pull request
+The guidance from these skills complements other Claude Code plugins:
+- Git workflow plugins for version control
+- Testing plugins for test implementation strategies
+- Deployment plugins for containerization and orchestration
 
 ## License
 
