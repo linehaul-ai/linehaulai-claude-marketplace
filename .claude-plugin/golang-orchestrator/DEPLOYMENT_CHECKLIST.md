@@ -16,7 +16,6 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 - [ ] `.claude-plugin/marketplace.json` exists and is valid JSON
 - [ ] `skills/effective-go/SKILL.md` exists
 - [ ] `skills/echo-router-skill/SKILL.md` exists
-- [ ] `commands/backend-setup.md` exists
 - [ ] `README.md` exists and is complete
 - [ ] `INSTALL.md` exists and updated for GitHub
 - [ ] `DOTFILES_SETUP.md` exists with integration steps
@@ -38,7 +37,6 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 - [ ] `plugin.json` has correct name: `golang-echo-orchestrator`
 - [ ] `plugin.json` has version: `1.0.0`
 - [ ] `plugin.json` correctly references skills with `./` paths
-- [ ] `plugin.json` correctly references commands with `./` paths
 - [ ] `plugin.json` description is accurate
 - [ ] Author information is correct
 
@@ -48,13 +46,6 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 - [ ] `echo-router-skill/SKILL.md` provides Echo routing guidance
 - [ ] Skills have clear examples and patterns
 - [ ] Skills cover best practices comprehensively
-
-## Commands Verification
-
-- [ ] `backend-setup.md` explains command purpose
-- [ ] `backend-setup.md` describes available skills
-- [ ] Commands have clear examples
-- [ ] Command provides helpful guidance
 
 ## Installation Readiness
 
@@ -114,7 +105,6 @@ Expected structure:
     └── golang-echo-orchestrator/
         ├── .claude-plugin/
         ├── skills/
-        ├── commands/
         ├── README.md
         ├── INSTALL.md
         ├── QUICK_START.md

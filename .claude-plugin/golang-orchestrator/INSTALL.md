@@ -80,16 +80,6 @@ Ask about Echo routing:
 
 You should receive guidance on middleware setup and route organization.
 
-### Test 3: Use the Backend Setup Command
-
-Try the `/backend-setup` command for an overview:
-
-```
-/backend-setup What guidance is available for Golang and Echo development?
-```
-
-You should receive an overview of available skills and how to use them.
-
 ## Troubleshooting Installation
 
 ### Plugin Not Appearing

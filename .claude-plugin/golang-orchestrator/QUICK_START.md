@@ -78,8 +78,6 @@ golang-orchestrator/
 │   │   └── SKILL.md                # Go best practices
 │   └── echo-router-skill/
 │       └── SKILL.md                # Echo routing patterns
-├── commands/
-│   └── backend-setup.md            # Backend setup guidance
 ├── README.md                        # Full documentation
 ├── INSTALL.md                       # Installation guide
 ├── PLUGIN_OVERVIEW.md              # Complete reference

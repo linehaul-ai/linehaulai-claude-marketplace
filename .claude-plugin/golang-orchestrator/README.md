@@ -55,14 +55,6 @@ Ask Claude Code for guidance on specific topics:
 /echo-router-skill How do I set up middleware chains and implement authentication in Echo?
 ```
 
-### Using the Backend Setup Command
-
-Get guidance on both skills together:
-
-```
-/backend-setup I need to build a REST API for user management. What's a good project structure?
-```
-
 ## Plugin Components
 
 ### Skills
@@ -84,13 +76,6 @@ Get guidance on both skills together:
 - Authentication and authorization patterns
 - Error handling in HTTP context
 - CORS and security headers
-
-### Commands
-
-**`/backend-setup`**
-- Overview of available skills
-- Guidance on using effective-go and echo-router-skill
-- Development workflow suggestions
 
 ## Example Usage Scenarios
 
@@ -161,8 +146,6 @@ golang-echo-orchestrator/
 │   │   └── SKILL.md             # Go best practices skill
 │   └── echo-router-skill/
 │       └── SKILL.md             # Echo routing skill
-├── commands/
-│   └── backend-setup.md         # Backend setup guidance
 ├── docs/
 │   └── [reference documentation]
 └── README.md                     # This file
@@ -260,4 +243,4 @@ For issues or questions:
 
 ---
 
-**Ready to orchestrate your backend?** Use `/backend-setup` or ask the skill directly to get started!
+**Ready to orchestrate your backend?** Ask the skills directly to get started!

@@ -40,8 +40,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   ├── agents/              # Specialized subagent definitions
 │   │   ├── echo-router-expert.md  # Echo framework HTTP routing specialist
 │   │   └── golang-expert.md       # Golang architecture specialist
-│   ├── commands/            # Slash commands
-│   │   └── backend-setup-orchestration.md  # Detailed orchestration workflow
 │   ├── skills/              # Orchestration skills
 │   ├── docs/
 │   ├── README.md
@@ -151,9 +149,8 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 
 **Golang Orchestrator Pattern**:
 - Two-agent orchestration: Golang Expert (architecture) + Echo Router Expert (HTTP layer)
-- Agents spawned in parallel via backend-setup-orchestration command
 - Clear separation: Golang agent defines interfaces, Echo agent implements HTTP handlers
-- Detailed workflow with requirement extraction, context creation, and agent coordination
+- Specialized agents for architecture decisions and HTTP routing implementation
 
 **Visualization Plugins Pattern** (svelte-flow, layerchart, layercake):
 - **svelte-flow**: Interactive node-based editors with @xyflow/svelte

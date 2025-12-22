@@ -17,9 +17,6 @@ dotfiles/
 │   │       ├── skills/
 │   │       │   ├── golang-echo-backend-orchestrator.md
 │   │       │   └── backend-orchestration-workflow.md
-│   │       ├── commands/
-│   │       │   ├── backend-setup.md
-│   │       │   └── backend-setup-orchestration.md
 │   │       ├── README.md
 │   │       ├── INSTALL.md
 │   │       └── DOTFILES_SETUP.md

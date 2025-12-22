@@ -67,13 +67,6 @@ Apply to Your Project
   - Error handling in HTTP context
   - Security headers and CORS
 
-### Commands
-
-**`/backend-setup`**
-- Overview of available skills
-- Guidance on using both skills together
-- Development workflow suggestions
-
 ---
 
 ## What You'll Receive
@@ -131,17 +124,12 @@ When using the skills, you get:
 
 ### Using the Skills
 
-**Method 1: Direct Skill Call**
+**Direct Skill Call**
 ```
 /effective-go How should I organize packages for a REST API backend?
 ```
 
-**Method 2: Backend Setup Command**
-```
-/backend-setup I'm building a REST API, what skills are available?
-```
-
-**Method 3: Natural Language**
+**Or Ask Directly**
 ```
 Using the Golang skill, help me design the project structure for a user authentication service.
 ```
@@ -160,9 +148,6 @@ golang-orchestrator/
 │   │   └── SKILL.md                # Go best practices
 │   └── echo-router-skill/
 │       └── SKILL.md                # Echo framework patterns
-│
-├── commands/
-│   └── backend-setup.md            # Backend setup guidance
 │
 └── Documentation/
     ├── README.md                   # Feature overview

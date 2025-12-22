@@ -28,7 +28,6 @@ INSTALL.md
 NEXT_STEPS.md
 QUICK_START.md
 README.md
-commands/
 skills/
 ```
 
@@ -98,12 +97,6 @@ Or:
 /echo-router-skill How do I set up middleware chains for authentication in Echo?
 ```
 
-Or use the backend setup command for an overview:
-
-```
-/backend-setup What guidance is available for Golang and Echo development?
-```
-
 ## If Something Goes Wrong
 
 ### Plugin won't install
@@ -146,14 +139,6 @@ Or ask echo-router-skill for routing guidance:
 
 ```
 /echo-router-skill How do I set up middleware chains?
-```
-
-### Method 2: Backend Setup Command
-
-Use the built-in command for an overview:
-
-```
-/backend-setup I'm building a REST API, what guidance is available?
 ```
 
 ### What You'll Get
