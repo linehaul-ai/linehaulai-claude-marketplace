@@ -38,11 +38,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── golang-orchestrator/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── agents/              # Specialized subagent definitions
-│   │   ├── echo-router-expert.md  # Echo framework HTTP routing specialist
-│   │   └── golang-expert.md       # Golang architecture specialist
 │   ├── skills/              # Orchestration skills
-│   ├── docs/
 │   ├── README.md
 │   ├── INSTALL.md
 │   ├── PLUGIN_OVERVIEW.md
@@ -150,9 +146,9 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
+1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
 2. **Skill Plugins** (sequential-thinking, git-worktree, composable-svelte-components): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills with manifest and reference docs, minimal structure
+3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
 - Three complementary skills: effective-go (architecture) → backend-service-patterns (data layer) → echo-router-skill (HTTP layer)
