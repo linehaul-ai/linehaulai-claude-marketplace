@@ -15,6 +15,7 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 - [ ] `.claude-plugin/plugin.json` exists and is valid JSON
 - [ ] `.claude-plugin/marketplace.json` exists and is valid JSON
 - [ ] `skills/effective-go/SKILL.md` exists
+- [ ] `skills/backend-service-patterns/SKILL.md` exists
 - [ ] `skills/echo-router-skill/SKILL.md` exists
 - [ ] `README.md` exists and is complete
 - [ ] `INSTALL.md` exists and updated for GitHub
@@ -43,9 +44,11 @@ Complete this checklist before pushing the plugin to your dotfiles repository.
 ## Skills Verification
 
 - [ ] `effective-go/SKILL.md` provides Golang guidance
+- [ ] `backend-service-patterns/SKILL.md` provides laneweaverTMS backend patterns
 - [ ] `echo-router-skill/SKILL.md` provides Echo routing guidance
 - [ ] Skills have clear examples and patterns
 - [ ] Skills cover best practices comprehensively
+- [ ] Skills work together as a hierarchy (architecture → data layer → HTTP layer)
 
 ## Installation Readiness
 
@@ -160,7 +163,7 @@ On your machine (or a fresh clone):
 
 ### Step 5: Test Functionality
 
-In Claude Code, test the skills:
+In Claude Code, test all three skills:
 
 ```
 /effective-go How should I structure a REST API backend?
@@ -169,13 +172,20 @@ In Claude Code, test the skills:
 And:
 
 ```
+/backend-service-patterns How do I structure a service layer with pgx?
+```
+
+And:
+
+```
 /echo-router-skill How do I set up middleware chains in Echo?
 ```
 
-- [ ] Skills respond to questions
+- [ ] All three skills respond to questions
 - [ ] Provide clear guidance
 - [ ] Examples are relevant
 - [ ] Output is helpful and coherent
+- [ ] Skills work together cohesively
 
 ## Optional: Create Release Tag
 
@@ -234,10 +244,10 @@ Use this space to document any special considerations:
 ## Quick Summary
 
 **What this plugin does:**
-- Provides two expert-level skills for Golang and Echo Router development
+- Provides three expert-level skills for Golang, Echo Router, and laneweaverTMS backend development
 - Offers guidance on architecture, patterns, and best practices
 - Includes comprehensive reference documentation
-- Helps with both design and implementation decisions
+- Helps with design (effective-go), data layer (backend-service-patterns), and HTTP layer (echo-router-skill)
 
 **How to use it:**
 1. Copy to dotfiles

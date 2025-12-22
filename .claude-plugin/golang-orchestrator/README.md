@@ -4,10 +4,11 @@
 
 ## What This Plugin Does
 
-This Claude Code plugin provides expert-level guidance for Golang backend development using the Echo Router framework. It includes two complementary skills:
+This Claude Code plugin provides expert-level guidance for Golang backend development using the Echo Router framework. It includes three complementary skills:
 
 1. **effective-go** - Golang best practices, idioms, and architectural patterns from golang.org/doc/effective_go
 2. **echo-router-skill** - Echo framework routing, middleware, and HTTP handling patterns
+3. **backend-service-patterns** - Domain-specific patterns for laneweaverTMS backend with pgx and PostgreSQL
 
 These skills help you build:
 - ✅ Well-structured Go project layouts
@@ -55,6 +56,11 @@ Ask Claude Code for guidance on specific topics:
 /echo-router-skill How do I set up middleware chains and implement authentication in Echo?
 ```
 
+**For laneweaverTMS backend patterns:**
+```
+/backend-service-patterns How do I structure a service layer for handling database operations with pgx?
+```
+
 ## Plugin Components
 
 ### Skills
@@ -77,16 +83,27 @@ Ask Claude Code for guidance on specific topics:
 - Error handling in HTTP context
 - CORS and security headers
 
+**`backend-service-patterns`** - laneweaverTMS Backend Patterns
+- Service layer architecture for domain entities
+- Database operations with pgx and PostgreSQL
+- Entity mapping and serialization patterns
+- Repository pattern implementations
+- Transaction handling and error recovery
+- API endpoint design and validation
+- Testing strategies for data layers
+
 ## Example Usage Scenarios
 
 ### Building a REST API
 
-Use `/effective-go` to plan your project structure, then `/echo-router-skill` for routing:
+Use `/effective-go` to plan your project structure, then `/echo-router-skill` for routing, and `/backend-service-patterns` for data layer:
 
 1. Ask about Go package organization for a typical REST API
 2. Get guidance on error handling patterns
 3. Ask about Echo route definitions and middleware
-4. Implement authentication middleware patterns
+4. Use `/backend-service-patterns` for service and repository layer design
+5. Implement database operations with pgx
+6. Implement authentication middleware patterns
 
 ### Setting Up Middleware
 
@@ -106,10 +123,16 @@ Use `/effective-go` for guidance on:
 
 ### Database Integration
 
-Use `/effective-go` to design your data layer, then `/echo-router-skill` for:
+Use `/effective-go` to design your data layer, `/backend-service-patterns` for:
+- Repository and service layer patterns
+- pgx connection pooling and query patterns
+- Entity mapping and serialization
+- Transaction handling in services
+
+Then use `/echo-router-skill` for:
 - Request binding and validation
 - Response serialization
-- Transaction handling in handlers
+- Integrating services with handlers
 
 ## What You Can Achieve
 
@@ -144,8 +167,10 @@ golang-echo-orchestrator/
 ├── skills/
 │   ├── effective-go/
 │   │   └── SKILL.md             # Go best practices skill
-│   └── echo-router-skill/
-│       └── SKILL.md             # Echo routing skill
+│   ├── echo-router-skill/
+│   │   └── SKILL.md             # Echo routing skill
+│   └── backend-service-patterns/
+│       └── SKILL.md             # laneweaverTMS patterns skill
 ├── docs/
 │   └── [reference documentation]
 └── README.md                     # This file
@@ -172,6 +197,16 @@ Ask `/echo-router-skill` when implementing:
 - **Authentication**: Implementing auth middleware patterns
 - **Error Responses**: Consistent error response formatting
 
+### Backend Service Patterns
+
+Ask `/backend-service-patterns` when implementing laneweaverTMS backend features:
+- **Service Layer**: Designing service interfaces and implementations
+- **Repository Pattern**: Structuring data access with pgx
+- **Entity Handling**: Mapping database entities to domain models
+- **Transactions**: Managing database transactions across service calls
+- **API Endpoints**: Implementing RESTful endpoints with proper validation
+- **Error Recovery**: Handling database errors and recovery strategies
+
 ## Troubleshooting
 
 ### Plugin Not Loading
@@ -192,7 +227,8 @@ Ask `/echo-router-skill` when implementing:
 Verify the skills are properly installed:
 - Run `/effective-go` to test the Golang skill
 - Run `/echo-router-skill` to test the Echo skill
-- If either fails, reinstall the plugin
+- Run `/backend-service-patterns` to test the TMS patterns skill
+- If any fails, reinstall the plugin
 
 ### Getting Better Guidance
 
@@ -202,19 +238,21 @@ Be specific with your questions:
 
 ## Tips for Using These Skills
 
-### Combine Both Skills
+### Combine All Three Skills
 
-Many problems benefit from guidance from both skills:
+Most problems benefit from guidance from all three skills in sequence:
 
 1. Ask `/effective-go` about architecture and project structure
-2. Then ask `/echo-router-skill` about implementing HTTP handlers for that structure
+2. Ask `/backend-service-patterns` about service and repository layer design
+3. Then ask `/echo-router-skill` about implementing HTTP handlers that integrate with your services
 
 ### Reference the Skills While Implementing
 
-Keep both skills available as you code:
+Keep all three skills available as you code:
 - Check `/effective-go` when making design decisions
+- Refer to `/backend-service-patterns` when building data access and service layers
 - Refer to `/echo-router-skill` when implementing handlers
-- Use both for error handling patterns
+- Use all three for error handling patterns
 
 ### Iterate on Patterns
 
@@ -222,6 +260,7 @@ Keep both skills available as you code:
 2. Implement based on that guidance
 3. Ask for clarification or alternatives if needed
 4. Refine your approach based on feedback
+5. Use the next skill in the hierarchy to deepen your understanding
 
 ## Integration with Other Plugins
 

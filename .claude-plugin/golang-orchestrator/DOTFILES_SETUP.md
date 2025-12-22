@@ -15,10 +15,17 @@ dotfiles/
 │   │       │   ├── plugin.json
 │   │       │   └── marketplace.json
 │   │       ├── skills/
-│   │       │   ├── golang-echo-backend-orchestrator.md
-│   │       │   └── backend-orchestration-workflow.md
+│   │       │   ├── effective-go/
+│   │       │   │   └── SKILL.md
+│   │       │   ├── backend-service-patterns/
+│   │       │   │   └── SKILL.md
+│   │       │   └── echo-router-skill/
+│   │       │       └── SKILL.md
 │   │       ├── README.md
 │   │       ├── INSTALL.md
+│   │       ├── QUICK_START.md
+│   │       ├── NEXT_STEPS.md
+│   │       ├── DEPLOYMENT_CHECKLIST.md
 │   │       └── DOTFILES_SETUP.md
 ```
 
@@ -75,8 +82,8 @@ If you have multiple plugins in your dotfiles, create a `.claude-plugin/marketpl
         "source": "path",
         "path": "./.claude/plugins/golang-echo-orchestrator"
       },
-      "version": "1.0.0",
-      "description": "Orchestrates Golang and Echo Router subagents for production backend configuration"
+      "version": "1.1.0",
+      "description": "Expert guidance for Golang backend development with Echo Router framework, including laneweaverTMS backend patterns"
     }
   ]
 }
@@ -196,5 +203,8 @@ git push
 For issues with plugin in dotfiles context:
 1. Verify dotfiles repository is cloned correctly
 2. Ensure Claude Code is fully restarted after installation
-3. Check that Golang and Echo Router skills are available
+3. Check that all three skills are available:
+   - `/effective-go` - Golang architecture guidance
+   - `/backend-service-patterns` - laneweaverTMS backend patterns
+   - `/echo-router-skill` - Echo routing patterns
 4. Review INSTALL.md for general troubleshooting

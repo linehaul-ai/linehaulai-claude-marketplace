@@ -91,6 +91,12 @@ In Claude Code, try one of the skills:
 /effective-go How should I structure a REST API backend with handlers, services, and repositories?
 ```
 
+Or ask about backend patterns:
+
+```
+/backend-service-patterns How do I structure a service layer with pgx for laneweaverTMS?
+```
+
 Or:
 
 ```
@@ -182,6 +188,24 @@ How do I handle errors consistently across layers?
 How do I write testable handlers and services?
 ```
 
+### Ask About Service Layer Design
+```
+/backend-service-patterns How do I structure a service layer for laneweaverTMS entities?
+What's a good pattern for handling database operations with pgx?
+```
+
+### Ask About Entity Mapping
+```
+/backend-service-patterns How should I map database entities to domain models and API responses?
+What's the best approach for serialization and deserialization?
+```
+
+### Ask About Database Transactions
+```
+/backend-service-patterns How do I manage database transactions across multiple service method calls?
+What patterns should I use for error recovery in transactions?
+```
+
 ## Troubleshooting Command Reference
 
 ```bash
@@ -190,6 +214,11 @@ How do I write testable handlers and services?
 
 # List available skills
 /skill list
+
+# Test each skill
+/effective-go What architectural pattern should I use?
+/backend-service-patterns How do I structure a service layer?
+/echo-router-skill How do I set up middleware?
 
 # Uninstall plugin
 /plugin uninstall golang-echo-orchestrator
