@@ -955,10 +955,10 @@ RLS:
 
 ## Key References
 
-**Authoritative Examples**:
-- Schema: `/Users/fakebizprez/Developer/repositories/laneweaverTMS/erd.sql`
-- Migrations: `/Users/fakebizprez/Developer/repositories/laneweaverTMS/supabase/migrations/`
-- Conventions: `/Users/fakebizprez/Developer/repositories/laneweaverTMS/supabase/CLAUDE.md`
+**Authoritative Examples** (within laneweaverTMS repository):
+- Schema: `./erd.sql` (root of repository)
+- Migrations: `supabase/migrations/`
+- Conventions: `supabase/CLAUDE.md`
 
 **External Resources**:
 - [PostgreSQL 17 Documentation](https://www.postgresql.org/docs/17/)
