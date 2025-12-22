@@ -111,7 +111,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │       ├── postgres/
 │       │   └── SKILL.md     # PostgreSQL schema design guidance
 │       ├── postgres-functions/
-│       │   └── SKILL.MD     # PostgreSQL function creation with security
+│       │   └── SKILL.md     # PostgreSQL function creation with security
 │       ├── postgres-style-guide/
 │       │   └── SKILL.md     # SQL style conventions
 │       ├── supabase-rls-policy/
