@@ -5,23 +5,5 @@
   "author": {
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
-  },
-  "skills": [
-    {
-      "name": "svelte5-runes",
-      "path": "../SKILL.md"
-    }
-  ],
-  "commands": [
-    {
-      "name": "runes",
-      "path": "commands/runes.md"
-    }
-  ],
-  "agents": [
-    {
-      "name": "runes-expert",
-      "path": "agents/runes-expert.md"
-    }
-  ]
+  }
 }

@@ -5,10 +5,13 @@
   "author": {
     "name": "fakebizprez"
   },
-  "keywords": ["svelte", "flow-editor", "node-editor", "diagrams", "workflow", "visualization", "graph"],
-  "documentation": {
-    "readme": "./README.md",
-    "quickStart": "./QUICK_START.md",
-    "overview": "./PLUGIN_OVERVIEW.md"
-  }
+  "keywords": [
+    "svelte",
+    "flow-editor",
+    "node-editor",
+    "diagrams",
+    "workflow",
+    "visualization",
+    "graph"
+  ]
 }

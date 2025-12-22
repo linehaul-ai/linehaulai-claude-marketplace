@@ -5,11 +5,5 @@
   "author": {
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
-  },
-  "skills": [
-    {
-      "name": "sveltekit-spa",
-      "path": "../SKILL.md"
-    }
-  ]
+  }
 }
