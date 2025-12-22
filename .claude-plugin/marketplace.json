@@ -1,8 +1,8 @@
 {
   "name": "linehaulai-claude-marketplace",
   "owner": {
-    "name":"fakebizprez",
-    "email":"anthony@linehaul.ai"
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
   },
   "plugins": [
     {
@@ -24,7 +24,7 @@
     {
       "name": "sveltekit-spa",
       "source": "./.claude-plugin/sveltekit-spa",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "fakebizprez"
       }
@@ -72,7 +72,7 @@
     {
       "name": "supabase",
       "source": "./.claude-plugin/supabase",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "fakebizprez"
       }
@@ -88,6 +88,14 @@
     {
       "name": "git-worktree",
       "source": "./.claude-plugin/git-worktree",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "composable-svelte-components",
+      "source": "./.claude-plugin/composable-svelte-components",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"

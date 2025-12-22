@@ -7,7 +7,9 @@ Comprehensive Supabase and PostgreSQL development guidance for schema design, se
 **Skills:**
 - `postgres`: PostgreSQL schema design with best practices, data types, indexing, and performance patterns
 - `postgres-functions`: Secure PostgreSQL function creation with SECURITY INVOKER, search_path configuration, and anti-patterns
+- `postgres-style-guide`: SQL style conventions for consistent, readable database code
 - `supabase-rls-policy`: Row-level security (RLS) policy patterns and access control for Supabase
+- `laneweaver-database-design`: laneweaverTMS-specific PostgreSQL patterns with UUIDs, ENUMs, audit trails, soft deletes, and atomic migrations
 
 **Agents:**
 - `postgres-table-design-expert`: Specialized agent for production-ready schema architecture decisions
@@ -93,6 +95,29 @@ Ask Claude: "Create RLS policies for [table/scenario]"
 - Policy testing and debugging
 - Performance considerations
 
+### laneweaver-database-design - Domain-Specific Patterns
+
+**Use when:**
+- Designing schemas for laneweaverTMS
+- Creating database migrations for TMS domain models
+- Implementing audit trails and soft deletes
+- Working with ENUMs for status workflows
+- Following laneweaverTMS database conventions
+
+**Covers:**
+- UUID primary keys with exception for users table
+- Required audit columns (created_at, updated_at, created_by, updated_by, deleted_at, deleted_by)
+- Soft delete patterns (deleted_at IS NULL)
+- ENUM types for status workflows (load_status, tender_status, etc.)
+- Trigger patterns (updated_at, sync, validation)
+- View patterns with RLS (security_invoker='on')
+- Migration file structure and atomic migration strategy
+- Polymorphic relationships (type + ID columns)
+
+**References:**
+- Authoritative schema: laneweaverTMS/erd.sql
+- Migration examples: laneweaverTMS/supabase/migrations/
+
 ## Agents
 
 ### postgres-table-design-expert
@@ -137,8 +162,12 @@ RLS policy specialist that provides:
 │   │   └── SKILL.md             # Schema design guidance
 │   ├── postgres-functions/
 │   │   └── SKILL.md             # Function creation with security
-│   └── supabase-rls-policy/
-│       └── SKILL.md             # RLS policy patterns
+│   ├── postgres-style-guide/
+│   │   └── SKILL.md             # SQL style conventions
+│   ├── supabase-rls-policy/
+│   │   └── SKILL.md             # RLS policy patterns
+│   └── laneweaver-database-design/
+│       └── SKILL.md             # laneweaverTMS domain-specific patterns
 └── README.md                    # This file
 ```
 
@@ -155,7 +184,9 @@ RLS policy specialist that provides:
 Skills automatically activate based on context:
 - **postgres**: "design schema", "create table", "data types"
 - **postgres-functions**: "create function", "trigger", "stored procedure"
+- **postgres-style-guide**: "SQL style", "naming convention", "formatting"
 - **supabase-rls-policy**: "RLS policy", "row-level security", "access control"
+- **laneweaver-database-design**: "laneweaverTMS", "audit columns", "soft delete", "UUID primary key", "tender", "load"
 
 ## Development Workflow
 

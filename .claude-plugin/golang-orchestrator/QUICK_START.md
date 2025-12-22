@@ -34,12 +34,18 @@ Restart Claude Code.
 Or:
 
 ```
+/backend-service-patterns How do I implement a service layer with pgx and PostgreSQL?
+```
+
+Or:
+
+```
 /echo-router-skill How do I set up middleware chains and authentication in Echo?
 ```
 
 ## What It Provides
 
-Two complementary skills for Golang and Echo Router development:
+Three complementary skills for Golang and Echo Router development:
 
 **`effective-go`** - Golang Best Practices
 - Project structure and package organization
@@ -48,6 +54,14 @@ Two complementary skills for Golang and Echo Router development:
 - Concurrency patterns
 - Testing strategies
 - Dependency injection
+
+**`backend-service-patterns`** - laneweaverTMS Backend Patterns
+- Service layer architecture with pgx
+- Repository pattern implementations
+- Entity mapping and serialization
+- Database transaction handling
+- Error recovery strategies
+- Testing database layers
 
 **`echo-router-skill`** - Echo Framework Patterns
 - Server setup and configuration
@@ -76,10 +90,10 @@ golang-orchestrator/
 ├── skills/
 │   ├── effective-go/
 │   │   └── SKILL.md                # Go best practices
+│   ├── backend-service-patterns/
+│   │   └── SKILL.md                # laneweaverTMS patterns
 │   └── echo-router-skill/
 │       └── SKILL.md                # Echo routing patterns
-├── commands/
-│   └── backend-setup.md            # Backend setup guidance
 ├── README.md                        # Full documentation
 ├── INSTALL.md                       # Installation guide
 ├── PLUGIN_OVERVIEW.md              # Complete reference
@@ -105,7 +119,7 @@ golang-orchestrator/
 
 **Skills not working?**
 - Check available skills: `/skill list`
-- Verify effective-go and echo-router-skill are installed
+- Verify effective-go, backend-service-patterns, and echo-router-skill are installed
 
 **Need to reinstall?**
 ```bash
@@ -142,6 +156,16 @@ golang-orchestrator/
 /effective-go How should I structure unit and integration tests for a Go backend?
 ```
 
+### Ask About Database Operations
+```
+/backend-service-patterns How do I structure a service layer that handles database operations with pgx?
+```
+
+### Ask About Entity Mapping
+```
+/backend-service-patterns What patterns should I use for mapping database entities to domain models?
+```
+
 ## Next Steps
 
 1. **Install Plugin** - Follow the TL;DR above
@@ -164,11 +188,12 @@ golang-orchestrator/
 3. Understand middleware ordering
 4. Implement with confidence
 
-### Combining Both
+### Combining All Three
 1. Design architecture with `/effective-go`
-2. Implement HTTP layer with `/echo-router-skill`
-3. Iterate on both as needed
-4. Build complete solution
+2. Implement data layer with `/backend-service-patterns`
+3. Implement HTTP layer with `/echo-router-skill`
+4. Iterate on all three as needed
+5. Build complete solution
 
 ## Key Concepts
 
@@ -195,6 +220,7 @@ Skills provide:
 ## Resources
 
 - **Golang Documentation**: Read effective-go SKILL.md
+- **Backend Patterns**: Read backend-service-patterns SKILL.md
 - **Echo Documentation**: Read echo-router-skill SKILL.md
 - **Installation**: Check INSTALL.md for troubleshooting
 - **Complete Reference**: See PLUGIN_OVERVIEW.md

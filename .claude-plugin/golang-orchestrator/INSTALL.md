@@ -54,8 +54,9 @@ Verify that the skills are available:
 /skill list
 ```
 
-You should see both skills:
+You should see all three skills:
 - `effective-go` - For Golang architecture guidance
+- `backend-service-patterns` - For laneweaverTMS backend patterns
 - `echo-router-skill` - For Echo routing patterns
 
 ## Testing the Plugin
@@ -70,7 +71,17 @@ Ask about Golang architecture:
 
 You should receive guidance on project structure and package organization.
 
-### Test 2: Try the echo-router-skill
+### Test 2: Try the backend-service-patterns Skill
+
+Ask about backend patterns:
+
+```
+/backend-service-patterns How do I structure a service layer with pgx and PostgreSQL?
+```
+
+You should receive guidance on service layer architecture and database operations.
+
+### Test 3: Try the echo-router-skill
 
 Ask about Echo routing:
 
@@ -79,16 +90,6 @@ Ask about Echo routing:
 ```
 
 You should receive guidance on middleware setup and route organization.
-
-### Test 3: Use the Backend Setup Command
-
-Try the `/backend-setup` command for an overview:
-
-```
-/backend-setup What guidance is available for Golang and Echo development?
-```
-
-You should receive an overview of available skills and how to use them.
 
 ## Troubleshooting Installation
 

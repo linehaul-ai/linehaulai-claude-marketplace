@@ -1,0 +1,27 @@
+{
+  "name": "svelte5-runes",
+  "version": "1.0.0",
+  "description": "Svelte 5 runes guidance for reactive state, props, effects, and Svelte 4→5 migration",
+  "author": {
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
+  },
+  "skills": [
+    {
+      "name": "svelte5-runes",
+      "path": "../SKILL.md"
+    }
+  ],
+  "commands": [
+    {
+      "name": "runes",
+      "path": "commands/runes.md"
+    }
+  ],
+  "agents": [
+    {
+      "name": "runes-expert",
+      "path": "agents/runes-expert.md"
+    }
+  ]
+}

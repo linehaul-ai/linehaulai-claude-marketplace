@@ -7,16 +7,17 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 
 **Key Plugins**:
 - `quickbooks-api-integration`: QuickBooks Online API integration guidance for ERP/CRM/TMS systems
-- `golang-orchestrator`: Subagent orchestration for production Golang backends with Echo framework
+- `golang-orchestrator`: Expert guidance for Golang backend development with Echo framework, including laneweaverTMS service patterns
 - `sveltekit-spa`: SvelteKit SPA development patterns and configuration
 - `shadcn-svelte-skill`: Svelte UI component management with shadcn-svelte, Skeleton UI, and Melt UI guidance (Tailwind CSS v4.1 + TypeScript)
 - `svelte-flow`: Interactive node-based editors and flow diagrams with @xyflow/svelte (workflow editors, DAG editors, mindmaps)
 - `layerchart`: Pre-built chart components for rapid data visualization (bar, line, pie, tree maps, geographic charts)
 - `layercake`: Headless visualization framework for unlimited custom visualizations (maximum flexibility)
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
-- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, and RLS policy guidance
+- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, RLS policy guidance, and laneweaverTMS-specific database patterns
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 - `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
+- `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -37,13 +38,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── golang-orchestrator/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── agents/              # Specialized subagent definitions
-│   │   ├── echo-router-expert.md  # Echo framework HTTP routing specialist
-│   │   └── golang-expert.md       # Golang architecture specialist
-│   ├── commands/            # Slash commands
-│   │   └── backend-setup-orchestration.md  # Detailed orchestration workflow
 │   ├── skills/              # Orchestration skills
-│   ├── docs/
 │   ├── README.md
 │   ├── INSTALL.md
 │   ├── PLUGIN_OVERVIEW.md
@@ -53,9 +48,10 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── sveltekit-spa/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── commands/            # Slash commands
-│   ├── skills/              # SvelteKit skills
-│   └── README.md
+│   ├── references/          # Reference documentation
+│   │   ├── backend-integration.md
+│   │   └── routing-patterns.md
+│   └── SKILL.md             # SvelteKit SPA development patterns
 ├── shadcn-svelte-skill/
 │   ├── commands/            # Slash commands
 │   │   └── shadcn.md        # Component development assistant
@@ -111,9 +107,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │       ├── postgres/
 │       │   └── SKILL.md     # PostgreSQL schema design guidance
 │       ├── postgres-functions/
-│       │   └── SKILL.MD     # PostgreSQL function creation with security
-│       └── supabase-rls-policy/
-│           └── SKILL.md     # RLS policy patterns and access control
+│       │   └── SKILL.md     # PostgreSQL function creation with security
+│       ├── postgres-style-guide/
+│       │   └── SKILL.md     # SQL style conventions
+│       ├── supabase-rls-policy/
+│       │   └── SKILL.md     # RLS policy patterns and access control
+│       └── laneweaver-database-design/
+│           └── SKILL.md     # laneweaverTMS domain-specific patterns
 ├── svelte5-runes/
 │   ├── commands/            # Slash commands
 │   │   └── runes.md         # Runes assistant for reactivity and migration
@@ -130,11 +130,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   │   └── effect-vs-derived.svelte
 │   ├── SKILL.md             # Main skill definition
 │   └── README.md
-└── git-worktree/
-    ├── scripts/             # Helper scripts
-    │   └── worktree-manager.sh  # Worktree management CLI
-    ├── SKILL.md             # Git worktree guidance
-    └── README.md
+├── git-worktree/
+│   ├── scripts/             # Helper scripts
+│   │   └── worktree-manager.sh  # Worktree management CLI
+│   ├── SKILL.md             # Git worktree guidance
+│   └── README.md
+└── composable-svelte-components/
+    └── SKILL.md             # UI component library reference
 ```
 
 **Structure**:
@@ -144,15 +146,15 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, git-worktree): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
+1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
+2. **Skill Plugins** (sequential-thinking, git-worktree, composable-svelte-components): Standalone skills with reference docs, no manifest needed
+3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
-- Two-agent orchestration: Golang Expert (architecture) + Echo Router Expert (HTTP layer)
-- Agents spawned in parallel via backend-setup-orchestration command
-- Clear separation: Golang agent defines interfaces, Echo agent implements HTTP handlers
-- Detailed workflow with requirement extraction, context creation, and agent coordination
+- Three complementary skills: effective-go (architecture) → backend-service-patterns (data layer) → echo-router-skill (HTTP layer)
+- Clear separation: effective-go provides foundational architecture, backend-service-patterns implements service/repository patterns, echo-router-skill handles HTTP routing
+- Hierarchical skill progression from general Golang best practices to specific TMS domain patterns to HTTP implementation
+- Skills designed to work together: architecture informs data layer design, which integrates with HTTP handlers
 
 **Visualization Plugins Pattern** (svelte-flow, layerchart, layercake):
 - **svelte-flow**: Interactive node-based editors with @xyflow/svelte
@@ -185,9 +187,11 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Skills organized by concern:
   - `postgres`: Schema design with PostgreSQL best practices
   - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
+  - `postgres-style-guide`: SQL style conventions
   - `supabase-rls-policy`: Row-level security policy patterns
+  - `laneweaver-database-design`: laneweaverTMS domain-specific database patterns (UUIDs, audit columns, ENUMs, soft deletes, migrations)
 - Agents: postgres-table-design-expert (schema design) and supabase-rls-expert (RLS policies)
-- Covers full Supabase development lifecycle: schema → functions → RLS policies
+- Covers full Supabase development lifecycle: schema → functions → style → RLS → domain patterns
 - Each skill has comprehensive documentation with examples and anti-patterns
 
 **svelte5-runes Pattern**:
@@ -246,6 +250,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install supabase
 /plugin install svelte5-runes
 /plugin install git-worktree
+/plugin install composable-svelte-components
 ```
 
 ### Development

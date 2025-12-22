@@ -4,7 +4,7 @@
 
 This Claude Code plugin provides comprehensive guidance for building production-ready Golang backends using the Echo Router framework.
 
-**What it does**: Offers two expert-level skills for Golang architecture and Echo routing patterns, plus reference documentation.
+**What it does**: Offers three expert-level skills for Golang architecture, Echo routing patterns, and laneweaverTMS backend implementation, plus reference documentation.
 
 **Where to use it**: In Claude Code CLI or IDE when designing Golang backends and implementing HTTP routing.
 
@@ -23,7 +23,7 @@ This Claude Code plugin provides comprehensive guidance for building production-
 | **Prerequisites** | Claude Code |
 | **Install Command** | `/plugin marketplace add fakebizprez/dotfiles golang-echo-orchestrator` |
 | **Activation** | `/plugin install golang-echo-orchestrator` |
-| **Available Skills** | `/effective-go` and `/echo-router-skill` |
+| **Available Skills** | `/effective-go`, `/echo-router-skill`, and `/backend-service-patterns` |
 
 ---
 
@@ -67,12 +67,16 @@ Apply to Your Project
   - Error handling in HTTP context
   - Security headers and CORS
 
-### Commands
-
-**`/backend-setup`**
-- Overview of available skills
-- Guidance on using both skills together
-- Development workflow suggestions
+**`backend-service-patterns`** - laneweaverTMS Backend Implementation
+- **Based on**: Production patterns from laneweaverTMS project
+- **Use for**:
+  - Service layer architecture with pgx
+  - Repository pattern implementations
+  - Entity mapping and domain models
+  - Database transaction handling
+  - Request validation in handlers
+  - Error recovery strategies
+  - Testing database layers
 
 ---
 
@@ -131,17 +135,12 @@ When using the skills, you get:
 
 ### Using the Skills
 
-**Method 1: Direct Skill Call**
+**Direct Skill Call**
 ```
 /effective-go How should I organize packages for a REST API backend?
 ```
 
-**Method 2: Backend Setup Command**
-```
-/backend-setup I'm building a REST API, what skills are available?
-```
-
-**Method 3: Natural Language**
+**Or Ask Directly**
 ```
 Using the Golang skill, help me design the project structure for a user authentication service.
 ```
@@ -158,11 +157,10 @@ golang-orchestrator/
 ├── skills/
 │   ├── effective-go/
 │   │   └── SKILL.md                # Go best practices
-│   └── echo-router-skill/
-│       └── SKILL.md                # Echo framework patterns
-│
-├── commands/
-│   └── backend-setup.md            # Backend setup guidance
+│   ├── echo-router-skill/
+│   │   └── SKILL.md                # Echo framework patterns
+│   └── backend-service-patterns/
+│       └── SKILL.md                # laneweaverTMS patterns
 │
 └── Documentation/
     ├── README.md                   # Feature overview
@@ -251,6 +249,21 @@ golang-orchestrator/
 /echo-router-skill How do I implement request validation and binding in Echo handlers?
 ```
 
+### 7. Database Integration with pgx
+```
+/backend-service-patterns How do I structure a service layer that handles database operations with pgx and PostgreSQL?
+```
+
+### 8. Entity Mapping and Serialization
+```
+/backend-service-patterns What patterns should I use for mapping database entities to domain models and API responses?
+```
+
+### 9. Database Transactions
+```
+/backend-service-patterns How do I handle database transactions across multiple service method calls?
+```
+
 ---
 
 ## Customization Guide
@@ -265,11 +278,11 @@ Request guidance for:
 
 ### Database Integration
 Ask about patterns for:
-- PostgreSQL
-- MySQL
-- MongoDB
-- Redis
-- Firestore
+- PostgreSQL with pgx (via `/backend-service-patterns`)
+- Service layer architecture
+- Repository pattern implementations
+- Entity mapping and serialization
+- Transaction handling
 
 ### Authentication Methods
 Get guidance on:
@@ -330,16 +343,19 @@ Learn about considerations for:
 
 ## Architecture Patterns
 
-### Layered Architecture
+### Layered Architecture (Three Skills Working Together)
 ```
-HTTP Handlers (Echo)
+HTTP Handlers (Echo) ← /echo-router-skill
     ↓
-Business Logic Services
+Business Logic Services ← /backend-service-patterns
     ↓
-Data Access Repository
+Data Access Repository ← /backend-service-patterns
     ↓
-Database
+Database (pgx/PostgreSQL)
 ```
+**Design With** → Use `/effective-go` to plan the entire structure
+**Implement** → Use `/backend-service-patterns` for service/repository layers
+**Integrate** → Use `/echo-router-skill` for handler layer
 
 ### Hexagonal (Ports & Adapters)
 ```
@@ -417,24 +433,34 @@ Ask `/effective-go` about:
 - Service layer design
 - Error handling strategy
 
-### Step 2: Implementation Planning
+### Step 2: Data Layer Implementation
+Ask `/backend-service-patterns` about:
+- Service layer architecture
+- Repository pattern setup
+- Database operations with pgx
+- Entity mapping strategies
+- Transaction handling
+
+### Step 3: HTTP Implementation Planning
 Ask `/echo-router-skill` about:
 - Server setup
 - Route organization
 - Middleware setup
-- Request handling
+- Handler implementation
 
-### Step 3: Development
-Reference both skills as you code:
-- Check patterns when making decisions
+### Step 4: Integration
+Reference all three skills as you code:
+- Use `/effective-go` for architecture decisions
+- Use `/backend-service-patterns` for service/data layers
+- Use `/echo-router-skill` for handlers
 - Ask for clarification if needed
-- Apply best practices
 
-### Step 4: Refinement
+### Step 5: Refinement
 Iterate with more specific questions:
 - Alternative patterns
 - Edge cases
 - Optimization strategies
+- Database performance tuning
 
 ---
 
@@ -446,16 +472,23 @@ Iterate with more specific questions:
 - Reference idiomatic Go patterns
 - Consider testing implications
 
+### When Using backend-service-patterns
+- Ask about service layer design for your entities
+- Clarify transaction and concurrency needs
+- Reference pgx best practices
+- Consider database performance implications
+
 ### When Using echo-router-skill
 - Ask about middleware ordering
 - Clarify security requirements
 - Reference error handling strategies
 - Consider performance implications
 
-### Combining Both Skills
-1. Design with `/effective-go`
-2. Implement with `/echo-router-skill`
-3. Iterate on both for refinement
+### Combining All Three Skills
+1. Design architecture with `/effective-go`
+2. Implement data layer with `/backend-service-patterns`
+3. Implement HTTP layer with `/echo-router-skill`
+4. Iterate on all three for refinement and optimization
 
 ---
 
@@ -526,7 +559,8 @@ Design how they communicate with echo-router-skill
 
 | Version | Date | Description |
 |---------|------|-------------|
-| 1.0.0 | 2024 | Initial release as guidance-only skill plugin |
+| 1.1.0 | 2024 | Added backend-service-patterns skill for laneweaverTMS backend |
+| 1.0.0 | 2024 | Initial release with effective-go and echo-router-skill |
 
 ---
 

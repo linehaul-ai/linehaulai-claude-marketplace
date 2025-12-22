@@ -28,7 +28,6 @@ INSTALL.md
 NEXT_STEPS.md
 QUICK_START.md
 README.md
-commands/
 skills/
 ```
 
@@ -92,16 +91,16 @@ In Claude Code, try one of the skills:
 /effective-go How should I structure a REST API backend with handlers, services, and repositories?
 ```
 
+Or ask about backend patterns:
+
+```
+/backend-service-patterns How do I structure a service layer with pgx for laneweaverTMS?
+```
+
 Or:
 
 ```
 /echo-router-skill How do I set up middleware chains for authentication in Echo?
-```
-
-Or use the backend setup command for an overview:
-
-```
-/backend-setup What guidance is available for Golang and Echo development?
 ```
 
 ## If Something Goes Wrong
@@ -148,14 +147,6 @@ Or ask echo-router-skill for routing guidance:
 /echo-router-skill How do I set up middleware chains?
 ```
 
-### Method 2: Backend Setup Command
-
-Use the built-in command for an overview:
-
-```
-/backend-setup I'm building a REST API, what guidance is available?
-```
-
 ### What You'll Get
 
 The skills provide:
@@ -197,6 +188,24 @@ How do I handle errors consistently across layers?
 How do I write testable handlers and services?
 ```
 
+### Ask About Service Layer Design
+```
+/backend-service-patterns How do I structure a service layer for laneweaverTMS entities?
+What's a good pattern for handling database operations with pgx?
+```
+
+### Ask About Entity Mapping
+```
+/backend-service-patterns How should I map database entities to domain models and API responses?
+What's the best approach for serialization and deserialization?
+```
+
+### Ask About Database Transactions
+```
+/backend-service-patterns How do I manage database transactions across multiple service method calls?
+What patterns should I use for error recovery in transactions?
+```
+
 ## Troubleshooting Command Reference
 
 ```bash
@@ -205,6 +214,11 @@ How do I write testable handlers and services?
 
 # List available skills
 /skill list
+
+# Test each skill
+/effective-go What architectural pattern should I use?
+/backend-service-patterns How do I structure a service layer?
+/echo-router-skill How do I set up middleware?
 
 # Uninstall plugin
 /plugin uninstall golang-echo-orchestrator

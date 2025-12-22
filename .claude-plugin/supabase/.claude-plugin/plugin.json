@@ -1,10 +1,21 @@
 {
   "name": "supabase",
-  "version": "1.0.0",
-  "description": "PostgreSQL and Supabase expertise for database design, schema architecture, and row-level security policies. Includes PostgreSQL table design best practices and Supabase RLS policy guidance.",
+  "version": "1.1.0",
+  "description": "PostgreSQL and Supabase expertise for database design, schema architecture, and row-level security policies. Includes PostgreSQL table design best practices, Supabase RLS policy guidance, and laneweaverTMS-specific database patterns.",
   "author": {
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
   },
-  "keywords": ["supabase", "postgresql", "database", "rls", "row-level-security", "schema-design", "postgres"]
+  "keywords": [
+    "supabase",
+    "postgresql",
+    "database",
+    "rls",
+    "row-level-security",
+    "schema-design",
+    "postgres",
+    "laneweaverTMS",
+    "audit-trails",
+    "soft-deletes"
+  ]
 }
