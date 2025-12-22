@@ -17,6 +17,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, RLS policy guidance, and laneweaverTMS-specific database patterns
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 - `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
+- `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -133,11 +134,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   │   └── effect-vs-derived.svelte
 │   ├── SKILL.md             # Main skill definition
 │   └── README.md
-└── git-worktree/
-    ├── scripts/             # Helper scripts
-    │   └── worktree-manager.sh  # Worktree management CLI
-    ├── SKILL.md             # Git worktree guidance
-    └── README.md
+├── git-worktree/
+│   ├── scripts/             # Helper scripts
+│   │   └── worktree-manager.sh  # Worktree management CLI
+│   ├── SKILL.md             # Git worktree guidance
+│   └── README.md
+└── composable-svelte-components/
+    └── SKILL.md             # UI component library reference
 ```
 
 **Structure**:
@@ -148,7 +151,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 
 **Plugin Types**:
 1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, git-worktree): Standalone skills with reference docs, no manifest needed
+2. **Skill Plugins** (sequential-thinking, git-worktree, composable-svelte-components): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
@@ -251,6 +254,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install supabase
 /plugin install svelte5-runes
 /plugin install git-worktree
+/plugin install composable-svelte-components
 ```
 
 ### Development

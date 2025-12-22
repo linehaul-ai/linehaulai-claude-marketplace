@@ -92,6 +92,14 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "composable-svelte-components",
+      "source": "./.claude-plugin/composable-svelte-components",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
     }
   ]
 }
