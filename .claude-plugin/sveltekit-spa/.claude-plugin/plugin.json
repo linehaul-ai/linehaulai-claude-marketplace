@@ -1,0 +1,15 @@
+{
+  "name": "sveltekit-spa",
+  "version": "1.0.1",
+  "description": "SvelteKit SPA development patterns and configuration for client-side only applications",
+  "author": {
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
+  },
+  "skills": [
+    {
+      "name": "sveltekit-spa",
+      "path": "../SKILL.md"
+    }
+  ]
+}

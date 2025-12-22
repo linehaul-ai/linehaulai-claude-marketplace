@@ -11,7 +11,6 @@ This repository hosts a collection of reusable Claude Code plugins designed to a
 ### Full Stack & Orchestration
 
 - **golang-orchestrator**: Subagent orchestration for production Golang backends with Echo framework. Features specialized agents for architecture and routing.
-- **sveltekit-spa**: SvelteKit SPA development patterns and configuration.
 
 ### UI & Visualization
 
@@ -25,6 +24,7 @@ This repository hosts a collection of reusable Claude Code plugins designed to a
 
 - **quickbooks-api-integration**: QuickBooks Online API integration guidance for ERP/CRM/TMS systems.
 - **sequential-thinking**: Systematic problem-solving through iterative reasoning with revision and branching.
+- **sveltekit-spa**: SvelteKit SPA development patterns and configuration with comprehensive backend integration guidance.
 - **supabase**: Supabase development plugin with PostgreSQL schema design, SQL style guide, function creation with security best practices, and RLS policy guidance.
 
 ## Usage

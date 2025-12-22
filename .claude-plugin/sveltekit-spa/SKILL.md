@@ -118,7 +118,6 @@ laneweaver-frontend/
 │   │   │   └── favicon.svg
 │   │   ├── components/
 │   │   │   └── ui/         # Reusable UI components
-│   │   ├── hooks/          # Custom Svelte hooks/utilities
 │   │   ├── index.ts        # Library exports
 │   │   └── utils.ts        # Utility functions
 │   └── routes/

@@ -1,8 +1,8 @@
 {
   "name": "linehaulai-claude-marketplace",
   "owner": {
-    "name":"fakebizprez",
-    "email":"anthony@linehaul.ai"
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
   },
   "plugins": [
     {
@@ -24,7 +24,7 @@
     {
       "name": "sveltekit-spa",
       "source": "./.claude-plugin/sveltekit-spa",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "fakebizprez"
       }
