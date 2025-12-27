@@ -108,6 +108,14 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "slack-go-sdk",
+      "source": "./.claude-plugin/slack-go-sdk",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
     }
   ]
 }
