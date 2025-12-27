@@ -647,5 +647,4 @@ Use the `/block-kit` command for guided topic exploration:
 ---
 
 **Version**: 1.0.0
-**Content Source**: Context7 (`/websites/slack_dev_reference_block-kit`)
 **Last Updated**: 2025-12-27

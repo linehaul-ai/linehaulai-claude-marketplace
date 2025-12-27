@@ -71,7 +71,6 @@ The `block-kit` skill activates automatically when you mention Block Kit topics:
 
 ## Features
 
-- **Context7-Powered**: Documentation sourced from official Slack Block Kit reference
 - **Production-Ready Examples**: Complete JSON that works out of the box
 - **Progressive Disclosure**: Lean core skill + detailed reference files
 - **Comprehensive Coverage**: All block types, elements, and composition patterns

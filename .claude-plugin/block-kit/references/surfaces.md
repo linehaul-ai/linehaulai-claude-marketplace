@@ -504,7 +504,3 @@ Home tabs can show user-specific data:
 - Provide quick actions
 - Keep layout consistent
 - Refresh on app_home_opened event
-
----
-
-**Content Source**: Context7 (`/websites/slack_dev_reference_block-kit`) + Slack API Documentation

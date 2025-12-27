@@ -532,7 +532,3 @@ Group related blocks together:
   ]
 }
 ```
-
----
-
-**Content Source**: Context7 (`/websites/slack_dev_reference_block-kit`) + Best Practices

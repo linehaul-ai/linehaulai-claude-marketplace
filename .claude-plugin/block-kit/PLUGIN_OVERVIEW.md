@@ -172,28 +172,6 @@ Hero, Card, List with Actions, Form, Dashboard
 
 **Coverage**: When to use, examples, responsive design
 
-## Context7 Integration
-
-### Content Source
-
-- **Library ID**: `/websites/slack_dev_reference_block-kit`
-- **Available**: 122 code snippets
-- **Quality**: Official Slack documentation
-
-### Query Strategy
-
-- **Mode**: `"info"` for overviews, `"code"` for examples
-- **Topics**: Specific block/element names
-- **Pages**: 1-2 for comprehensive coverage
-
-### Content Integration
-
-1. Fetch from Context7 for each topic
-2. Extract code examples and field tables
-3. Organize by section within reference files
-4. Add contextual explanations for experienced developers
-5. Maintain consistent formatting
-
 ## Design Principles
 
 ### Code-First Examples
@@ -260,7 +238,6 @@ Every topic follows:
 - Layout patterns and best practices
 - Message, modal, and home tab guidance
 - Interactive command with 7 topics
-- Context7-powered content
 - Production-ready examples
 
 **Content Stats**:
@@ -272,6 +249,5 @@ Every topic follows:
 
 ---
 
-**Built with**: Context7 MCP (`/websites/slack_dev_reference_block-kit`)
 **Pattern**: Hybrid plugin (command + skill + references)
 **Target**: Experienced Slack app developers

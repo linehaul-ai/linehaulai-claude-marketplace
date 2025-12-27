@@ -555,7 +555,3 @@ Displays formatted markdown. **Messages only**. Consider using section block wit
 - Use clear, descriptive labels for inputs
 - Keep text concise and scannable
 - Use semantic structure (header → section → context)
-
----
-
-**Content Source**: Context7 (`/websites/slack_dev_reference_block-kit`)

@@ -586,7 +586,3 @@ Icon-based button. **Messages only, in context_actions block**.
 - Provide `accessibility_label` for icon-only buttons
 - Use clear, descriptive `placeholder` text
 - Keep button text concise but meaningful
-
----
-
-**Content Source**: Context7 (`/websites/slack_dev_reference_block-kit`)
