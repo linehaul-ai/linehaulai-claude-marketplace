@@ -100,6 +100,14 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "block-kit",
+      "source": "./.claude-plugin/block-kit",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
     }
   ]
 }
