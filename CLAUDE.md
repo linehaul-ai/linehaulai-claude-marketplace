@@ -100,9 +100,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── supabase/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── agents/
-│   │   ├── postgres-table-design-expert.md  # Schema design specialist
-│   │   └── supabase-rls-expert.md           # RLS policy specialist
 │   └── skills/
 │       ├── postgres/
 │       │   └── SKILL.md     # PostgreSQL schema design guidance
@@ -146,9 +143,9 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, supabase): Commands + Skills + Agents
+1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes): Commands + Skills + Agents
 2. **Skill Plugins** (sequential-thinking, git-worktree, composable-svelte-components): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator): Skills with manifest and reference docs, minimal structure
+3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
 - Three complementary skills: effective-go (architecture) → backend-service-patterns (data layer) → echo-router-skill (HTTP layer)
@@ -183,14 +180,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - TypeScript-first with Svelte 5 reactive variables
 
 **supabase Pattern**:
-- Full plugin with multiple specialized skills for Supabase/PostgreSQL development
+- Hybrid plugin with multiple specialized skills for Supabase/PostgreSQL development
 - Skills organized by concern:
   - `postgres`: Schema design with PostgreSQL best practices
   - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
   - `postgres-style-guide`: SQL style conventions
   - `supabase-rls-policy`: Row-level security policy patterns
   - `laneweaver-database-design`: laneweaverTMS domain-specific database patterns (UUIDs, audit columns, ENUMs, soft deletes, migrations)
-- Agents: postgres-table-design-expert (schema design) and supabase-rls-expert (RLS policies)
 - Covers full Supabase development lifecycle: schema → functions → style → RLS → domain patterns
 - Each skill has comprehensive documentation with examples and anti-patterns
 
