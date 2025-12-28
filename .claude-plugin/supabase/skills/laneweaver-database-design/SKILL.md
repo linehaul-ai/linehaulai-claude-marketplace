@@ -93,19 +93,17 @@ SELECT * FROM loads WHERE deleted_at IS NULL;
 
 ## Data Types (Required)
 
-### Use These Types
+laneweaverTMS follows PostgreSQL best practices with these domain-specific conventions:
 
-| Data | Type | Example | Why |
-|------|------|---------|-----|
-| **IDs** | `UUID` | `id UUID DEFAULT gen_random_uuid()` | Uniqueness, security, federation |
-| **Timestamps** | `TIMESTAMPTZ` | `created_at TIMESTAMPTZ DEFAULT now()` | Timezone awareness |
-| **Money** | `NUMERIC(10,2)` | `customer_rate NUMERIC(10,2)` | Exact precision for currency |
-| **Strings** | `TEXT` | `load_number TEXT NOT NULL` | No length limits, simpler |
-| **Booleans** | `BOOLEAN` | `is_cancelled BOOLEAN DEFAULT false` | True/false values |
-| **Integers** | `INT4`, `BIGINT` | `sequence_number INT4` | Whole numbers |
-| **Floats** | `DOUBLE PRECISION` | `latitude DOUBLE PRECISION` | Approximate (GPS coords) |
-| **JSON** | `JSONB` | `line_items JSONB DEFAULT '{}'::jsonb` | Flexible structured data |
-| **Arrays** | `TEXT[]` | `equipment_types TEXT[]` | Ordered lists |
+| Data | Type | laneweaverTMS Convention |
+|------|------|--------------------------|
+| **IDs** | `UUID` | All tables except users (uses INT4) |
+| **User References** | `INT4` | audit columns (created_by, updated_by, deleted_by) |
+| **Timestamps** | `TIMESTAMPTZ` | All temporal data |
+| **Money** | `NUMERIC(10,2)` | customer_rate, carrier_rate |
+| **Strings** | `TEXT` | load_number, notes, etc. |
+
+For complete PostgreSQL data type guidance, see [**skills/postgres/SKILL.md**](../postgres/SKILL.md) section "Data Types".
 
 ### NEVER Use These Types
 
