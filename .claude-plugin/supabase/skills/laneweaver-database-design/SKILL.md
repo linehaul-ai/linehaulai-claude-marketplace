@@ -337,27 +337,23 @@ CREATE INDEX idx_carrier_bounces_carrier_id ON carrier_bounces(carrier_id);
 
 ### Security Pattern (REQUIRED)
 
-**All functions MUST use**:
-- `SECURITY INVOKER` - Runs with caller's permissions (not definer's)
-- `SET search_path = 'public'` - Prevents search path injection attacks
+**All functions MUST follow Supabase security best practices:**
 
+See [**skills/postgres-functions/SKILL.md**](../postgres-functions/SKILL.md) for complete function security guidance including:
+- SECURITY INVOKER vs SECURITY DEFINER
+- search_path configuration
+- Anti-patterns and corrections
+
+**laneweaverTMS Convention:**
 ```sql
-CREATE OR REPLACE FUNCTION public.generate_load_number()
-RETURNS TEXT
+CREATE OR REPLACE FUNCTION public.function_name()
+RETURNS type
 LANGUAGE plpgsql
 SECURITY INVOKER
 SET search_path = 'public'
 AS $$
-DECLARE
-    v_seq_val BIGINT;
-BEGIN
-    SELECT nextval('public.load_number_seq') INTO v_seq_val;
-    RETURN 'L-' || lpad(v_seq_val::text, 6, '0');
-END;
+-- Function body
 $$;
-
-COMMENT ON FUNCTION public.generate_load_number() IS
-    'Generates sequential load number in format L-XXXXXX using load_number_seq';
 ```
 
 ### Trigger Functions
