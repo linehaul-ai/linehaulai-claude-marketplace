@@ -670,7 +670,7 @@ CREATE TABLE public.carrier_bounces (
     bounce_time TIMESTAMPTZ NOT NULL DEFAULT now(),
     carrier_rate NUMERIC(10,2),
 
-    -- Standard audit columns (REQUIRED)
+    -- Standard audit columns (see "Required Audit Columns" section above)
     created_at TIMESTAMPTZ DEFAULT now() NOT NULL,
     updated_at TIMESTAMPTZ DEFAULT now() NOT NULL,
     created_by INT4,
