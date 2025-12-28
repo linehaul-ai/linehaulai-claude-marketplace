@@ -86,14 +86,6 @@
       }
     },
     {
-      "name": "git-worktree",
-      "source": "./.claude-plugin/git-worktree",
-      "version": "1.0.0",
-      "author": {
-        "name": "fakebizprez"
-      }
-    },
-    {
       "name": "composable-svelte-components",
       "source": "./.claude-plugin/composable-svelte-components",
       "version": "1.0.0",

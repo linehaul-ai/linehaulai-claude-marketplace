@@ -16,7 +16,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
 - `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, RLS policy guidance, and laneweaverTMS-specific database patterns
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
-- `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
 - `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
 <!-- END AUTO-MANAGED -->
 
@@ -127,11 +126,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   │   └── effect-vs-derived.svelte
 │   ├── SKILL.md             # Main skill definition
 │   └── README.md
-├── git-worktree/
-│   ├── scripts/             # Helper scripts
-│   │   └── worktree-manager.sh  # Worktree management CLI
-│   ├── SKILL.md             # Git worktree guidance
-│   └── README.md
 └── composable-svelte-components/
     └── SKILL.md             # UI component library reference
 ```
@@ -144,7 +138,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 
 **Plugin Types**:
 1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, git-worktree, composable-svelte-components): Standalone skills with reference docs, no manifest needed
+2. **Skill Plugins** (sequential-thinking, composable-svelte-components): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
@@ -201,13 +195,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Snippet syntax (replacing legacy slots)
   - Common mistakes with fixes
 - Code examples for bindable props and effect vs derived patterns
-
-**git-worktree Pattern**:
-- Skill-only plugin with bundled helper scripts
-- Provides Git worktree management guidance
-- Includes bash script for common operations (create, list, switch, cleanup)
-- Follows "Skill with Bundled Resources" pattern
-- No plugin.json needed (pure skill plugin)
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
@@ -245,7 +232,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install sequential-thinking
 /plugin install supabase
 /plugin install svelte5-runes
-/plugin install git-worktree
 /plugin install composable-svelte-components
 ```
 
