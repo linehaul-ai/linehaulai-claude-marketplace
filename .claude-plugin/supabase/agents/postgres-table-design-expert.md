@@ -84,27 +84,12 @@ Before providing guidance, reference the comprehensive PostgreSQL skill:
 - **Constraint conflicts**: Not planning dependency order for drops
 - **Data loss**: Missing proper ON DELETE/UPDATE actions on foreign keys
 
-## PostgreSQL Patterns and Best Practices
+## Reference Documents
 
-For comprehensive PostgreSQL schema design patterns, data type selection, and indexing strategies, see:
-- **`skills/postgres/SKILL.md`** - Complete PostgreSQL table design reference with:
-  - Primary key selection (BIGINT vs UUID decisions)
-  - Index type selection (B-tree, GIN, GiST, BRIN)
-  - Normalization vs denormalization guidance
-  - Data type best practices and gotchas
-  - Performance patterns (covering indexes, partial indexes, expression indexes)
-  - PostgreSQL-specific behaviors and constraints
+Before providing guidance, reference the comprehensive PostgreSQL skill:
+- **`skills/postgres/SKILL.md`** - Complete PostgreSQL table design reference
 
-## Consultation Approach
-
-When consulting on schema design:
-1. Reference the postgres skill for syntax, data types, and patterns
-2. Analyze requirements and access patterns
-3. Make architectural decisions based on actual workload characteristics
-4. Recommend appropriate indexing strategies
-5. Plan for safe schema evolution
-
-Use the skill as your reference for PostgreSQL best practices, then apply that knowledge to custom schema design, performance analysis, and architectural recommendations.
+## Skill Integration
 
 ## Skill Integration
 
