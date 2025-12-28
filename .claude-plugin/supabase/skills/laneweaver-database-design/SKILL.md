@@ -93,19 +93,17 @@ SELECT * FROM loads WHERE deleted_at IS NULL;
 
 ## Data Types (Required)
 
-### Use These Types
+laneweaverTMS follows PostgreSQL best practices with these domain-specific conventions:
 
-| Data | Type | Example | Why |
-|------|------|---------|-----|
-| **IDs** | `UUID` | `id UUID DEFAULT gen_random_uuid()` | Uniqueness, security, federation |
-| **Timestamps** | `TIMESTAMPTZ` | `created_at TIMESTAMPTZ DEFAULT now()` | Timezone awareness |
-| **Money** | `NUMERIC(10,2)` | `customer_rate NUMERIC(10,2)` | Exact precision for currency |
-| **Strings** | `TEXT` | `load_number TEXT NOT NULL` | No length limits, simpler |
-| **Booleans** | `BOOLEAN` | `is_cancelled BOOLEAN DEFAULT false` | True/false values |
-| **Integers** | `INT4`, `BIGINT` | `sequence_number INT4` | Whole numbers |
-| **Floats** | `DOUBLE PRECISION` | `latitude DOUBLE PRECISION` | Approximate (GPS coords) |
-| **JSON** | `JSONB` | `line_items JSONB DEFAULT '{}'::jsonb` | Flexible structured data |
-| **Arrays** | `TEXT[]` | `equipment_types TEXT[]` | Ordered lists |
+| Data | Type | laneweaverTMS Convention |
+|------|------|--------------------------|
+| **IDs** | `UUID` | All tables except users (uses INT4) |
+| **User References** | `INT4` | audit columns (created_by, updated_by, deleted_by) |
+| **Timestamps** | `TIMESTAMPTZ` | All temporal data |
+| **Money** | `NUMERIC(10,2)` | customer_rate, carrier_rate |
+| **Strings** | `TEXT` | load_number, notes, etc. |
+
+For complete PostgreSQL data type guidance, see [**skills/postgres/SKILL.md**](../postgres/SKILL.md) section "Data Types".
 
 ### NEVER Use These Types
 
@@ -339,27 +337,23 @@ CREATE INDEX idx_carrier_bounces_carrier_id ON carrier_bounces(carrier_id);
 
 ### Security Pattern (REQUIRED)
 
-**All functions MUST use**:
-- `SECURITY INVOKER` - Runs with caller's permissions (not definer's)
-- `SET search_path = 'public'` - Prevents search path injection attacks
+**All functions MUST follow Supabase security best practices:**
 
+See [**skills/postgres-functions/SKILL.md**](../postgres-functions/SKILL.md) for complete function security guidance including:
+- SECURITY INVOKER vs SECURITY DEFINER
+- search_path configuration
+- Anti-patterns and corrections
+
+**laneweaverTMS Convention:**
 ```sql
-CREATE OR REPLACE FUNCTION public.generate_load_number()
-RETURNS TEXT
+CREATE OR REPLACE FUNCTION public.function_name()
+RETURNS type
 LANGUAGE plpgsql
 SECURITY INVOKER
 SET search_path = 'public'
 AS $$
-DECLARE
-    v_seq_val BIGINT;
-BEGIN
-    SELECT nextval('public.load_number_seq') INTO v_seq_val;
-    RETURN 'L-' || lpad(v_seq_val::text, 6, '0');
-END;
+-- Function body
 $$;
-
-COMMENT ON FUNCTION public.generate_load_number() IS
-    'Generates sequential load number in format L-XXXXXX using load_number_seq';
 ```
 
 ### Trigger Functions
@@ -676,7 +670,7 @@ CREATE TABLE public.carrier_bounces (
     bounce_time TIMESTAMPTZ NOT NULL DEFAULT now(),
     carrier_rate NUMERIC(10,2),
 
-    -- Standard audit columns (REQUIRED)
+    -- Standard audit columns (see "Required Audit Columns" section above)
     created_at TIMESTAMPTZ DEFAULT now() NOT NULL,
     updated_at TIMESTAMPTZ DEFAULT now() NOT NULL,
     created_by INT4,
