@@ -103,7 +103,7 @@ laneweaverTMS follows PostgreSQL best practices with these domain-specific conve
 | **Money** | `NUMERIC(10,2)` | customer_rate, carrier_rate |
 | **Strings** | `TEXT` | load_number, notes, etc. |
 
-For complete PostgreSQL data type guidance, see [**skills/postgres/SKILL.md**](../postgres/SKILL.md) section "Data Types".
+These conventions align with PostgreSQL best practices for production databases.
 
 ### NEVER Use These Types
 
@@ -339,12 +339,11 @@ CREATE INDEX idx_carrier_bounces_carrier_id ON carrier_bounces(carrier_id);
 
 **All functions MUST follow Supabase security best practices:**
 
-See [**skills/postgres-functions/SKILL.md**](../postgres-functions/SKILL.md) for complete function security guidance including:
-- SECURITY INVOKER vs SECURITY DEFINER
-- search_path configuration
-- Anti-patterns and corrections
-
 **laneweaverTMS Convention:**
+
+All functions follow Supabase security best practices with:
+- `SECURITY INVOKER` - ensures function runs with caller's privileges
+- `SET search_path = 'public'` - prevents schema search path attacks
 ```sql
 CREATE OR REPLACE FUNCTION public.function_name()
 RETURNS type

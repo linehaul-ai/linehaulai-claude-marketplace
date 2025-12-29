@@ -100,10 +100,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
 │   └── skills/
-│       ├── postgres/
-│       │   └── SKILL.md     # PostgreSQL schema design guidance
-│       ├── postgres-functions/
-│       │   └── SKILL.md     # PostgreSQL function creation with security
 │       ├── postgres-style-guide/
 │       │   └── SKILL.md     # SQL style conventions
 │       ├── supabase-rls-policy/
@@ -176,13 +172,11 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 **supabase Pattern**:
 - Hybrid plugin with multiple specialized skills for Supabase/PostgreSQL development
 - Skills organized by concern:
-  - `postgres`: Schema design with PostgreSQL best practices
-  - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
   - `postgres-style-guide`: SQL style conventions
   - `supabase-rls-policy`: Row-level security policy patterns
   - `laneweaver-database-design`: laneweaverTMS domain-specific database patterns (UUIDs, audit columns, ENUMs, soft deletes, migrations)
-- Covers full Supabase development lifecycle: schema → functions → style → RLS → domain patterns
-- Each skill has comprehensive documentation with examples and anti-patterns
+- Covers SQL style, row-level security, and laneweaverTMS database patterns
+- Each skill has comprehensive documentation with examples and best practices
 
 **svelte5-runes Pattern**:
 - Full plugin for Svelte 5 reactivity system guidance
