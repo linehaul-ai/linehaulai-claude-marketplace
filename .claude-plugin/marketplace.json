@@ -108,6 +108,14 @@
       "author": {
         "name": "fakebizprez"
       }
+    },
+    {
+      "name": "goth-oauth",
+      "source": "./.claude-plugin/goth-oauth",
+      "version": "1.0.0",
+      "author": {
+        "name": "Linehaul AI"
+      }
     }
   ]
 }
