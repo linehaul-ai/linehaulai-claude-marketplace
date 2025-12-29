@@ -39,13 +39,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── golang-orchestrator/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── skills/              # Orchestration skills
-│   ├── README.md
-│   ├── INSTALL.md
-│   ├── PLUGIN_OVERVIEW.md
-│   ├── DEPLOYMENT_CHECKLIST.md
-│   ├── DOTFILES_SETUP.md
-│   └── NEXT_STEPS.md
+│   └── skills/              # Orchestration skills
 ├── sveltekit-spa/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
