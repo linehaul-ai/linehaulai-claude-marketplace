@@ -18,6 +18,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 - `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
 - `goth-oauth`: Expert guidance for github.com/markbates/goth OAuth authentication in Go, covering provider setup (Google, Microsoft), Echo framework integration, session management, and security
+- `mycarrierpackets-api`: MyCarrierPackets API integration for TMS systems, covering OAuth2 authentication, carrier invitations (Intellivite), Assure Advantage monitoring, document retrieval, and Go implementation patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -125,23 +126,34 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   └── README.md
 ├── composable-svelte-components/
 │   └── SKILL.md             # UI component library reference
-└── goth-oauth/
+├── goth-oauth/
+│   ├── .claude-plugin/
+│   │   └── plugin.json      # Plugin manifest
+│   ├── skills/
+│   │   ├── goth-fundamentals/
+│   │   │   └── SKILL.md     # Core Goth concepts
+│   │   ├── goth-providers/
+│   │   │   └── SKILL.md     # Provider configuration
+│   │   └── goth-echo-security/
+│   │       └── SKILL.md     # Echo integration + security
+│   ├── agents/
+│   │   └── goth-expert.md   # OAuth troubleshooting expert
+│   ├── references/
+│   │   ├── google-oauth-setup.md
+│   │   ├── microsoft-oauth-setup.md
+│   │   ├── session-storage-options.md
+│   │   └── security-checklist.md
+│   ├── README.md
+│   ├── INSTALL.md
+│   └── QUICK_START.md
+└── mycarrierpackets-api/
     ├── .claude-plugin/
     │   └── plugin.json      # Plugin manifest
+    ├── commands/
+    │   └── mycarrierpackets.md  # Topic-based API assistant
     ├── skills/
-    │   ├── goth-fundamentals/
-    │   │   └── SKILL.md     # Core Goth concepts
-    │   ├── goth-providers/
-    │   │   └── SKILL.md     # Provider configuration
-    │   └── goth-echo-security/
-    │       └── SKILL.md     # Echo integration + security
-    ├── agents/
-    │   └── goth-expert.md   # OAuth troubleshooting expert
-    ├── references/
-    │   ├── google-oauth-setup.md
-    │   ├── microsoft-oauth-setup.md
-    │   ├── session-storage-options.md
-    │   └── security-checklist.md
+    │   └── mycarrierpackets-api/
+    │       └── SKILL.md     # Comprehensive API documentation
     ├── README.md
     ├── INSTALL.md
     └── QUICK_START.md
@@ -154,7 +166,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, goth-oauth): Commands + Skills + Agents
+1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, goth-oauth, mycarrierpackets-api): Commands + Skills + Agents
 2. **Skill Plugins** (sequential-thinking, composable-svelte-components): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase): Skills with manifest and reference docs, minimal structure
 
@@ -220,6 +232,19 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Session storage comparison (cookies, Redis, PostgreSQL)
   - Security checklist for pre-deployment verification
 - Designed to complement golang-orchestrator for complete Echo backend authentication
+
+**mycarrierpackets-api Pattern**:
+- Single comprehensive skill + command for MyCarrierPackets API integration
+- Skill: Complete API reference covering all endpoints, authentication, and Go implementation
+- Command: /mycarrierpackets with topic routing (auth, invite, carrier, monitor, documents, sync, debug)
+- Focus areas:
+  - OAuth2 password grant authentication with token management
+  - Carrier invitations via Intellivite (API, link-based, direct URL)
+  - Assure Advantage carrier monitoring and risk assessment
+  - Document retrieval (COI, W9, eAgreement, full packets)
+  - Synchronization patterns (push vs pull, polling strategies)
+- Go-first code examples with idiomatic patterns
+- Designed for TMS integration following golang-orchestrator patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
@@ -258,6 +283,7 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install supabase
 /plugin install svelte5-runes
 /plugin install composable-svelte-components
+/plugin install mycarrierpackets-api
 ```
 
 ### Development

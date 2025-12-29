@@ -116,6 +116,14 @@
       "author": {
         "name": "Linehaul AI"
       }
+    },
+    {
+      "name": "mycarrierpackets-api",
+      "source": "./.claude-plugin/mycarrierpackets-api",
+      "version": "1.0.0",
+      "author": {
+        "name": "Linehaul AI"
+      }
     }
   ]
 }
