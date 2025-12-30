@@ -506,21 +506,21 @@ func (r *FacilityRepository) FindOrCreate(ctx context.Context, addr *models.Faci
 ```go
 type Load struct {
     ID           string          `db:"id" json:"id"`
-    LoadNumber   string          `db:"load_number" json:"load_number"`
-    TenderID     string          `db:"tender_id" json:"tender_id"`
-    CarrierID    *string         `db:"carrier_id" json:"carrier_id,omitempty"`
-    LoadStatus   LoadStatus      `db:"load_status" json:"load_status"`
+    LoadNumber   string          `db:"load_number" json:"loadNumber"`
+    TenderID     string          `db:"tender_id" json:"tenderId"`
+    CarrierID    *string         `db:"carrier_id" json:"carrierId,omitempty"`
+    LoadStatus   LoadStatus      `db:"load_status" json:"loadStatus"`
     Mode         *ModeOfTransport `db:"mode" json:"mode,omitempty"`
-    CustomerRate *float64        `db:"customer_rate" json:"customer_rate,omitempty"`
-    CarrierRate  *float64        `db:"carrier_rate" json:"carrier_rate,omitempty"`
-    IsCancelled  bool            `db:"is_cancelled" json:"is_cancelled"`
+    CustomerRate *float64        `db:"customer_rate" json:"customerRate,omitempty"`
+    CarrierRate  *float64        `db:"carrier_rate" json:"carrierRate,omitempty"`
+    IsCancelled  bool            `db:"is_cancelled" json:"isCancelled"`
 
     // Audit fields
-    CreatedAt time.Time  `db:"created_at" json:"created_at"`
-    UpdatedAt time.Time  `db:"updated_at" json:"updated_at"`
-    CreatedBy *int32     `db:"created_by" json:"created_by,omitempty"`
-    UpdatedBy *int32     `db:"updated_by" json:"updated_by,omitempty"`
-    DeletedAt *time.Time `db:"deleted_at" json:"deleted_at,omitempty"`
+    CreatedAt time.Time  `db:"created_at" json:"createdAt"`
+    UpdatedAt time.Time  `db:"updated_at" json:"updatedAt"`
+    CreatedBy *int32     `db:"created_by" json:"createdBy,omitempty"`
+    UpdatedBy *int32     `db:"updated_by" json:"updatedBy,omitempty"`
+    DeletedAt *time.Time `db:"deleted_at" json:"deletedAt,omitempty"`
 }
 ```
 
