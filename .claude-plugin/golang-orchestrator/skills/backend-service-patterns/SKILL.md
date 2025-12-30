@@ -526,7 +526,7 @@ type Load struct {
 
 **Tag Conventions:**
 - `db:"column_name"` - Maps to PostgreSQL column (snake_case)
-- `json:"field_name"` - Maps to JSON field (snake_case for API)
+- `json:"fieldName"` - Maps to JSON field (camelCase for API)
 - `json:"...,omitempty"` - Omits null/zero values from response
 - Required fields: `string`, `float64`, `time.Time`
 - Optional fields: `*string`, `*float64`, `*time.Time`
