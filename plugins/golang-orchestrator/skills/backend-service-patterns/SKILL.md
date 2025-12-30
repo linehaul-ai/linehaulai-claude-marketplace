@@ -14,6 +14,7 @@ description: Use when implementing API endpoints, business logic, database opera
 - Handling transactions
 - Building complex filters with QueryBuilder
 - Adding validation logic
+- Documenting APIs with OpenAPI 3.0 / Swagger annotations
 
 ## Layered Architecture
 
@@ -717,6 +718,160 @@ func Setup(e *echo.Echo, loadHandler *handlers.LoadHandler, accountHandler *hand
 }
 ```
 
+## OpenAPI 3.0 Documentation (swaggo/echo-swagger)
+
+### Installation & Setup
+
+Install swag CLI and echo-swagger:
+
+```bash
+go install github.com/swaggo/swag/cmd/swag@latest
+go get github.com/swaggo/echo-swagger
+```
+
+Generate docs (run from project root):
+
+```bash
+swag init -g cmd/server/main.go -o docs
+```
+
+Register swagger middleware in router:
+
+```go
+import (
+    echoSwagger "github.com/swaggo/echo-swagger"
+    _ "yourproject/docs" // Generated docs
+)
+
+func Setup(e *echo.Echo, ...) {
+    // Swagger docs endpoint
+    e.GET("/swagger/*", echoSwagger.WrapHandler)
+
+    // ... rest of routes
+}
+```
+
+### Main Package Annotations
+
+Add to `cmd/server/main.go`:
+
+```go
+// @title           laneweaverTMS API
+// @version         1.0
+// @description     Transportation Management System API
+
+// @host      localhost:8080
+// @BasePath  /api/v1
+
+func main() {
+    // ...
+}
+```
+
+### Handler Annotations
+
+#### Create Handler (POST)
+
+```go
+// Create godoc
+// @Summary      Create a new load
+// @Description  Creates a load with stops and validates required fields
+// @Tags         loads
+// @Accept       json
+// @Produce      json
+// @Param        request body models.CreateLoadRequest true "Load creation request"
+// @Success      201 {object} models.APIResponse{data=models.CreateLoadResponse}
+// @Failure      400 {object} models.APIResponse
+// @Failure      500 {object} models.APIResponse
+// @Router       /loads [post]
+func (h *LoadHandler) Create(c echo.Context) error {
+    // ... existing implementation
+}
+```
+
+#### List Handler (GET with Query Params)
+
+```go
+// List godoc
+// @Summary      List loads with filters
+// @Description  Returns paginated list of loads with optional filtering
+// @Tags         loads
+// @Accept       json
+// @Produce      json
+// @Param        load_status query string false "Filter by status (comma-separated)" Example(uncovered,assigned)
+// @Param        account_id query string false "Filter by account ID"
+// @Param        pickup_date_from query string false "Filter pickup date from (YYYY-MM-DD)"
+// @Param        pickup_date_to query string false "Filter pickup date to (YYYY-MM-DD)"
+// @Param        page query int false "Page number" default(1)
+// @Param        page_size query int false "Items per page" default(50) maximum(100)
+// @Param        sort_by query string false "Sort column" Enums(load_number,created_at,pickup_date)
+// @Param        sort_dir query string false "Sort direction" Enums(asc,desc)
+// @Success      200 {object} models.APIResponse{data=models.PaginatedResponse[models.LoadListItem]}
+// @Failure      500 {object} models.APIResponse
+// @Router       /loads [get]
+func (h *LoadHandler) List(c echo.Context) error {
+    // ... existing implementation
+}
+```
+
+#### GetByID Handler (GET with Path Param)
+
+```go
+// GetByID godoc
+// @Summary      Get load by ID
+// @Description  Returns a single load with full details
+// @Tags         loads
+// @Accept       json
+// @Produce      json
+// @Param        id path string true "Load ID"
+// @Success      200 {object} models.APIResponse{data=models.Load}
+// @Failure      404 {object} models.APIResponse
+// @Failure      500 {object} models.APIResponse
+// @Router       /loads/{id} [get]
+func (h *LoadHandler) GetByID(c echo.Context) error {
+    // ... existing implementation
+}
+```
+
+### Model Annotations
+
+Add `example` tags for documentation:
+
+```go
+type CreateLoadRequest struct {
+    TenderID     string          `json:"tenderId" example:"tender-123"`
+    Mode         ModeOfTransport `json:"mode" example:"Dry Van"`
+    CustomerRate float64         `json:"customerRate" example:"1500.00"`
+    CarrierRate  *float64        `json:"carrierRate,omitempty" example:"1200.00"`
+    Stops        []CreateStopRequest `json:"stops"`
+}
+
+type CreateLoadResponse struct {
+    ID         string     `json:"id" example:"load-456"`
+    LoadNumber string     `json:"loadNumber" example:"LD-2024-001"`
+    LoadStatus LoadStatus `json:"loadStatus" example:"uncovered"`
+}
+```
+
+For enums, add a comment listing valid values:
+
+```go
+// LoadStatus represents the current state of a load
+// @Description Load lifecycle status
+// @Enum uncovered,assigned,dispatched,at_origin,in_transit,at_destination,delivered
+type LoadStatus string
+```
+
+### Regenerating Docs
+
+Run after any annotation changes:
+
+```bash
+swag init -g cmd/server/main.go -o docs
+```
+
+Access docs at: `http://localhost:8080/swagger/index.html`
+
 ## Checklist for New Endpoints
 
 ```
@@ -752,6 +907,12 @@ Router:
 [ ] Register routes in Setup function
 [ ] Use route groups for resource prefixes
 [ ] Follow RESTful conventions (GET/POST/PUT/DELETE)
+
+OpenAPI/Swagger:
+[ ] Add swagger annotations to handler functions
+[ ] Add example tags to request/response models
+[ ] Run swag init after annotation changes
+[ ] Verify docs at /swagger/index.html
 ```
 
 ## Code References

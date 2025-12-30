@@ -1,11 +1,10 @@
 # Supabase Plugin
 
-Supabase and PostgreSQL expertise for SQL style conventions, row-level security policies, and laneweaverTMS-specific database patterns.
+Supabase and PostgreSQL expertise for row-level security policies and laneweaverTMS-specific database patterns.
 
 ## What This Plugin Provides
 
 **Skills:**
-- `postgres-style-guide`: SQL style conventions for consistent, readable database code
 - `supabase-rls-policy`: Row-level security (RLS) policy patterns and access control for Supabase
 - `laneweaver-database-design`: laneweaverTMS-specific PostgreSQL patterns with UUIDs, ENUMs, audit trails, soft deletes, and atomic migrations
 
@@ -26,20 +25,6 @@ Ask Claude: "Create RLS policies for [table/scenario]"
 - Handles multi-tenancy, team-based access, and complex rules
 
 ## Skills Overview
-
-### postgres-style-guide - SQL Style Conventions
-
-**Use when:**
-- Writing SQL queries and code
-- Designing database schemas
-- Establishing team conventions
-- Reviewing SQL for consistency
-
-**Covers:**
-- SQL naming conventions (snake_case)
-- Comment patterns
-- Formatting and indentation
-- ISO 8601 date handling
 
 ### supabase-rls-policy - Access Control
 
@@ -85,8 +70,6 @@ Ask Claude: "Create RLS policies for [table/scenario]"
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin manifest
 ├── skills/
-│   ├── postgres-style-guide/
-│   │   └── SKILL.md             # SQL style conventions
 │   ├── supabase-rls-policy/
 │   │   └── SKILL.md             # RLS policy patterns
 │   └── laneweaver-database-design/
@@ -104,7 +87,6 @@ Ask Claude: "Create RLS policies for [table/scenario]"
 ## Skill Triggering
 
 Skills automatically activate based on context:
-- **postgres-style-guide**: "SQL style", "naming convention", "formatting"
 - **supabase-rls-policy**: "RLS policy", "row-level security", "access control"
 - **laneweaver-database-design**: "laneweaverTMS", "audit columns", "soft delete", "UUID primary key", "tender", "load"
 
@@ -115,12 +97,7 @@ Skills automatically activate based on context:
    - Implement multi-tenancy or team-based access
    - Test policies thoroughly
 
-2. **SQL Style & Conventions** (postgres-style-guide skill)
-   - Follow consistent naming and formatting
-   - Apply SQL best practices
-   - Document schemas with clear comments
-
-3. **Domain-Specific Patterns** (laneweaver-database-design skill)
+2. **Domain-Specific Patterns** (laneweaver-database-design skill)
    - Use laneweaverTMS audit columns and soft deletes
    - Follow UUID primary key conventions
    - Implement required ENUM types
@@ -134,10 +111,9 @@ Works seamlessly with:
 
 ## Best Practices
 
-1. **Follow SQL Conventions** - Use `postgres-style-guide` for consistent naming and formatting
-2. **Implement RLS Early** - Add and test RLS policies with `supabase-rls-policy` skill
-3. **Use Domain Patterns** - Follow `laneweaver-database-design` for TMS-specific conventions
-4. **Test Thoroughly** - Verify RLS policies and audit patterns work correctly
+1. **Implement RLS Early** - Add and test RLS policies with `supabase-rls-policy` skill
+2. **Use Domain Patterns** - Follow `laneweaver-database-design` for TMS-specific conventions
+3. **Test Thoroughly** - Verify RLS policies and audit patterns work correctly
 
 ## Documentation
 
