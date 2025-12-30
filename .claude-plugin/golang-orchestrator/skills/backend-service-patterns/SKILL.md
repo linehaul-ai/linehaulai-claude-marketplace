@@ -572,10 +572,10 @@ func (m ModeOfTransport) IsTempControlled() bool {
 
 ```go
 type CreateLoadRequest struct {
-    TenderID     string          `json:"tender_id" validate:"required"`
+    TenderID     string          `json:"tenderId" validate:"required"`
     Mode         ModeOfTransport `json:"mode" validate:"required"`
-    CustomerRate float64         `json:"customer_rate" validate:"required,gt=0"`
-    CarrierRate  *float64        `json:"carrier_rate,omitempty" validate:"omitempty,gt=0"`
+    CustomerRate float64         `json:"customerRate" validate:"required,gt=0"`
+    CarrierRate  *float64        `json:"carrierRate,omitempty" validate:"omitempty,gt=0"`
     Temperature  *float64        `json:"temperature,omitempty"`
     Stops        []CreateStopRequest `json:"stops" validate:"required,min=2"`
 }
