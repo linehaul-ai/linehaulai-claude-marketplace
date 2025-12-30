@@ -6,12 +6,5 @@
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
   },
-  "keywords": ["svelte", "sveltekit", "shadcn-svelte", "ui-components", "tailwind", "typescript"],
-  "hooks": [
-    {
-      "event": "file:edit",
-      "glob": "**/lib/components/ui/**",
-      "script": "./hooks/shadcn-component-reminder.sh"
-    }
-  ]
+  "keywords": ["svelte", "sveltekit", "shadcn-svelte", "ui-components", "tailwind", "typescript"]
 }

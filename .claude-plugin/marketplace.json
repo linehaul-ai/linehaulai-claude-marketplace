@@ -1,8 +1,8 @@
 {
   "name": "linehaulai-claude-marketplace",
   "owner": {
-    "name":"fakebizprez",
-    "email":"anthony@linehaul.ai"
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
   },
   "plugins": [
     {
@@ -24,7 +24,7 @@
     {
       "name": "sveltekit-spa",
       "source": "./.claude-plugin/sveltekit-spa",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "fakebizprez"
       }
@@ -72,7 +72,7 @@
     {
       "name": "supabase",
       "source": "./.claude-plugin/supabase",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "author": {
         "name": "fakebizprez"
       }
@@ -86,8 +86,24 @@
       }
     },
     {
-      "name": "git-worktree",
-      "source": "./.claude-plugin/git-worktree",
+      "name": "composable-svelte-components",
+      "source": "./.claude-plugin/composable-svelte-components",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "block-kit",
+      "source": "./.claude-plugin/block-kit",
+      "version": "1.0.0",
+      "author": {
+        "name": "fakebizprez"
+      }
+    },
+    {
+      "name": "slack-go-sdk",
+      "source": "./.claude-plugin/slack-go-sdk",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -100,6 +116,19 @@
       "description": "Build Slack Block Kit UIs for messages, modals, and Home tabs",
       "author": {
         "name": "fakebizprez"
+      "name": "goth-oauth",
+      "source": "./.claude-plugin/goth-oauth",
+      "version": "1.0.0",
+      "author": {
+        "name": "Linehaul AI"
+      }
+    },
+    {
+      "name": "mycarrierpackets-api",
+      "source": "./.claude-plugin/mycarrierpackets-api",
+      "version": "1.0.0",
+      "author": {
+        "name": "Linehaul AI"
       }
     }
   ]

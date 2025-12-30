@@ -7,17 +7,20 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 
 **Key Plugins**:
 - `quickbooks-api-integration`: QuickBooks Online API integration guidance for ERP/CRM/TMS systems
-- `golang-orchestrator`: Subagent orchestration for production Golang backends with Echo framework
+- `golang-orchestrator`: Expert guidance for Golang backend development with Echo framework, including laneweaverTMS service patterns
 - `sveltekit-spa`: SvelteKit SPA development patterns and configuration
 - `shadcn-svelte-skill`: Svelte UI component management with shadcn-svelte, Skeleton UI, and Melt UI guidance (Tailwind CSS v4.1 + TypeScript)
 - `svelte-flow`: Interactive node-based editors and flow diagrams with @xyflow/svelte (workflow editors, DAG editors, mindmaps)
 - `layerchart`: Pre-built chart components for rapid data visualization (bar, line, pie, tree maps, geographic charts)
 - `layercake`: Headless visualization framework for unlimited custom visualizations (maximum flexibility)
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
-- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, and RLS policy guidance
+- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, RLS policy guidance, and laneweaverTMS-specific database patterns
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
 - `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
 - `slack-block-kit-builder`: Slack Block Kit UI building for messages, modals, and Home tabs with comprehensive reference, guided command, and expert agent
+- `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
+- `goth-oauth`: Expert guidance for github.com/markbates/goth OAuth authentication in Go, covering provider setup (Google, Microsoft), Echo framework integration, session management, and security
+- `mycarrierpackets-api`: MyCarrierPackets API integration for TMS systems, covering OAuth2 authentication, carrier invitations (Intellivite), Assure Advantage monitoring, document retrieval, and Go implementation patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: architecture -->
@@ -38,25 +41,14 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── golang-orchestrator/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── agents/              # Specialized subagent definitions
-│   │   ├── echo-router-expert.md  # Echo framework HTTP routing specialist
-│   │   └── golang-expert.md       # Golang architecture specialist
-│   ├── commands/            # Slash commands
-│   │   └── backend-setup-orchestration.md  # Detailed orchestration workflow
-│   ├── skills/              # Orchestration skills
-│   ├── docs/
-│   ├── README.md
-│   ├── INSTALL.md
-│   ├── PLUGIN_OVERVIEW.md
-│   ├── DEPLOYMENT_CHECKLIST.md
-│   ├── DOTFILES_SETUP.md
-│   └── NEXT_STEPS.md
+│   └── skills/              # Orchestration skills
 ├── sveltekit-spa/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── commands/            # Slash commands
-│   ├── skills/              # SvelteKit skills
-│   └── README.md
+│   ├── references/          # Reference documentation
+│   │   ├── backend-integration.md
+│   │   └── routing-patterns.md
+│   └── SKILL.md             # SvelteKit SPA development patterns
 ├── shadcn-svelte-skill/
 │   ├── commands/            # Slash commands
 │   │   └── shadcn.md        # Component development assistant
@@ -105,16 +97,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 ├── supabase/
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # Plugin manifest
-│   ├── agents/
-│   │   ├── postgres-table-design-expert.md  # Schema design specialist
-│   │   └── supabase-rls-expert.md           # RLS policy specialist
 │   └── skills/
-│       ├── postgres/
-│       │   └── SKILL.md     # PostgreSQL schema design guidance
-│       ├── postgres-functions/
-│       │   └── SKILL.MD     # PostgreSQL function creation with security
-│       └── supabase-rls-policy/
-│           └── SKILL.md     # RLS policy patterns and access control
+│       ├── postgres-style-guide/
+│       │   └── SKILL.md     # SQL style conventions
+│       ├── supabase-rls-policy/
+│       │   └── SKILL.md     # RLS policy patterns and access control
+│       └── laneweaver-database-design/
+│           └── SKILL.md     # laneweaverTMS domain-specific patterns
 ├── svelte5-runes/
 │   ├── commands/            # Slash commands
 │   │   └── runes.md         # Runes assistant for reactivity and migration
@@ -148,6 +137,39 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
     ├── README.md
     ├── QUICK_START.md
     └── PLUGIN_OVERVIEW.md
+├── composable-svelte-components/
+│   └── SKILL.md             # UI component library reference
+├── goth-oauth/
+│   ├── .claude-plugin/
+│   │   └── plugin.json      # Plugin manifest
+│   ├── skills/
+│   │   ├── goth-fundamentals/
+│   │   │   └── SKILL.md     # Core Goth concepts
+│   │   ├── goth-providers/
+│   │   │   └── SKILL.md     # Provider configuration
+│   │   └── goth-echo-security/
+│   │       └── SKILL.md     # Echo integration + security
+│   ├── agents/
+│   │   └── goth-expert.md   # OAuth troubleshooting expert
+│   ├── references/
+│   │   ├── google-oauth-setup.md
+│   │   ├── microsoft-oauth-setup.md
+│   │   ├── session-storage-options.md
+│   │   └── security-checklist.md
+│   ├── README.md
+│   ├── INSTALL.md
+│   └── QUICK_START.md
+└── mycarrierpackets-api/
+    ├── .claude-plugin/
+    │   └── plugin.json      # Plugin manifest
+    ├── commands/
+    │   └── mycarrierpackets.md  # Topic-based API assistant
+    ├── skills/
+    │   └── mycarrierpackets-api/
+    │       └── SKILL.md     # Comprehensive API documentation
+    ├── README.md
+    ├── INSTALL.md
+    └── QUICK_START.md
 ```
 
 **Structure**:
@@ -160,12 +182,15 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase, slack-block-kit-builder): Commands + Skills + Agents
 2. **Skill Plugins** (sequential-thinking, git-worktree): Standalone skills with reference docs, no manifest needed
 3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
+1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, goth-oauth, mycarrierpackets-api): Commands + Skills + Agents
+2. **Skill Plugins** (sequential-thinking, composable-svelte-components): Standalone skills with reference docs, no manifest needed
+3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
-- Two-agent orchestration: Golang Expert (architecture) + Echo Router Expert (HTTP layer)
-- Agents spawned in parallel via backend-setup-orchestration command
-- Clear separation: Golang agent defines interfaces, Echo agent implements HTTP handlers
-- Detailed workflow with requirement extraction, context creation, and agent coordination
+- Three complementary skills: effective-go (architecture) → backend-service-patterns (data layer) → echo-router-skill (HTTP layer)
+- Clear separation: effective-go provides foundational architecture, backend-service-patterns implements service/repository patterns, echo-router-skill handles HTTP routing
+- Hierarchical skill progression from general Golang best practices to specific TMS domain patterns to HTTP implementation
+- Skills designed to work together: architecture informs data layer design, which integrates with HTTP handlers
 
 **Visualization Plugins Pattern** (svelte-flow, layerchart, layercake):
 - **svelte-flow**: Interactive node-based editors with @xyflow/svelte
@@ -194,14 +219,13 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - TypeScript-first with Svelte 5 reactive variables
 
 **supabase Pattern**:
-- Full plugin with multiple specialized skills for Supabase/PostgreSQL development
+- Hybrid plugin with multiple specialized skills for Supabase/PostgreSQL development
 - Skills organized by concern:
-  - `postgres`: Schema design with PostgreSQL best practices
-  - `postgres-functions`: Function creation with security (SECURITY INVOKER, search_path)
+  - `postgres-style-guide`: SQL style conventions
   - `supabase-rls-policy`: Row-level security policy patterns
-- Agents: postgres-table-design-expert (schema design) and supabase-rls-expert (RLS policies)
-- Covers full Supabase development lifecycle: schema → functions → RLS policies
-- Each skill has comprehensive documentation with examples and anti-patterns
+  - `laneweaver-database-design`: laneweaverTMS domain-specific database patterns (UUIDs, audit columns, ENUMs, soft deletes, migrations)
+- Covers SQL style, row-level security, and laneweaverTMS database patterns
+- Each skill has comprehensive documentation with examples and best practices
 
 **svelte5-runes Pattern**:
 - Full plugin for Svelte 5 reactivity system guidance
@@ -215,12 +239,28 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
   - Common mistakes with fixes
 - Code examples for bindable props and effect vs derived patterns
 
-**git-worktree Pattern**:
-- Skill-only plugin with bundled helper scripts
-- Provides Git worktree management guidance
-- Includes bash script for common operations (create, list, switch, cleanup)
-- Follows "Skill with Bundled Resources" pattern
-- No plugin.json needed (pure skill plugin)
+**goth-oauth Pattern**:
+- Full plugin for Go OAuth authentication using github.com/markbates/goth
+- Three complementary skills: goth-fundamentals (core) → goth-providers (configuration) → goth-echo-security (framework + security)
+- Agent: goth-expert for troubleshooting OAuth flows and architecture decisions
+- Reference documentation organized by concern:
+  - Provider-specific setup guides (Google, Microsoft/Azure AD)
+  - Session storage comparison (cookies, Redis, PostgreSQL)
+  - Security checklist for pre-deployment verification
+- Designed to complement golang-orchestrator for complete Echo backend authentication
+
+**mycarrierpackets-api Pattern**:
+- Single comprehensive skill + command for MyCarrierPackets API integration
+- Skill: Complete API reference covering all endpoints, authentication, and Go implementation
+- Command: /mycarrierpackets with topic routing (auth, invite, carrier, monitor, documents, sync, debug)
+- Focus areas:
+  - OAuth2 password grant authentication with token management
+  - Carrier invitations via Intellivite (API, link-based, direct URL)
+  - Assure Advantage carrier monitoring and risk assessment
+  - Document retrieval (COI, W9, eAgreement, full packets)
+  - Synchronization patterns (push vs pull, polling strategies)
+- Go-first code examples with idiomatic patterns
+- Designed for TMS integration following golang-orchestrator patterns
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
@@ -260,6 +300,8 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install svelte5-runes
 /plugin install git-worktree
 /plugin install slack-block-kit-builder
+/plugin install composable-svelte-components
+/plugin install mycarrierpackets-api
 ```
 
 ### Development

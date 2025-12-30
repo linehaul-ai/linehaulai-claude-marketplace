@@ -1,0 +1,10 @@
+{
+  "name": "mycarrierpackets-api",
+  "version": "1.0.0",
+  "description": "Expert guidance for MyCarrierPackets API integration with TMS systems. Covers carrier invitations (Intellivite), data management, Assure Advantage monitoring, document retrieval, and OAuth2 authentication.",
+  "author": {
+    "name": "Linehaul AI",
+    "email": "engineering@linehaulai.com"
+  },
+  "keywords": ["mcp", "mycarrierpackets", "carrier", "tms", "api", "monitoring", "oauth2"]
+}

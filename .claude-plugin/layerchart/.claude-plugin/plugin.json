@@ -5,14 +5,12 @@
   "author": {
     "name": "fakebizprez"
   },
-  "keywords": ["svelte", "charts", "visualization", "data", "layer-cake", "components"],
-  "documentation": {
-    "readme": "./README.md",
-    "quickStart": "./QUICK_START.md",
-    "overview": "./PLUGIN_OVERVIEW.md"
-  },
-  "dependencies": {
-    "layercake": "^2.0.0",
-    "svelte": "^5.0.0"
-  }
+  "keywords": [
+    "svelte",
+    "charts",
+    "visualization",
+    "data",
+    "layer-cake",
+    "components"
+  ]
 }

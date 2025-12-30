@@ -1,0 +1,23 @@
+{
+  "name": "goth-oauth",
+  "version": "1.0.0",
+  "description": "Expert guidance for github.com/markbates/goth OAuth authentication library in Go. Covers provider setup (Google, Microsoft), Echo framework integration, session management, and security best practices.",
+  "author": {
+    "name": "Linehaul AI",
+    "email": "support@linehaul.ai"
+  },
+  "keywords": [
+    "golang",
+    "go",
+    "oauth",
+    "oauth2",
+    "authentication",
+    "goth",
+    "google",
+    "microsoft",
+    "azure-ad",
+    "echo",
+    "session",
+    "security"
+  ]
+}

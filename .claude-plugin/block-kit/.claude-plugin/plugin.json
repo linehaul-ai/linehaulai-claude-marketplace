@@ -1,0 +1,19 @@
+{
+  "name": "block-kit",
+  "version": "1.0.0",
+  "description": "Comprehensive Slack Block Kit reference for building interactive messages, modals, and home tabs with blocks, interactive components, and layout patterns",
+  "author": {
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
+  },
+  "keywords": [
+    "slack",
+    "block-kit",
+    "ui",
+    "messages",
+    "modals",
+    "interactive",
+    "blocks",
+    "components"
+  ]
+}
