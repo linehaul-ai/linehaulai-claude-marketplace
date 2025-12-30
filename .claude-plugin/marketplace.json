@@ -116,6 +116,9 @@
       "description": "Build Slack Block Kit UIs for messages, modals, and Home tabs",
       "author": {
         "name": "fakebizprez"
+      }
+    },
+    {
       "name": "goth-oauth",
       "source": "./.claude-plugin/goth-oauth",
       "version": "1.0.0",

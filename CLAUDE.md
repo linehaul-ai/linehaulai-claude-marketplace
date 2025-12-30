@@ -16,7 +16,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
 - `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, RLS policy guidance, and laneweaverTMS-specific database patterns
 - `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
-- `git-worktree`: Isolated Git worktree management for parallel feature development with helper scripts
 - `slack-block-kit-builder`: Slack Block Kit UI building for messages, modals, and Home tabs with comprehensive reference, guided command, and expert agent
 - `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
 - `goth-oauth`: Expert guidance for github.com/markbates/goth OAuth authentication in Go, covering provider setup (Google, Microsoft), Echo framework integration, session management, and security
@@ -120,11 +119,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 │   │   └── effect-vs-derived.svelte
 │   ├── SKILL.md             # Main skill definition
 │   └── README.md
-├── git-worktree/
-│   ├── scripts/             # Helper scripts
-│   │   └── worktree-manager.sh  # Worktree management CLI
-│   ├── SKILL.md             # Git worktree guidance
-│   └── README.md
 └── slack-block-kit-builder/
     ├── .claude-plugin/
     │   └── plugin.json      # Plugin manifest
@@ -179,12 +173,9 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 - Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
 
 **Plugin Types**:
-1. **Full Plugins** (quickbooks-api-integration, golang-orchestrator, svelte-flow, layerchart, layercake, svelte5-runes, supabase, slack-block-kit-builder): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, git-worktree): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (sveltekit-spa, shadcn-svelte-skill): Skills + Commands, minimal structure
 1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, goth-oauth, mycarrierpackets-api): Commands + Skills + Agents
 2. **Skill Plugins** (sequential-thinking, composable-svelte-components): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase): Skills with manifest and reference docs, minimal structure
+3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase, slack-block-kit-builder): Skills with manifest and reference docs, minimal structure
 
 **Golang Orchestrator Pattern**:
 - Three complementary skills: effective-go (architecture) → backend-service-patterns (data layer) → echo-router-skill (HTTP layer)
@@ -298,7 +289,6 @@ A Claude Code plugin marketplace containing production-ready plugins for busines
 /plugin install sequential-thinking
 /plugin install supabase
 /plugin install svelte5-runes
-/plugin install git-worktree
 /plugin install slack-block-kit-builder
 /plugin install composable-svelte-components
 /plugin install mycarrierpackets-api
