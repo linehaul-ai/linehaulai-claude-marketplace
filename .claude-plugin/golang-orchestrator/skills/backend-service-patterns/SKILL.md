@@ -589,7 +589,7 @@ func ValidateCreateLoadRequest(req *CreateLoadRequest) ValidationErrors {
 
     if req.TenderID == "" {
         errors = append(errors, ValidationError{
-            Field:   "tender_id",
+            Field:   "tenderId",
             Message: "Tender ID is required",
         })
     }
