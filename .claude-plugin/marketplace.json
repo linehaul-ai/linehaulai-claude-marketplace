@@ -4,10 +4,14 @@
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"
   },
+  "metadata": {
+    "description": "Linehaul AI plugin collection for Claude Code",
+    "pluginRoot": "./plugins"
+  },
   "plugins": [
     {
       "name": "quickbooks-api-integration",
-      "source": "./.claude-plugin/quickbooks-api-integration",
+      "source": "./plugins/quickbooks-api-integration",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -15,7 +19,7 @@
     },
     {
       "name": "golang-orchestrator",
-      "source": "./.claude-plugin/golang-orchestrator",
+      "source": "./plugins/golang-orchestrator",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -23,7 +27,7 @@
     },
     {
       "name": "sveltekit-spa",
-      "source": "./.claude-plugin/sveltekit-spa",
+      "source": "./plugins/sveltekit-spa",
       "version": "1.0.1",
       "author": {
         "name": "fakebizprez"
@@ -31,7 +35,7 @@
     },
     {
       "name": "shadcn-svelte-skill",
-      "source": "./.claude-plugin/shadcn-svelte-skill",
+      "source": "./plugins/shadcn-svelte-skill",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -39,7 +43,7 @@
     },
     {
       "name": "svelte-flow",
-      "source": "./.claude-plugin/svelte-flow",
+      "source": "./plugins/svelte-flow",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -47,7 +51,7 @@
     },
     {
       "name": "layerchart",
-      "source": "./.claude-plugin/layerchart",
+      "source": "./plugins/layerchart",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -55,7 +59,7 @@
     },
     {
       "name": "layercake",
-      "source": "./.claude-plugin/layercake",
+      "source": "./plugins/layercake",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -63,7 +67,7 @@
     },
     {
       "name": "sequential-thinking",
-      "source": "./.claude-plugin/sequential-thinking",
+      "source": "./plugins/sequential-thinking",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -71,7 +75,7 @@
     },
     {
       "name": "supabase",
-      "source": "./.claude-plugin/supabase",
+      "source": "./plugins/supabase",
       "version": "1.2.0",
       "author": {
         "name": "fakebizprez"
@@ -79,7 +83,7 @@
     },
     {
       "name": "svelte5-runes",
-      "source": "./.claude-plugin/svelte5-runes",
+      "source": "./plugins/svelte5-runes",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -87,7 +91,7 @@
     },
     {
       "name": "composable-svelte-components",
-      "source": "./.claude-plugin/composable-svelte-components",
+      "source": "./plugins/composable-svelte-components",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -95,7 +99,7 @@
     },
     {
       "name": "slack-go-sdk",
-      "source": "./.claude-plugin/slack-go-sdk",
+      "source": "./plugins/slack-go-sdk",
       "version": "1.0.0",
       "author": {
         "name": "fakebizprez"
@@ -103,7 +107,7 @@
     },
     {
       "name": "slack-block-kit-builder",
-      "source": "./.claude-plugin/slack-block-kit-builder",
+      "source": "./plugins/slack-block-kit-builder",
       "version": "1.0.0",
       "description": "Build Slack Block Kit UIs for messages, modals, and Home tabs",
       "author": {
@@ -112,7 +116,7 @@
     },
     {
       "name": "goth-oauth",
-      "source": "./.claude-plugin/goth-oauth",
+      "source": "./plugins/goth-oauth",
       "version": "1.0.0",
       "author": {
         "name": "Linehaul AI"
@@ -120,8 +124,17 @@
     },
     {
       "name": "mycarrierpackets-api",
-      "source": "./.claude-plugin/mycarrierpackets-api",
+      "source": "./plugins/mycarrierpackets-api",
       "version": "1.0.0",
+      "author": {
+        "name": "Linehaul AI"
+      }
+    },
+    {
+      "name": "conflict-resolution",
+      "source": "./plugins/conflict-resolution",
+      "version": "1.0.0",
+      "description": "Handle merge conflicts cleanly with systematic resolution, verification, and code integrity",
       "author": {
         "name": "Linehaul AI"
       }

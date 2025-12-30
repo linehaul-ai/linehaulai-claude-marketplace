@@ -1,305 +1,513 @@
-# Linehaul AI Claude Marketplace
+Official Marketplace Documentation to Follow:
 
-<!-- AUTO-MANAGED: project-description -->
-A Claude Code plugin marketplace containing production-ready plugins for business system integrations and backend development orchestration.
+# Create and distribute a plugin marketplace
 
-**Purpose**: Distribute reusable Claude Code plugins for common integration patterns and development workflows.
+> Build and host plugin marketplaces to distribute Claude Code extensions across teams and communities.
 
-**Key Plugins**:
-- `quickbooks-api-integration`: QuickBooks Online API integration guidance for ERP/CRM/TMS systems
-- `golang-orchestrator`: Expert guidance for Golang backend development with Echo framework, including laneweaverTMS service patterns
-- `sveltekit-spa`: SvelteKit SPA development patterns and configuration
-- `shadcn-svelte-skill`: Svelte UI component management with shadcn-svelte, Skeleton UI, and Melt UI guidance (Tailwind CSS v4.1 + TypeScript)
-- `svelte-flow`: Interactive node-based editors and flow diagrams with @xyflow/svelte (workflow editors, DAG editors, mindmaps)
-- `layerchart`: Pre-built chart components for rapid data visualization (bar, line, pie, tree maps, geographic charts)
-- `layercake`: Headless visualization framework for unlimited custom visualizations (maximum flexibility)
-- `sequential-thinking`: Systematic problem-solving through iterative reasoning with revision and branching (complex analysis, design, debugging, planning)
-- `supabase`: Supabase development plugin with PostgreSQL schema design, function creation with security best practices, RLS policy guidance, and laneweaverTMS-specific database patterns
-- `svelte5-runes`: Svelte 5 runes system guidance for reactivity, props, effects, and Svelte 4→5 migration
-- `slack-block-kit-builder`: Slack Block Kit UI building for messages, modals, and Home tabs with comprehensive reference, guided command, and expert agent
-- `composable-svelte-components`: UI component library reference for Composable Svelte applications with shadcn-svelte components, covering navigation, forms, data display, feedback, and layout patterns
-- `goth-oauth`: Expert guidance for github.com/markbates/goth OAuth authentication in Go, covering provider setup (Google, Microsoft), Echo framework integration, session management, and security
-- `mycarrierpackets-api`: MyCarrierPackets API integration for TMS systems, covering OAuth2 authentication, carrier invitations (Intellivite), Assure Advantage monitoring, document retrieval, and Go implementation patterns
-<!-- END AUTO-MANAGED -->
+A plugin marketplace is a catalog that lets you distribute plugins to others. Marketplaces provide centralized discovery, version tracking, automatic updates, and support for multiple source types (git repositories, local paths, and more). This guide shows you how to create your own marketplace to share plugins with your team or community.
 
-<!-- AUTO-MANAGED: architecture -->
-## Architecture
+Looking to install plugins from an existing marketplace? See [Discover and install prebuilt plugins](/en/discover-plugins).
 
-```
-.claude-plugin/
-├── marketplace.json          # Plugin registry and metadata
-├── quickbooks-api-integration/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   ├── commands/            # Slash commands
-│   ├── skills/              # Plugin skills
-│   ├── README.md
-│   ├── INSTALL.md
-│   ├── PLUGIN_OVERVIEW.md
-│   └── QUICK_START.md
-├── golang-orchestrator/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   └── skills/              # Orchestration skills
-├── sveltekit-spa/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   ├── references/          # Reference documentation
-│   │   ├── backend-integration.md
-│   │   └── routing-patterns.md
-│   └── SKILL.md             # SvelteKit SPA development patterns
-├── shadcn-svelte-skill/
-│   ├── commands/            # Slash commands
-│   │   └── shadcn.md        # Component development assistant
-│   ├── references/          # Reference documentation
-│   │   ├── datatable-tanstack-svelte5.md
-│   │   ├── shadcn-datatable.md
-│   │   └── workflows.md     # Complex multi-component build workflows
-│   └── SKILL.md             # Main skill definition (shadcn-svelte + Skeleton UI + Melt UI)
-├── svelte-flow/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   ├── agents/              # Specialized subagents
-│   │   └── svelte-flow-expert.md  # Svelte Flow implementation expert
-│   ├── commands/            # Slash commands
-│   │   └── create-editor.md  # Interactive editor orchestration
-│   ├── skills/
-│   │   └── svelte-flow/SKILL.md  # Comprehensive Svelte Flow documentation
-│   ├── README.md
-│   ├── QUICK_START.md
-│   └── PLUGIN_OVERVIEW.md
-├── layerchart/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   ├── agents/
-│   │   └── layerchart-expert.md  # Chart components expert
-│   ├── skills/
-│   │   └── layerchart/SKILL.md   # LayerChart component documentation
-│   ├── README.md
-│   ├── QUICK_START.md
-│   └── PLUGIN_OVERVIEW.md
-├── layercake/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   ├── agents/
-│   │   └── layercake-expert.md   # Custom visualization framework expert
-│   ├── skills/
-│   │   └── layercake/SKILL.md    # Layer Cake framework documentation
-│   ├── README.md
-│   ├── QUICK_START.md
-│   └── PLUGIN_OVERVIEW.md
-├── sequential-thinking/
-│   ├── SKILL.md             # Main skill definition (MCP-based reasoning)
-│   └── references/
-│       ├── advanced.md      # Revision and branching patterns
-│       └── examples.md      # Real-world use cases
-├── supabase/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   └── skills/
-│       ├── postgres-style-guide/
-│       │   └── SKILL.md     # SQL style conventions
-│       ├── supabase-rls-policy/
-│       │   └── SKILL.md     # RLS policy patterns and access control
-│       └── laneweaver-database-design/
-│           └── SKILL.md     # laneweaverTMS domain-specific patterns
-├── svelte5-runes/
-│   ├── commands/            # Slash commands
-│   │   └── runes.md         # Runes assistant for reactivity and migration
-│   ├── agents/              # Specialized subagents
-│   │   └── runes-expert.md  # Svelte 5 runes implementation expert
-│   ├── references/          # Reference documentation
-│   │   ├── common-mistakes.md     # Anti-patterns with fixes
-│   │   ├── component-api.md       # $props, $bindable patterns
-│   │   ├── migration-gotchas.md   # Svelte 4 → 5 translation
-│   │   ├── reactivity-patterns.md # When to use each rune
-│   │   └── snippets-vs-slots.md   # New snippet syntax
-│   ├── examples/            # Code examples
-│   │   ├── bindable-props.svelte
-│   │   └── effect-vs-derived.svelte
-│   ├── SKILL.md             # Main skill definition
-│   └── README.md
-└── slack-block-kit-builder/
-    ├── .claude-plugin/
-    │   └── plugin.json      # Plugin manifest
-    ├── agents/              # Specialized subagents
-    │   └── block-kit-expert.md  # Block Kit implementation expert
-    ├── commands/            # Slash commands
-    │   └── block-kit.md     # Interactive UI builder
-    ├── skills/
-    │   └── slack-block-kit/SKILL.md  # Comprehensive Block Kit documentation
-    ├── README.md
-    ├── QUICK_START.md
-    └── PLUGIN_OVERVIEW.md
-├── composable-svelte-components/
-│   └── SKILL.md             # UI component library reference
-├── goth-oauth/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest
-│   ├── skills/
-│   │   ├── goth-fundamentals/
-│   │   │   └── SKILL.md     # Core Goth concepts
-│   │   ├── goth-providers/
-│   │   │   └── SKILL.md     # Provider configuration
-│   │   └── goth-echo-security/
-│   │       └── SKILL.md     # Echo integration + security
-│   ├── agents/
-│   │   └── goth-expert.md   # OAuth troubleshooting expert
-│   ├── references/
-│   │   ├── google-oauth-setup.md
-│   │   ├── microsoft-oauth-setup.md
-│   │   ├── session-storage-options.md
-│   │   └── security-checklist.md
-│   ├── README.md
-│   ├── INSTALL.md
-│   └── QUICK_START.md
-└── mycarrierpackets-api/
-    ├── .claude-plugin/
-    │   └── plugin.json      # Plugin manifest
-    ├── commands/
-    │   └── mycarrierpackets.md  # Topic-based API assistant
-    ├── skills/
-    │   └── mycarrierpackets-api/
-    │       └── SKILL.md     # Comprehensive API documentation
-    ├── README.md
-    ├── INSTALL.md
-    └── QUICK_START.md
+## Overview
+
+Creating and distributing a marketplace involves:
+
+1. **Creating plugins**: build one or more plugins with commands, agents, hooks, MCP servers, or LSP servers. This guide assumes you already have plugins to distribute; see [Create plugins](/en/plugins) for details on how to create them.
+2. **Creating a marketplace file**: define a `marketplace.json` that lists your plugins and where to find them (see [Create the marketplace file](#create-the-marketplace-file)).
+3. **Host the marketplace**: push to GitHub, GitLab, or another git host (see [Host and distribute marketplaces](#host-and-distribute-marketplaces)).
+4. **Share with users**: users add your marketplace with `/plugin marketplace add` and install individual plugins (see [Discover and install plugins](/en/discover-plugins)).
+
+Once your marketplace is live, you can update it by pushing changes to your repository. Users refresh their local copy with `/plugin marketplace update`.
+
+## Walkthrough: create a local marketplace
+
+This example creates a marketplace with one plugin: a `/review` command for code reviews. You'll create the directory structure, add a slash command, create the plugin manifest and marketplace catalog, then install and test it.
+
+<Steps>
+  <Step title="Create the directory structure">
+    ```bash  theme={null}
+    mkdir -p my-marketplace/.claude-plugin
+    mkdir -p my-marketplace/plugins/review-plugin/.claude-plugin
+    mkdir -p my-marketplace/plugins/review-plugin/commands
+    ```
+  </Step>
+
+  <Step title="Create the plugin command">
+    Create a Markdown file that defines what the `/review` command does.
+
+    ```markdown my-marketplace/plugins/review-plugin/commands/review.md theme={null}
+    Review the code I've selected or the recent changes for:
+    - Potential bugs or edge cases
+    - Security concerns
+    - Performance issues
+    - Readability improvements
+
+    Be concise and actionable.
+    ```
+  </Step>
+
+  <Step title="Create the plugin manifest">
+    Create a `plugin.json` file that describes the plugin. The manifest goes in the `.claude-plugin/` directory.
+
+    ```json my-marketplace/plugins/review-plugin/.claude-plugin/plugin.json theme={null}
+    {
+      "name": "review-plugin",
+      "description": "Adds a /review command for quick code reviews",
+      "version": "1.0.0"
+    }
+    ```
+  </Step>
+
+  <Step title="Create the marketplace file">
+    Create the marketplace catalog that lists your plugin.
+
+    ```json my-marketplace/.claude-plugin/marketplace.json theme={null}
+    {
+      "name": "my-plugins",
+      "owner": {
+        "name": "Your Name"
+      },
+      "plugins": [
+        {
+          "name": "review-plugin",
+          "source": "./plugins/review-plugin",
+          "description": "Adds a /review command for quick code reviews"
+        }
+      ]
+    }
+    ```
+  </Step>
+
+  <Step title="Add and install">
+    Add the marketplace and install the plugin.
+
+    ```shell  theme={null}
+    /plugin marketplace add ./my-marketplace
+    /plugin install review-plugin@my-plugins
+    ```
+  </Step>
+
+  <Step title="Try it out">
+    Select some code in your editor and run your new command.
+
+    ```shell  theme={null}
+    /review
+    ```
+  </Step>
+</Steps>
+
+To learn more about what plugins can do, including hooks, agents, MCP servers, and LSP servers, see [Plugins](/en/plugins).
+
+<Note>
+  **How plugins are installed**: When users install a plugin, Claude Code copies the plugin directory to a cache location. This means plugins can't reference files outside their directory using paths like `../shared-utils`, because those files won't be copied.
+
+  If you need to share files across plugins, use symlinks (which are followed during copying) or restructure your marketplace so the shared directory is inside the plugin source path. See [Plugin caching and file resolution](/en/plugins-reference#plugin-caching-and-file-resolution) for details.
+</Note>
+
+## Create the marketplace file
+
+Create `.claude-plugin/marketplace.json` in your repository root. This file defines your marketplace's name, owner information, and a list of plugins with their sources.
+
+Each plugin entry needs at minimum a `name` and `source` (where to fetch it from). See the [full schema](#marketplace-schema) below for all available fields.
+
+```json  theme={null}
+{
+  "name": "company-tools",
+  "owner": {
+    "name": "DevTools Team",
+    "email": "devtools@example.com"
+  },
+  "plugins": [
+    {
+      "name": "code-formatter",
+      "source": "./plugins/formatter",
+      "description": "Automatic code formatting on save",
+      "version": "2.1.0",
+      "author": {
+        "name": "DevTools Team"
+      }
+    },
+    {
+      "name": "deployment-tools",
+      "source": {
+        "source": "github",
+        "repo": "company/deploy-plugin"
+      },
+      "description": "Deployment automation tools"
+    }
+  ]
+}
 ```
 
-**Structure**:
-- All plugins consolidated under `.claude-plugin/` directory
-- Full plugins (with commands/subagents) contain `.claude-plugin/plugin.json` manifests
-- Skill-only plugins contain SKILL.md with optional reference documentation
-- Top-level `marketplace.json` references all plugins with paths: `./.claude-plugin/{plugin-name}`
+## Marketplace schema
 
-**Plugin Types**:
-1. **Full Plugins** (svelte-flow, layerchart, layercake, svelte5-runes, goth-oauth, mycarrierpackets-api): Commands + Skills + Agents
-2. **Skill Plugins** (sequential-thinking, composable-svelte-components): Standalone skills with reference docs, no manifest needed
-3. **Hybrid Plugins** (quickbooks-api-integration, sveltekit-spa, shadcn-svelte-skill, golang-orchestrator, supabase, slack-block-kit-builder): Skills with manifest and reference docs, minimal structure
+### Required fields
 
-**Golang Orchestrator Pattern**:
-- Three complementary skills: effective-go (architecture) → backend-service-patterns (data layer) → echo-router-skill (HTTP layer)
-- Clear separation: effective-go provides foundational architecture, backend-service-patterns implements service/repository patterns, echo-router-skill handles HTTP routing
-- Hierarchical skill progression from general Golang best practices to specific TMS domain patterns to HTTP implementation
-- Skills designed to work together: architecture informs data layer design, which integrates with HTTP handlers
+| Field     | Type   | Description                                                                                                                                                            | Example        |
+| :-------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- |
+| `name`    | string | Marketplace identifier (kebab-case, no spaces). This is public-facing: users see it when installing plugins (for example, `/plugin install my-tool@your-marketplace`). | `"acme-tools"` |
+| `owner`   | object | Marketplace maintainer information ([see fields below](#owner-fields))                                                                                                 |                |
+| `plugins` | array  | List of available plugins                                                                                                                                              | See below      |
 
-**Visualization Plugins Pattern** (svelte-flow, layerchart, layercake):
-- **svelte-flow**: Interactive node-based editors with @xyflow/svelte
-  - Specialized agent: svelte-flow-expert (layout algorithms, performance optimization)
-  - Command: create-editor (orchestrates editor setup)
-  - Skill: comprehensive Svelte Flow library documentation
-- **layerchart**: Pre-built chart components built on Layer Cake
-  - Specialized agent: layerchart-expert (component selection, composition patterns)
-  - Skill: component types, data binding, styling
-  - No command needed (declarative component usage)
-- **layercake**: Headless visualization framework for custom charts
-  - Specialized agent: layercake-expert (scales, dimensions, custom rendering)
-  - Skill: framework architecture, D3 integration, reactivity patterns
-  - No command needed (framework-based development)
-- Relationship: LayerChart is built on LayerCake, but both independently useful
-- Full plugin structure: plugin.json + agents/ + skills/ + documentation
+<Note>
+  **Reserved names**: The following marketplace names are reserved for official Anthropic use and cannot be used by third-party marketplaces: `claude-code-marketplace`, `claude-code-plugins`, `claude-plugins-official`, `anthropic-marketplace`, `anthropic-plugins`, `agent-skills`, `life-sciences`. Names that impersonate official marketplaces (like `official-claude-plugins` or `anthropic-tools-v2`) are also blocked.
+</Note>
 
-**shadcn-svelte-skill Pattern**:
-- Hybrid plugin with skill + command for Svelte UI component development
-- Primary focus: shadcn-svelte with Tailwind CSS v4.1 and TypeScript
-- Also covers: Skeleton UI and Melt UI for library selection guidance
-- Command: /shadcn for guided component development (add, form, table, dialog, theme, debug)
-- References subdirectory contains specialized documentation:
-  - DataTable examples (TanStack Table v8 integration)
-  - Complex multi-component build workflows
-- TypeScript-first with Svelte 5 reactive variables
+### Owner fields
 
-**supabase Pattern**:
-- Hybrid plugin with multiple specialized skills for Supabase/PostgreSQL development
-- Skills organized by concern:
-  - `postgres-style-guide`: SQL style conventions
-  - `supabase-rls-policy`: Row-level security policy patterns
-  - `laneweaver-database-design`: laneweaverTMS domain-specific database patterns (UUIDs, audit columns, ENUMs, soft deletes, migrations)
-- Covers SQL style, row-level security, and laneweaverTMS database patterns
-- Each skill has comprehensive documentation with examples and best practices
+| Field   | Type   | Required | Description                      |
+| :------ | :----- | :------- | :------------------------------- |
+| `name`  | string | Yes      | Name of the maintainer or team   |
+| `email` | string | No       | Contact email for the maintainer |
 
-**svelte5-runes Pattern**:
-- Full plugin for Svelte 5 reactivity system guidance
-- Command: /runes for topic-based assistance (state, derived, effect, props, migrate, snippets, debug)
-- Agent: runes-expert for deep implementation decisions and migration strategies
-- Comprehensive reference documentation:
-  - Reactivity patterns ($state vs $derived vs $effect decisions)
-  - Migration gotchas (Svelte 4 → 5 translation)
-  - Component API ($props, $bindable patterns)
-  - Snippet syntax (replacing legacy slots)
-  - Common mistakes with fixes
-- Code examples for bindable props and effect vs derived patterns
+### Optional metadata
 
-**goth-oauth Pattern**:
-- Full plugin for Go OAuth authentication using github.com/markbates/goth
-- Three complementary skills: goth-fundamentals (core) → goth-providers (configuration) → goth-echo-security (framework + security)
-- Agent: goth-expert for troubleshooting OAuth flows and architecture decisions
-- Reference documentation organized by concern:
-  - Provider-specific setup guides (Google, Microsoft/Azure AD)
-  - Session storage comparison (cookies, Redis, PostgreSQL)
-  - Security checklist for pre-deployment verification
-- Designed to complement golang-orchestrator for complete Echo backend authentication
+| Field                  | Type   | Description                                                                                                                                                               |
+| :--------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `metadata.description` | string | Brief marketplace description                                                                                                                                             |
+| `metadata.version`     | string | Marketplace version                                                                                                                                                       |
+| `metadata.pluginRoot`  | string | Base directory prepended to relative plugin source paths (for example, `"./plugins"` lets you write `"source": "formatter"` instead of `"source": "./plugins/formatter"`) |
 
-**mycarrierpackets-api Pattern**:
-- Single comprehensive skill + command for MyCarrierPackets API integration
-- Skill: Complete API reference covering all endpoints, authentication, and Go implementation
-- Command: /mycarrierpackets with topic routing (auth, invite, carrier, monitor, documents, sync, debug)
-- Focus areas:
-  - OAuth2 password grant authentication with token management
-  - Carrier invitations via Intellivite (API, link-based, direct URL)
-  - Assure Advantage carrier monitoring and risk assessment
-  - Document retrieval (COI, W9, eAgreement, full packets)
-  - Synchronization patterns (push vs pull, polling strategies)
-- Go-first code examples with idiomatic patterns
-- Designed for TMS integration following golang-orchestrator patterns
-<!-- END AUTO-MANAGED -->
+## Plugin entries
 
-<!-- AUTO-MANAGED: conventions -->
-## Conventions
+Each plugin entry in the `plugins` array describes a plugin and where to find it. You can include any field from the [plugin manifest schema](/en/plugins-reference#plugin-manifest-schema) (like `description`, `version`, `author`, `commands`, `hooks`, etc.), plus these marketplace-specific fields: `source`, `category`, `tags`, and `strict`.
 
-**Plugin Structure**:
-- Plugin directories nested under `.claude-plugin/`
-- Full plugins have dedicated subdirectories: `commands/`, `skills/`, `docs/`
-- Skill-only plugins: SKILL.md with optional `references/` subdirectory for specialized docs
-- Documentation files (full plugins): README.md, INSTALL.md, PLUGIN_OVERVIEW.md, QUICK_START.md
+### Required fields
 
-**Marketplace Registry**:
-- `marketplace.json` contains plugin metadata with owner info
-- Plugin sources specified as relative paths: `./.claude-plugin/{name}`
-- Each plugin entry includes: name, source, version, author
-<!-- END AUTO-MANAGED -->
+| Field    | Type           | Description                                                                                                                                            |
+| :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`   | string         | Plugin identifier (kebab-case, no spaces). This is public-facing: users see it when installing (for example, `/plugin install my-plugin@marketplace`). |
+| `source` | string\|object | Where to fetch the plugin from (see [Plugin sources](#plugin-sources) below)                                                                           |
 
-<!-- MANUAL -->
-## Usage
+### Optional plugin fields
 
-### Installing Plugins from this Marketplace
+**Standard metadata fields:**
 
-```bash
-# Add this marketplace to Claude Code
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/linehaulai-claude-marketplace
+| Field         | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `description` | string  | Brief plugin description                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `version`     | string  | Plugin version                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `author`      | object  | Plugin author information (`name` required, `email` optional)                                                                                                                                                                                                                                                                                                                                                                    |
+| `homepage`    | string  | Plugin homepage or documentation URL                                                                                                                                                                                                                                                                                                                                                                                             |
+| `repository`  | string  | Source code repository URL                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `license`     | string  | SPDX license identifier (for example, MIT, Apache-2.0)                                                                                                                                                                                                                                                                                                                                                                           |
+| `keywords`    | array   | Tags for plugin discovery and categorization                                                                                                                                                                                                                                                                                                                                                                                     |
+| `category`    | string  | Plugin category for organization                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `tags`        | array   | Tags for searchability                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `strict`      | boolean | Controls whether plugins need their own `plugin.json` file. When `true` (default), the plugin source must contain a `plugin.json`, and any fields you add here in the marketplace entry get merged with it. When `false`, the plugin doesn't need its own `plugin.json`; the marketplace entry itself defines everything about the plugin. Use `false` when you want to define simple plugins entirely in your marketplace file. |
 
-# Install a specific plugin
-/plugin install quickbooks-api-integration
-/plugin install golang-orchestrator
-/plugin install sveltekit-spa
-/plugin install shadcn-svelte-skill
-/plugin install svelte-flow
-/plugin install layerchart
-/plugin install layercake
-/plugin install sequential-thinking
-/plugin install supabase
-/plugin install svelte5-runes
-/plugin install slack-block-kit-builder
-/plugin install composable-svelte-components
-/plugin install mycarrierpackets-api
+**Component configuration fields:**
+
+| Field        | Type           | Description                                      |
+| :----------- | :------------- | :----------------------------------------------- |
+| `commands`   | string\|array  | Custom paths to command files or directories     |
+| `agents`     | string\|array  | Custom paths to agent files                      |
+| `hooks`      | string\|object | Custom hooks configuration or path to hooks file |
+| `mcpServers` | string\|object | MCP server configurations or path to MCP config  |
+| `lspServers` | string\|object | LSP server configurations or path to LSP config  |
+
+## Plugin sources
+
+### Relative paths
+
+For plugins in the same repository:
+
+```json  theme={null}
+{
+  "name": "my-plugin",
+  "source": "./plugins/my-plugin"
+}
 ```
 
-### Development
+### GitHub repositories
 
-To develop or modify plugins in this marketplace:
+```json  theme={null}
+{
+  "name": "github-plugin",
+  "source": {
+    "source": "github",
+    "repo": "owner/plugin-repo"
+  }
+}
+```
 
-1. Navigate to `.claude-plugin/{plugin-name}/`
-2. Modify skills, commands, or documentation
-3. Update plugin version in `.claude-plugin/{plugin-name}/.claude-plugin/plugin.json`
-4. Update marketplace.json if metadata changes
-<!-- END MANUAL -->
+### Git repositories
+
+```json  theme={null}
+{
+  "name": "git-plugin",
+  "source": {
+    "source": "url",
+    "url": "https://gitlab.com/team/plugin.git"
+  }
+}
+```
+
+### Advanced plugin entries
+
+This example shows a plugin entry using many of the optional fields, including custom paths for commands, agents, hooks, and MCP servers:
+
+```json  theme={null}
+{
+  "name": "enterprise-tools",
+  "source": {
+    "source": "github",
+    "repo": "company/enterprise-plugin"
+  },
+  "description": "Enterprise workflow automation tools",
+  "version": "2.1.0",
+  "author": {
+    "name": "Enterprise Team",
+    "email": "enterprise@example.com"
+  },
+  "homepage": "https://docs.example.com/plugins/enterprise-tools",
+  "repository": "https://github.com/company/enterprise-plugin",
+  "license": "MIT",
+  "keywords": ["enterprise", "workflow", "automation"],
+  "category": "productivity",
+  "commands": [
+    "./commands/core/",
+    "./commands/enterprise/",
+    "./commands/experimental/preview.md"
+  ],
+  "agents": ["./agents/security-reviewer.md", "./agents/compliance-checker.md"],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "enterprise-db": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/db-server",
+      "args": ["--config", "${CLAUDE_PLUGIN_ROOT}/config.json"]
+    }
+  },
+  "strict": false
+}
+```
+
+Key things to notice:
+
+* **`commands` and `agents`**: You can specify multiple directories or individual files. Paths are relative to the plugin root.
+* **`${CLAUDE_PLUGIN_ROOT}`**: Use this variable in hooks and MCP server configs to reference files within the plugin's installation directory. This is necessary because plugins are copied to a cache location when installed.
+* **`strict: false`**: Since this is set to false, the plugin doesn't need its own `plugin.json`. The marketplace entry defines everything.
+
+## Host and distribute marketplaces
+
+### Host on GitHub (recommended)
+
+GitHub provides the easiest distribution method:
+
+1. **Create a repository**: Set up a new repository for your marketplace
+2. **Add marketplace file**: Create `.claude-plugin/marketplace.json` with your plugin definitions
+3. **Share with teams**: Users add your marketplace with `/plugin marketplace add owner/repo`
+
+**Benefits**: Built-in version control, issue tracking, and team collaboration features.
+
+### Host on other git services
+
+Any git hosting service works, such as GitLab, Bitbucket, and self-hosted servers. Users add with the full repository URL:
+
+```shell  theme={null}
+/plugin marketplace add https://gitlab.com/company/plugins.git
+```
+
+### Test locally before distribution
+
+Test your marketplace locally before sharing:
+
+```shell  theme={null}
+/plugin marketplace add ./my-local-marketplace
+/plugin install test-plugin@my-local-marketplace
+```
+
+For the full range of add commands (GitHub, Git URLs, local paths, remote URLs), see [Add marketplaces](/en/discover-plugins#add-marketplaces).
+
+### Require marketplaces for your team
+
+You can configure your repository so team members are automatically prompted to install your marketplace when they trust the project folder. Add your marketplace to `.claude/settings.json`:
+
+```json  theme={null}
+{
+  "extraKnownMarketplaces": {
+    "company-tools": {
+      "source": {
+        "source": "github",
+        "repo": "your-org/claude-plugins"
+      }
+    }
+  }
+}
+```
+
+You can also specify which plugins should be enabled by default:
+
+```json  theme={null}
+{
+  "enabledPlugins": {
+    "code-formatter@company-tools": true,
+    "deployment-tools@company-tools": true
+  }
+}
+```
+
+For full configuration options, see [Plugin settings](/en/settings#plugin-settings).
+
+### Enterprise marketplace restrictions
+
+For organizations requiring strict control over plugin sources, enterprise administrators can restrict which plugin marketplaces users are allowed to add using the [`strictKnownMarketplaces`](/en/settings#strictknownmarketplaces) setting in managed settings.
+
+When `strictKnownMarketplaces` is configured in managed settings, the restriction behavior depends on the value:
+
+| Value               | Behavior                                                         |
+| ------------------- | ---------------------------------------------------------------- |
+| Undefined (default) | No restrictions. Users can add any marketplace                   |
+| Empty array `[]`    | Complete lockdown. Users cannot add any new marketplaces         |
+| List of sources     | Users can only add marketplaces that match the allowlist exactly |
+
+#### Common configurations
+
+Disable all marketplace additions:
+
+```json  theme={null}
+{
+  "strictKnownMarketplaces": []
+}
+```
+
+Allow specific marketplaces only:
+
+```json  theme={null}
+{
+  "strictKnownMarketplaces": [
+    {
+      "source": "github",
+      "repo": "acme-corp/approved-plugins"
+    },
+    {
+      "source": "github",
+      "repo": "acme-corp/security-tools",
+      "ref": "v2.0"
+    },
+    {
+      "source": "url",
+      "url": "https://plugins.example.com/marketplace.json"
+    }
+  ]
+}
+```
+
+#### How restrictions work
+
+Restrictions are validated early in the plugin installation process, before any network requests or filesystem operations occur. This prevents unauthorized marketplace access attempts.
+
+The allowlist uses exact matching. For a marketplace to be allowed, all specified fields must match exactly:
+
+* For GitHub sources: `repo` is required, and `ref` or `path` must also match if specified in the allowlist
+* For URL sources: the full URL must match exactly
+
+Because `strictKnownMarketplaces` is set in [managed settings](/en/settings#settings-file-locations), individual users and project configurations cannot override these restrictions.
+
+For complete configuration details including all supported source types and comparison with `extraKnownMarketplaces`, see the [strictKnownMarketplaces reference](/en/settings#strictknownmarketplaces).
+
+## Validation and testing
+
+Test your marketplace before sharing.
+
+Validate your marketplace JSON syntax:
+
+```bash  theme={null}
+claude plugin validate .
+```
+
+Or from within Claude Code:
+
+```shell  theme={null}
+/plugin validate .
+```
+
+Add the marketplace for testing:
+
+```shell  theme={null}
+/plugin marketplace add ./path/to/marketplace
+```
+
+Install a test plugin to verify everything works:
+
+```shell  theme={null}
+/plugin install test-plugin@marketplace-name
+```
+
+For complete plugin testing workflows, see [Test your plugins locally](/en/plugins#test-your-plugins-locally). For technical troubleshooting, see [Plugins reference](/en/plugins-reference).
+
+## Troubleshooting
+
+### Marketplace not loading
+
+**Symptoms**: Can't add marketplace or see plugins from it
+
+**Solutions**:
+
+* Verify the marketplace URL is accessible
+* Check that `.claude-plugin/marketplace.json` exists at the specified path
+* Ensure JSON syntax is valid using `claude plugin validate` or `/plugin validate`
+* For private repositories, confirm you have access permissions
+
+### Marketplace validation errors
+
+Run `claude plugin validate .` or `/plugin validate .` from your marketplace directory to check for issues. Common errors:
+
+| Error                                             | Cause                           | Solution                                                      |
+| :------------------------------------------------ | :------------------------------ | :------------------------------------------------------------ |
+| `File not found: .claude-plugin/marketplace.json` | Missing manifest                | Create `.claude-plugin/marketplace.json` with required fields |
+| `Invalid JSON syntax: Unexpected token...`        | JSON syntax error               | Check for missing commas, extra commas, or unquoted strings   |
+| `Duplicate plugin name "x" found in marketplace`  | Two plugins share the same name | Give each plugin a unique `name` value                        |
+| `plugins[0].source: Path traversal not allowed`   | Source path contains `..`       | Use paths relative to marketplace root without `..`           |
+
+**Warnings** (non-blocking):
+
+* `Marketplace has no plugins defined`: add at least one plugin to the `plugins` array
+* `No marketplace description provided`: add `metadata.description` to help users understand your marketplace
+* `Plugin "x" uses npm source which is not yet fully implemented`: use `github` or local path sources instead
+
+### Plugin installation failures
+
+**Symptoms**: Marketplace appears but plugin installation fails
+
+**Solutions**:
+
+* Verify plugin source URLs are accessible
+* Check that plugin directories contain required files
+* For GitHub sources, ensure repositories are public or you have access
+* Test plugin sources manually by cloning/downloading
+
+### Files not found after installation
+
+**Symptoms**: Plugin installs but references to files fail, especially files outside the plugin directory
+
+**Cause**: Plugins are copied to a cache directory rather than used in-place. Paths that reference files outside the plugin's directory (such as `../shared-utils`) won't work because those files aren't copied.
+
+**Solutions**: See [Plugin caching and file resolution](/en/plugins-reference#plugin-caching-and-file-resolution) for workarounds including symlinks and directory restructuring.
+
+For additional debugging tools and common issues, see [Debugging and development tools](/en/plugins-reference#debugging-and-development-tools).
+
+## See also
+
+* [Discover and install prebuilt plugins](/en/discover-plugins) - Installing plugins from existing marketplaces
+* [Plugins](/en/plugins) - Creating your own plugins
+* [Plugins reference](/en/plugins-reference) - Complete technical specifications and schemas
+* [Plugin settings](/en/settings#plugin-settings) - Plugin configuration options
+* [strictKnownMarketplaces reference](/en/settings#strictknownmarketplaces) - Enterprise marketplace restrictions
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt
