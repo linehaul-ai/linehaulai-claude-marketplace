@@ -1188,6 +1188,17 @@ HomeTab()
 
 ## Resources
 
+### Reference Documentation
+
+For comprehensive guides, see the `references/` directory:
+
+- **[blocks.md](../../references/blocks.md)** - Detailed documentation on all block types
+- **[interactive-components.md](../../references/interactive-components.md)** - Complete guide to interactive elements
+- **[layout-patterns.md](../../references/layout-patterns.md)** - Composition and nesting best practices
+- **[surfaces.md](../../references/surfaces.md)** - Messages, modals, and home tabs deep dive
+
+### External Resources
+
 - [Slack Block Kit Builder](https://app.slack.com/block-kit-builder)
 - [Block Kit Documentation](https://api.slack.com/block-kit)
 - [slack-block-builder GitHub](https://github.com/raycharius/slack-block-builder)

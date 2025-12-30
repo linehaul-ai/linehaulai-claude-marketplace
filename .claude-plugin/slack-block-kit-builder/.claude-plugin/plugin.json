@@ -8,6 +8,7 @@
   "keywords": ["slack", "block-kit", "messages", "modals", "ui", "notifications", "bots"],
   "documentation": {
     "readme": "./README.md",
+    "install": "./INSTALL.md",
     "quickStart": "./QUICK_START.md",
     "overview": "./PLUGIN_OVERVIEW.md"
   }
