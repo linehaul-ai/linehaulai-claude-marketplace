@@ -761,3 +761,7 @@ Router:
 - **Repositories**: `/internal/repository/load.go`, `/internal/repository/query_builder.go`
 - **Models**: `/internal/models/load.go`, `/internal/models/validation.go`, `/internal/models/responses.go`
 - **Router**: `/internal/router/router.go`
+
+## Additional Documentation
+
+- **Error Handling**: For comprehensive error handling patterns beyond the examples shown here, see `effective-go/references/error-handling.md` (error wrapping, sentinel errors, custom types, panic/recover, testing)

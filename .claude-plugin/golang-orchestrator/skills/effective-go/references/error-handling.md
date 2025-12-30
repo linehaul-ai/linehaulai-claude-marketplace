@@ -1,12 +1,4 @@
----
-name: go-error-handling
-description: Use when Go error handling with error wrapping, sentinel errors, and custom error types. Use when handling errors in Go applications.
-allowed-tools:
-  - Bash
-  - Read
----
-
-# Go Error Handling
+# Go Error Handling Reference
 
 Master Go's error handling patterns including error wrapping, sentinel
 errors, custom error types, and the errors package for robust applications.
@@ -480,11 +472,11 @@ func TestCustomError(t *testing.T) {
 }
 ```
 
-## When to Use This Skill
+## When to Use This Reference
 
-Use go-error-handling when you need to:
+Consult this reference when you need to:
 
-- Handle errors in Go applications properly
+- Understand Go error handling patterns in depth
 - Add context to errors without losing information
 - Define domain-specific error types
 - Check for specific error conditions
