@@ -148,6 +148,16 @@
         "name": "fakebizprez"
       },
       "keywords": ["roadmap", "planning", "github-projects", "project-management"]
+    },
+    {
+      "name": "laneweaver-tms-agents",
+      "source": "./plugins/laneweaver-tms-agents",
+      "version": "1.0.0",
+      "description": "Development agents and freight domain skills for laneweaverTMS. Context-isolated agents for database schema and frontend work, plus freight industry knowledge, RBAC patterns, geospatial/PostGIS patterns, and API integration patterns.",
+      "author": {
+        "name": "fakebizprez"
+      },
+      "keywords": ["laneweaverTMS", "freight", "tms", "agents", "logistics", "transportation", "rbac", "postgis", "geospatial"]
     }
   ]
 }
