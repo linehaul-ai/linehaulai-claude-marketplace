@@ -138,6 +138,16 @@
       "author": {
         "name": "Linehaul AI"
       }
+    },
+    {
+      "name": "roadmap",
+      "source": "./plugins/roadmap",
+      "version": "0.2.0",
+      "description": "Project roadmap management with GitHub Projects integration",
+      "author": {
+        "name": "fakebizprez"
+      },
+      "keywords": ["roadmap", "planning", "github-projects", "project-management"]
     }
   ]
 }
