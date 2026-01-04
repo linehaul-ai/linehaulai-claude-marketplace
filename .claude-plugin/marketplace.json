@@ -158,6 +158,26 @@
         "name": "fakebizprez"
       },
       "keywords": ["laneweaverTMS", "freight", "tms", "agents", "logistics", "transportation", "rbac", "postgis", "geospatial"]
+    },
+    {
+      "name": "handoff",
+      "source": "./plugins/handoff",
+      "version": "0.1.0",
+      "description": "Context preservation for long-running conversations. Create structured handoff documents and resume work across sessions.",
+      "author": {
+        "name": "fakebizprez"
+      },
+      "keywords": ["handoff", "context", "session", "continuity", "resume"]
+    },
+    {
+      "name": "gh-issue",
+      "source": "./plugins/gh-issue",
+      "version": "0.1.0",
+      "description": "Create structured GitHub issues from conversation context with hierarchical sub-tasks and proper formatting.",
+      "author": {
+        "name": "fakebizprez"
+      },
+      "keywords": ["github", "issues", "planning", "project-management", "tasks"]
     }
   ]
 }
