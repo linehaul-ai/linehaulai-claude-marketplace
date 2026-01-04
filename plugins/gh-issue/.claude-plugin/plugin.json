@@ -1,0 +1,9 @@
+{
+  "name": "gh-issue",
+  "version": "0.1.0",
+  "description": "Create structured GitHub issues from conversation context with hierarchical sub-tasks and proper formatting.",
+  "author": {
+    "name": "fakebizprez"
+  },
+  "keywords": ["github", "issues", "planning", "project-management", "tasks"]
+}

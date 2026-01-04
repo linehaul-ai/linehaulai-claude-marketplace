@@ -1,0 +1,17 @@
+{
+  "description": "Context pressure warning before auto-compaction",
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/context-pressure-warning.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

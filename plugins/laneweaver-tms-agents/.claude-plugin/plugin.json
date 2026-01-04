@@ -1,0 +1,20 @@
+{
+  "name": "laneweaver-tms-agents",
+  "version": "1.0.0",
+  "description": "Development agents and freight domain skills for laneweaverTMS. Provides context-isolated agents for database schema and frontend work, plus freight industry knowledge, RBAC patterns, geospatial/PostGIS patterns, and API integration patterns.",
+  "author": {
+    "name": "fakebizprez",
+    "email": "anthony@linehaul.ai"
+  },
+  "keywords": [
+    "laneweaverTMS",
+    "freight",
+    "tms",
+    "agents",
+    "logistics",
+    "transportation",
+    "rbac",
+    "postgis",
+    "geospatial"
+  ]
+}

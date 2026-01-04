@@ -1,0 +1,29 @@
+{
+  "description": "GitHub issue creation reminders during planning and after commits",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/gh-issue-planning-reminder.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/gh-issue-commit-reminder.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
