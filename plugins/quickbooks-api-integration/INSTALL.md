@@ -26,7 +26,7 @@ This method installs the plugin from the CloudMachines marketplace repository.
 **Expected Output:**
 ```
 ✓ Marketplace 'cloudmachines-marketplace' added successfully
-✓ Found 2 plugins: golang-echo-orchestrator, quickbooks-api-integration
+✓ Found 2 plugins: golang-orchestrator, quickbooks-api-integration
 ```
 
 #### Step 2: Install the Plugin
