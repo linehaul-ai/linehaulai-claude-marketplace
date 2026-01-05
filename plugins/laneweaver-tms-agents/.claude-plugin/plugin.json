@@ -16,5 +16,13 @@
     "rbac",
     "postgis",
     "geospatial"
+  ],
+  "skills": [
+    "./skills/architecture/geospatial-postgis-patterns",
+    "./skills/architecture/rbac-authorization-patterns",
+    "./skills/development/api-integration-patterns",
+    "./skills/development/laneweaverTMS-feature-workflow",
+    "./skills/freight-domain/freight-domain-glossary",
+    "./skills/freight-domain/load-lifecycle-patterns"
   ]
 }
