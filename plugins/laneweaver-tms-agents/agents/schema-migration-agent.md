@@ -177,7 +177,7 @@ CREATE INDEX idx_[table]_[jsonb_col] ON public.[table]
 
 ## Your Process
 
-1. **Read erd.sql** to understand existing schema
+1. **Read `/docs/schema.json` (or `/docs/schema.sql` if you need additional context)** to understand existing schema
 2. **Identify related tables** and foreign key relationships
 3. **Check existing patterns** (how similar tables are structured)
 4. **Generate migration SQL** following all conventions
