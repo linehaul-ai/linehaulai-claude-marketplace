@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": {
+          "tool_name": "Write|Edit",
+          "file_paths": ["**/*.go", "go.mod", "go.sum"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "go fmt ./...",
+            "timeout": 120
+          },
+          {
+            "type": "command",
+            "command": "go vet ./...",
+            "timeout": 60
+          },
+          {
+            "type": "command",
+            "command": "go test ./...",
+            "timeout": 900
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": {
+          "tool_name": "Write|Edit",
+          "file_paths": ["**/*.go"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "go fmt ./...",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

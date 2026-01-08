@@ -178,6 +178,16 @@
         "name": "fakebizprez"
       },
       "keywords": ["github", "issues", "planning", "project-management", "tasks"]
+    },
+    {
+      "name": "jutsu-go",
+      "source": "./plugins/jutsu-go",
+      "version": "2.0.0",
+      "description": "Advanced Go skills for concurrency, error handling, and interfaces. Includes hooks for go fmt, go vet, and go test on Stop events.",
+      "author": {
+        "name": "Linehaul AI"
+      },
+      "keywords": ["go", "golang", "concurrency", "error-handling", "interfaces"]
     }
   ]
 }
