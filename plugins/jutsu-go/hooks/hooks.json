@@ -2,10 +2,7 @@
   "hooks": {
     "Stop": [
       {
-        "matcher": {
-          "tool_name": "Write|Edit",
-          "file_paths": ["**/*.go", "go.mod", "go.sum"]
-        },
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
@@ -27,10 +24,7 @@
     ],
     "SubagentStop": [
       {
-        "matcher": {
-          "tool_name": "Write|Edit",
-          "file_paths": ["**/*.go"]
-        },
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
