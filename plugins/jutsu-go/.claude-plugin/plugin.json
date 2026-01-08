@@ -6,6 +6,5 @@
     "name": "Linehaul AI",
     "email": "anthony@linehaul.ai"
   },
-  "license": "MIT",
   "keywords": ["go", "golang", "concurrency", "error-handling", "interfaces"]
 }

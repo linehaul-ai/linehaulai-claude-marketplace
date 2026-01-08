@@ -1,6 +1,6 @@
 ---
 name: go-error-handling
-description: Use when Go error handling with error wrapping, sentinel errors, and custom error types. Use when handling errors in Go applications.
+description: Use when implementing Go error handling with error wrapping, sentinel errors, and custom error types. Use when handling errors in Go applications.
 allowed-tools:
   - Bash
   - Read

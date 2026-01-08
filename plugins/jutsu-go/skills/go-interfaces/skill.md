@@ -1,6 +1,6 @@
 ---
 name: go-interfaces
-description: Use when Go interfaces including interface design, duck typing, and composition patterns. Use when designing Go APIs and abstractions.
+description: Use when designing Go interfaces including interface design, duck typing, and composition patterns. Use when designing Go APIs and abstractions.
 allowed-tools:
   - Bash
   - Read
