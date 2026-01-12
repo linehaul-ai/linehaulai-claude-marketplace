@@ -352,17 +352,62 @@ func main() {
 }
 ```
 
-### Prometheus Metrics
+### Observability (OpenTelemetry + Sentry)
 
-Integrate Prometheus monitoring:
+Integrate distributed tracing with OpenTelemetry SDK and error tracking with Sentry:
 
 ```go
-import "github.com/labstack/echo-contrib/echoprometheus"
+import (
+	"github.com/getsentry/sentry-go"
+	sentryecho "github.com/getsentry/sentry-go/echo"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+)
+
+func initTracer() (*sdktrace.TracerProvider, error) {
+	exporter, err := otlptracehttp.New(context.Background(),
+		otlptracehttp.WithEndpoint("signoz-collector:4318"),
+		otlptracehttp.WithInsecure(),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource.NewWithAttributes(
+			semconv.SchemaURL,
+			semconv.ServiceName("myapp"),
+		)),
+	)
+	otel.SetTracerProvider(tp)
+	return tp, nil
+}
 
 func main() {
+	// Initialize Sentry for error tracking
+	sentry.Init(sentry.ClientOptions{
+		Dsn:              os.Getenv("SENTRY_DSN"),
+		Environment:      os.Getenv("APP_ENV"),
+		TracesSampleRate: 1.0,
+	})
+	defer sentry.Flush(2 * time.Second)
+
+	// Initialize OpenTelemetry tracer
+	tp, _ := initTracer()
+	defer tp.Shutdown(context.Background())
+
 	e := echo.New()
-	e.Use(echoprometheus.NewMiddleware("myapp"))
-	e.GET("/metrics", echoprometheus.NewHandler())
+
+	// OpenTelemetry middleware for distributed tracing
+	e.Use(otelecho.Middleware("myapp"))
+
+	// Sentry middleware for error tracking
+	e.Use(sentryecho.New(sentryecho.Options{Repanic: true}))
 
 	e.GET("/hello", func(c echo.Context) error {
 		return c.String(http.StatusOK, "hello")
@@ -372,26 +417,51 @@ func main() {
 }
 ```
 
-### Request Logger with Zap
+For structured logging with trace correlation, use zerolog:
+
+```go
+import (
+	"github.com/rs/zerolog"
+	"go.opentelemetry.io/otel/trace"
+)
+
+func LoggerFromContext(ctx context.Context, logger zerolog.Logger) zerolog.Logger {
+	span := trace.SpanFromContext(ctx)
+	if span.SpanContext().IsValid() {
+		return logger.With().
+			Str("trace_id", span.SpanContext().TraceID().String()).
+			Str("span_id", span.SpanContext().SpanID().String()).
+			Logger()
+	}
+	return logger
+}
+```
+
+### Request Logger with ZeroLog
 
 Configure structured logging:
 
 ```go
-import "go.uber.org/zap"
+import (
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+)
 
-logger, _ := zap.NewProduction()
+// Initialize logger (or use global log.Logger)
+logger := zerolog.New(os.Stderr).With().Timestamp().Logger()
+
 e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
 	LogURI:    true,
 	LogStatus: true,
 	LogValuesFunc: func(c echo.Context, v middleware.RequestLoggerValues) error {
-		logger.Info("request",
-			zap.String("URI", v.URI),
-			zap.Int("status", v.Status),
-		)
+		logger.Info().
+			Str("URI", v.URI).
+			Int("status", v.Status).
+			Msg("request")
 		return nil
 	},
 }))
-```
+
 
 ### Route Export
 
