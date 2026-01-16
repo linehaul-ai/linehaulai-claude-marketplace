@@ -1,0 +1,9 @@
+{
+  "name": "testcontainers-go",
+  "version": "1.0.0",
+  "description": "Guide for using Testcontainers for Go with 62+ pre-configured modules for integration testing",
+  "author": {
+    "name": "linehaulai"
+  },
+  "keywords": ["go", "golang", "testcontainers", "integration-testing", "docker", "containers"]
+}

@@ -701,6 +701,7 @@ func Setup(e *echo.Echo, loadHandler *handlers.LoadHandler, accountHandler *hand
     })
 
     // API v1 routes
+    
     api := e.Group("/api/v1")
 
     // Loads

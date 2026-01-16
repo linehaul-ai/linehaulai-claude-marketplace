@@ -188,6 +188,26 @@
         "name": "Linehaul AI"
       },
       "keywords": ["go", "golang", "concurrency", "error-handling", "interfaces"]
+    },
+    {
+      "name": "go-tdd",
+      "source": "./plugins/go-tdd",
+      "version": "1.0.0",
+      "description": "TDD workflow for Go using stretchr/testify and testcontainers-go. Orchestrates parallel subagents to write unit tests, integration tests, and execute the red-green-refactor cycle.",
+      "author": {
+        "name": "linehaulai"
+      },
+      "keywords": ["go", "golang", "testing", "tdd", "testify", "testcontainers", "unit-tests", "integration-tests"]
+    },
+    {
+      "name": "testcontainers-go",
+      "source": "./plugins/testcontainers-go",
+      "version": "1.0.0",
+      "description": "Guide for using Testcontainers for Go with 62+ pre-configured modules for integration testing",
+      "author": {
+        "name": "linehaulai"
+      },
+      "keywords": ["go", "golang", "testcontainers", "integration-testing", "docker", "containers"]
     }
   ]
 }
