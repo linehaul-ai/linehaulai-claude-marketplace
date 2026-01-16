@@ -1,0 +1,18 @@
+{
+  "name": "go-tdd",
+  "version": "1.0.0",
+  "description": "TDD workflow for Go using stretchr/testify and testcontainers-go. Orchestrates parallel subagents to write unit tests, integration tests, and execute the red-green-refactor cycle.",
+  "author": {
+    "name": "linehaulai"
+  },
+  "keywords": [
+    "go",
+    "golang",
+    "testing",
+    "tdd",
+    "testify",
+    "testcontainers",
+    "unit-tests",
+    "integration-tests"
+  ]
+}
