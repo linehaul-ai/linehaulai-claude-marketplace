@@ -26,22 +26,6 @@
       }
     },
     {
-      "name": "sveltekit-spa",
-      "source": "./plugins/sveltekit-spa",
-      "version": "1.0.1",
-      "author": {
-        "name": "fakebizprez"
-      }
-    },
-    {
-      "name": "shadcn-svelte-skill",
-      "source": "./plugins/shadcn-svelte-skill",
-      "version": "1.0.0",
-      "author": {
-        "name": "fakebizprez"
-      }
-    },
-    {
       "name": "svelte-flow",
       "source": "./plugins/svelte-flow",
       "version": "1.0.0",
@@ -208,16 +192,6 @@
         "name": "linehaulai"
       },
       "keywords": ["go", "golang", "testcontainers", "integration-testing", "docker", "containers"]
-    },
-    {
-      "name": "svelte-testing",
-      "source": "./plugins/svelte-testing",
-      "version": "1.0.0",
-      "description": "Fix and create Svelte 5 tests with vitest-browser-svelte and Playwright. Use when fixing broken tests, debugging failures, writing unit/SSR/e2e tests, or working with vitest/Playwright.",
-      "author": {
-        "name": "fakebizprez"
-      },
-      "keywords": ["svelte", "svelte5", "testing", "vitest", "playwright", "ssr", "e2e", "unit-tests", "vitest-browser-svelte"]
     }
   ]
 }
