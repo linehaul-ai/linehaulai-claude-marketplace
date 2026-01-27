@@ -1,7 +1,7 @@
 ---
 name: runes
-description: Svelte 5 runes assistant for reactivity, props, effects, and migration
-argument-hint: [state | derived | effect | props | migrate | snippets | debug]
+description: Svelte 5 runes assistant for reactivity, props, effects, and snippets
+argument-hint: [state | derived | effect | props | snippets | debug]
 ---
 
 # Svelte 5 Runes Assistant
@@ -36,8 +36,7 @@ Provide a welcoming overview and topic menu:
    - `derived` - $derived vs $effect decisions
    - `effect` - Side effects and cleanup
    - `props` - $props and $bindable patterns
-   - `migrate` - Svelte 4 → 5 migration
-   - `snippets` - New snippet syntax vs slots
+   - `snippets` - Snippet syntax for content composition
    - `debug` - Common mistakes and fixes
 4. **Ask**: "What would you like help with?"
 
@@ -89,7 +88,7 @@ Guide through $state usage:
 
 5. **Reference**: See `references/reactivity-patterns.md` for advanced patterns
 
-6. **Next steps**: Suggest derived values or effects
+6. **Next steps**: Suggest derived values, effects, or snippets
 
 ---
 
@@ -141,7 +140,7 @@ Explain $derived patterns:
 
 6. **Reference**: See `references/reactivity-patterns.md`
 
-7. **Next steps**: Effects or migration patterns
+7. **Next steps**: Effects or snippets
 
 ---
 
@@ -219,7 +218,7 @@ Guide through $effect usage:
 
 6. **Reference**: See `references/reactivity-patterns.md` and `examples/effect-vs-derived.svelte`
 
-7. **Next steps**: Props or migration
+7. **Next steps**: Props or snippets
 
 ---
 
@@ -278,69 +277,15 @@ Guide through $props and $bindable:
 
 6. **Reference**: See `references/component-api.md` and `examples/bindable-props.svelte`
 
-7. **Next steps**: Snippets or migration
+7. **Next steps**: Snippets or debugging
 
 ---
 
-### If "$ARGUMENTS" contains "migrate" or "migration"
+### If "$ARGUMENTS" contains "snippet" or "snippets"
 
-Guide through Svelte 4 → 5 migration:
+Explain snippet syntax:
 
-1. **Overview**: Key syntax changes from Svelte 4 to Svelte 5
-
-2. **Quick translation table**:
-   | Svelte 4 | Svelte 5 |
-   |----------|----------|
-   | `export let prop` | `let { prop } = $props()` |
-   | `let x = 0` (reactive) | `let x = $state(0)` |
-   | `$: doubled = x * 2` | `const doubled = $derived(x * 2)` |
-   | `$: console.log(x)` | `$effect(() => console.log(x))` |
-   | `on:click={handler}` | `onclick={handler}` |
-   | `<slot />` | `{@render children()}` |
-   | `<slot name="header">` | `{@render header()}` |
-
-3. **Event handlers**:
-   ```svelte
-   <!-- Svelte 4 -->
-   <button on:click={handleClick}>Click</button>
-   <button on:click|preventDefault={handleSubmit}>Submit</button>
-
-   <!-- Svelte 5 -->
-   <button onclick={handleClick}>Click</button>
-   <button onclick={(e) => { e.preventDefault(); handleSubmit(e); }}>Submit</button>
-   ```
-
-4. **Slots to snippets**:
-   ```svelte
-   <!-- Svelte 4 -->
-   <slot name="header" />
-
-   <!-- Svelte 5 -->
-   <script>
-     let { header } = $props();
-   </script>
-   {#if header}
-     {@render header()}
-   {/if}
-   ```
-
-5. **Key gotchas**:
-   - Don't mix Svelte 4/5 syntax
-   - Event modifiers need manual handling
-   - Children via `{@render children()}` not `<slot />`
-   - Check Svelte version before suggesting syntax
-
-6. **Reference**: See `references/migration-gotchas.md`
-
-7. **Next steps**: Debug common issues
-
----
-
-### If "$ARGUMENTS" contains "snippet" or "snippets" or "slot" or "slots"
-
-Explain new snippet syntax:
-
-1. **Overview**: Snippets replace slots in Svelte 5
+1. **Overview**: Snippets provide content composition in Svelte 5
 
 2. **Basic snippet (children)**:
    ```svelte
@@ -413,7 +358,7 @@ Explain new snippet syntax:
 
 5. **Reference**: See `references/snippets-vs-slots.md`
 
-6. **Next steps**: Migration patterns or debugging
+6. **Next steps**: Debugging or other rune topics
 
 ---
 
@@ -425,15 +370,15 @@ Provide troubleshooting for common mistakes:
 
 2. **Common mistakes**:
 
-   **Mixing Svelte 4/5 syntax**:
+   **Using legacy syntax patterns**:
    ```svelte
-   <!-- WRONG: Mixed syntax -->
-   export let name;  // Svelte 4
-   let count = $state(0);  // Svelte 5
+   <!-- WRONG: Legacy patterns -->
+   export let name;
+   $: doubled = count * 2;
 
-   <!-- CORRECT: All Svelte 5 -->
+   <!-- CORRECT: Svelte 5 runes -->
    let { name } = $props();
-   let count = $state(0);
+   const doubled = $derived(count * 2);
    ```
 
    **Using $state in functions**:
@@ -462,12 +407,12 @@ Provide troubleshooting for common mistakes:
    const doubled = $derived(count * 2);
    ```
 
-   **Old event syntax**:
+   **Incorrect event syntax**:
    ```svelte
-   <!-- WRONG: Svelte 4 syntax -->
+   <!-- WRONG: on: directive syntax -->
    <button on:click={handler}>
 
-   <!-- CORRECT: Svelte 5 syntax -->
+   <!-- CORRECT: Standard DOM property -->
    <button onclick={handler}>
    ```
 
@@ -481,10 +426,10 @@ Provide troubleshooting for common mistakes:
 
 1. **Always reference svelte5-runes skill** and its reference documents
 2. **Check Svelte version** before suggesting syntax (Svelte 5+ only for runes)
-3. **Warn about mixing syntaxes** - pick one approach consistently
+3. **Use consistent Svelte 5 syntax** throughout all examples
 4. **Provide complete examples** that work out of the box
-5. **For migration**: Reference `migration-gotchas.md`
-6. **For patterns**: Reference `reactivity-patterns.md`
+5. **For patterns**: Reference `reactivity-patterns.md`
+6. **For common mistakes**: Reference `common-mistakes.md`
 
 ---
 

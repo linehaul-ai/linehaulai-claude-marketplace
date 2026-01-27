@@ -193,18 +193,18 @@ don't need deep reactivity, not because deep reactivity doesn't work.
 
 ---
 
-### 6. Mixing Svelte 4 and 5 Syntax ❌
+### 6. Using Legacy Syntax Patterns ❌
 
 **WRONG:**
 
 ```svelte
 <script>
-	let count = $state(0);
-	$: doubled = count * 2; // DON'T MIX reactive statements with runes!
+	export let name;
+	$: doubled = count * 2; // Legacy reactive statements
 </script>
 
 <button on:click={() => count++}>
-	<!-- DON'T MIX on: with runes -->
+	<!-- Legacy on: directive -->
 	{count}
 </button>
 ```
@@ -213,17 +213,18 @@ don't need deep reactivity, not because deep reactivity doesn't work.
 
 ```svelte
 <script>
+	let { name } = $props();
 	let count = $state(0);
-	let doubled = $derived(count * 2); // Use runes consistently
+	const doubled = $derived(count * 2); // Use runes
 </script>
 
 <button onclick={() => count++}>
-	<!-- Use onclick -->
+	<!-- Standard DOM property -->
 	{count}
 </button>
 ```
 
-**Why:** Svelte 5 requires consistent syntax. Pick one version.
+**Why:** Svelte 5 uses runes for reactivity and standard DOM properties for events.
 
 ---
 
@@ -317,13 +318,12 @@ $bindable().
 
 ---
 
-### 10. Using on: Event Handlers ❌
+### 10. Using on: Event Directives ❌
 
 **WRONG:**
 
 ```svelte
 <button on:click={handler}>Click</button>
-<!-- Svelte 4 syntax -->
 <button on:click|preventDefault={handler}>Click</button>
 ```
 
@@ -331,7 +331,6 @@ $bindable().
 
 ```svelte
 <button onclick={handler}>Click</button>
-<!-- Svelte 5 syntax -->
 <button
 	onclick={(e) => {
 		e.preventDefault();
@@ -340,8 +339,7 @@ $bindable().
 >
 ```
 
-**Why:** Svelte 5 uses standard DOM properties instead of `on:`
-directives.
+**Why:** Svelte 5 uses standard DOM event properties (onclick, onsubmit, etc.) instead of `on:` directives. Event modifiers like `|preventDefault` must be handled manually in the event handler.
 
 ---
 
@@ -547,7 +545,7 @@ proxies.
 3. ✅ Don't update dependencies inside `$effect`
 4. ✅ Keep runes at component top-level
 5. ✅ Reassign objects/arrays for nested changes
-6. ✅ Use consistent Svelte 5 syntax (no mixing)
+6. ✅ Use consistent Svelte 5 rune syntax
 7. ✅ Wrap reactive variables with `$state()`
 8. ✅ Use `$bindable()` for two-way binding
 9. ✅ Use `{@render children()}` not `{children}`

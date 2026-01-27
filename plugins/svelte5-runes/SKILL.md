@@ -2,7 +2,7 @@
 name: svelte5-runes
 # IMPORTANT: Keep description on ONE line for Claude Code compatibility
 # prettier-ignore
-description: Svelte 5 runes guidance. Use for reactive state, props, effects, or Svelte 4→5 migration. Covers $state, $derived, $effect, $props, $bindable. Prevents mixing syntaxes and reactivity mistakes.
+description: Svelte 5 runes guidance. Use for reactive state, props, and effects. Covers $state, $derived, $effect, $props, $bindable. Prevents mixing syntaxes and reactivity mistakes.
 ---
 
 # Svelte 5 Runes
@@ -13,7 +13,7 @@ description: Svelte 5 runes guidance. Use for reactive state, props, effects, or
 Computed: `$derived()` | Side effect: `$effect()` | State: `$state()`
 
 **Key rules:** Runes are top-level only. $derived can be overridden
-(use `const` for read-only). Don't mix Svelte 4/5 syntax.
+(use `const` for read-only). Use consistent Svelte 5 syntax.
 Objects/arrays are deeply reactive by default.
 
 ## Example
@@ -39,8 +39,6 @@ Objects/arrays are deeply reactive by default.
 
 - [references/reactivity-patterns.md](references/reactivity-patterns.md) -
   When to use each rune
-- [references/migration-gotchas.md](references/migration-gotchas.md) -
-  Svelte 4 → 5 translation
 - [references/component-api.md](references/component-api.md) -
   $props,
   $bindable patterns

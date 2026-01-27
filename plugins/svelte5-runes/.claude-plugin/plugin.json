@@ -1,7 +1,7 @@
 {
   "name": "svelte5-runes",
   "version": "1.0.0",
-  "description": "Svelte 5 runes guidance for reactive state, props, effects, and Svelte 4→5 migration",
+  "description": "Svelte 5 runes guidance for reactive state, props, and effects.",
   "author": {
     "name": "fakebizprez",
     "email": "anthony@linehaul.ai"

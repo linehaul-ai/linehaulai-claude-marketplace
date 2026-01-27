@@ -279,6 +279,7 @@ For more detailed patterns, consult these skills:
 
 - **`svelte5-runes`**: Comprehensive Svelte 5 runes documentation and migration patterns
 - **`shadcn-svelte-skill`**: shadcn-svelte component usage, theming, and customization
+- **`sveltekit-spa`**: SvelteKit SPA development patterns and best practices
 
 ## Best Practices
 

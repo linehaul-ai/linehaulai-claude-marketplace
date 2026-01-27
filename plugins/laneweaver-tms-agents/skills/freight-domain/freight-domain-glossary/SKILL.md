@@ -131,7 +131,6 @@ uncovered -> assigned -> dispatched -> at_origin -> in_transit -> at_destination
 | Abbreviation | Full Term |
 |--------------|-----------|
 | **TMS** | Transportation Management System |
-| **EDI** | Electronic Data Interchange |
 | **TONU** | Truck Ordered Not Used |
 | **POD** | Proof of Delivery |
 | **BOL** | Bill of Lading |

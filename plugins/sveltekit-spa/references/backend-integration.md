@@ -226,8 +226,7 @@ export async function load({ fetch }) {
 	if (!token) {
 		return { user: null };
 	}
-	
-	// Validate token with backend
+		// Validate token with backend
 	try {
 		const response = await fetch('http://localhost:8080/api/auth/me', {
 			headers: { 'Authorization': `Bearer ${token}` }

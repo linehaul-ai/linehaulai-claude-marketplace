@@ -1,32 +1,18 @@
-# Snippets vs Slots: New Content Composition in Svelte 5
+# Snippets: Content Composition in Svelte 5
 
-## Quick Comparison
+## Quick Reference
 
-| Feature          | Svelte 4 (Slots)               | Svelte 5 (Snippets + Children)         |
-| ---------------- | ------------------------------ | -------------------------------------- |
-| Default content  | `<slot />`                     | `{@render children()}`                 |
-| Named content    | `<slot name="header" />`       | `{@render header()}`                   |
-| Provide content  | `<div slot="header">...</div>` | `{#snippet header()}...{/snippet}`     |
-| Slot props       | `<slot item={data} />`         | `{@render item(data)}`                 |
-| Fallback content | `<slot>Fallback</slot>`        | `{@render children?.() ?? 'Fallback'}` |
+| Feature              | Syntax                                         |
+| -------------------- | ---------------------------------------------- |
+| Default content      | `{@render children()}`                         |
+| Named content        | `{@render header()}`                           |
+| Provide named        | `{#snippet header()}...{/snippet}`             |
+| With parameters      | `{@render item(data)}`                         |
+| Optional with fallback | `{@render children?.() ?? 'Fallback'}`       |
 
-## Children (Default Slot Replacement)
+## Children (Default Content)
 
-### Svelte 4: <slot />
-
-```svelte
-<!-- Card.svelte -->
-<div class="card">
-	<slot />
-</div>
-
-<!-- Usage -->
-<Card>
-	<p>This is card content</p>
-</Card>
-```
-
-### Svelte 5: {@render children()}
+### Component Definition
 
 ```svelte
 <!-- Card.svelte -->
@@ -37,40 +23,25 @@
 <div class="card">
 	{@render children()}
 </div>
+```
 
-<!-- Usage -->
+### Usage
+
+```svelte
 <Card>
 	<p>This is card content</p>
 </Card>
 ```
 
-**Key differences:**
+**Key points:**
 
 - Must declare `children` in `$props()`
 - Use `{@render children()}` to render
-- More explicit
+- Content between component tags becomes `children`
 
-## Named Snippets (Named Slots Replacement)
+## Named Snippets
 
-### Svelte 4: Named Slots
-
-```svelte
-<!-- Layout.svelte -->
-<div class="layout">
-	<header><slot name="header" /></header>
-	<main><slot /></main>
-	<footer><slot name="footer" /></footer>
-</div>
-
-<!-- Usage -->
-<Layout>
-	<div slot="header">Header content</div>
-	<div slot="footer">Footer content</div>
-	Main content
-</Layout>
-```
-
-### Svelte 5: Named Snippets
+### Component Definition
 
 ```svelte
 <!-- Layout.svelte -->
@@ -83,8 +54,11 @@
 	<main>{@render children()}</main>
 	<footer>{@render footer()}</footer>
 </div>
+```
 
-<!-- Usage -->
+### Usage
+
+```svelte
 <Layout>
 	{#snippet header()}
 		Header content
@@ -98,37 +72,15 @@
 </Layout>
 ```
 
-**Key differences:**
+**Key points:**
 
-- Snippets are props
-- More structured and typed
-- Can pass snippets around like functions
+- Snippets are props declared in `$props()`
+- Named snippets use `{#snippet name()}...{/snippet}` syntax
+- Content outside snippets becomes `children`
 
-## Snippet Parameters (Slot Props Replacement)
+## Snippet Parameters
 
-### Svelte 4: Slot Props
-
-```svelte
-<!-- List.svelte -->
-<script>
-	export let items;
-</script>
-
-<ul>
-	{#each items as item}
-		<li>
-			<slot {item} index={i} />
-		</li>
-	{/each}
-</ul>
-
-<!-- Usage -->
-<List items={users} let:item let:index>
-	{index}: {item.name}
-</List>
-```
-
-### Svelte 5: Snippet Parameters
+### Component Definition
 
 ```svelte
 <!-- List.svelte -->
@@ -143,8 +95,11 @@
 		</li>
 	{/each}
 </ul>
+```
 
-<!-- Usage -->
+### Usage
+
+```svelte
 <List items={users}>
 	{#snippet children(item, index)}
 		{index}: {item.name}
@@ -152,15 +107,15 @@
 </List>
 ```
 
-**Key improvements:**
+**Key points:**
 
 - Parameters are explicit function arguments
-- Better TypeScript support
-- More intuitive syntax
+- Better TypeScript support with typed parameters
+- Can pass any data to the snippet
 
-## Optional Snippets (Fallback Content)
+## Optional Snippets
 
-### With Fallback
+### With Conditional Rendering
 
 ```svelte
 <!-- Card.svelte -->
@@ -177,22 +132,9 @@
 
 	{@render children()}
 </div>
-
-<!-- Usage without header -->
-<Card>
-	<p>Content only</p>
-</Card>
-
-<!-- Usage with header -->
-<Card>
-	{#snippet header()}
-		Custom Title
-	{/snippet}
-	<p>Content</p>
-</Card>
 ```
 
-### Shorthand with ?.()
+### Shorthand with Optional Chaining
 
 ```svelte
 <script>
@@ -309,7 +251,7 @@ Snippets can be defined and reused within a component:
 {@render children()}
 ```
 
-### Multiple Children Sections
+### Multiple Content Sections
 
 ```svelte
 <script>
@@ -353,149 +295,38 @@ Snippets can be defined and reused within a component:
 {/each}
 ```
 
-## Migration Guide
-
-### 1. Simple Slot → Children
-
-**Before:**
-
-```svelte
-<div class="wrapper">
-	<slot />
-</div>
-```
-
-**After:**
-
-```svelte
-<script>
-	let { children } = $props();
-</script>
-
-<div class="wrapper">
-	{@render children()}
-</div>
-```
-
-### 2. Named Slots → Named Snippets
-
-**Before:**
-
-```svelte
-<slot name="title" />
-<slot name="content" />
-```
-
-**After:**
-
-```svelte
-<script>
-	let { title, content } = $props();
-</script>
-
-{@render title()}
-{@render content()}
-```
-
-### 3. Slot Props → Snippet Parameters
-
-**Before:**
-
-```svelte
-{#each items as item}
-	<slot {item} />
-{/each}
-```
-
-**After:**
-
-```svelte
-<script>
-	let { children } = $props();
-</script>
-
-{#each items as item}
-	{@render children(item)}
-{/each}
-```
-
-### 4. Optional Slots → Optional Snippets
-
-**Before:**
-
-```svelte
-{#if $$slots.header}
-	<slot name="header" />
-{:else}
-	<h1>Default</h1>
-{/if}
-```
-
-**After:**
-
-```svelte
-<script>
-	let { header } = $props();
-</script>
-
-{#if header}
-	{@render header()}
-{:else}
-	<h1>Default</h1>
-{/if}
-```
-
 ## Common Mistakes
 
-### ❌ Forgetting to Declare children
+### Forgetting to Declare children
 
 ```svelte
-<!-- RIGHT -->
-<script>
-	let { children } = $props();
-</script>
-
 <!-- WRONG -->
 <div>
 	{@render children()}
 	<!-- ERROR: children not defined -->
 </div>
 
+<!-- RIGHT -->
+<script>
+	let { children } = $props();
+</script>
+
 <div>
 	{@render children()}
 </div>
 ```
 
-### ❌ Using Parentheses Wrong
+### Missing Parentheses
 
 ```svelte
 <!-- WRONG -->
-<script>
-  let { children } = $props();
-</script>
-
 {@render children}  <!-- Missing () -->
 
 <!-- RIGHT -->
 {@render children()}
 ```
 
-### ❌ Mixing Svelte 4 and 5 Syntax
-
-```svelte
-<!-- WRONG -->
-<script>
-	let { children } = $props();
-</script>
-
-<slot />
-<!-- Don't mix slot with snippet syntax! -->
-
-<!-- RIGHT -->
-{@render children()}
-```
-
-### ❌ Not Handling Missing Optional Snippets
+### Not Handling Missing Optional Snippets
 
 ```svelte
 <!-- RISKY -->
@@ -515,12 +346,11 @@ Snippets can be defined and reused within a component:
 {@render header?.()}
 ```
 
-## Why Snippets Are Better
+## Why Snippets
 
-1. **More explicit** - Props make it clear what content slots exist
-2. **Better TypeScript support** - Can type snippet parameters
-3. **More composable** - Snippets can be passed around like functions
-4. **Cleaner syntax** - No `let:prop` bindings
-5. **More powerful** - Can define reusable snippets within components
-6. **Consistent** - Everything is a prop, not a special `<slot>`
-   element
+1. **Explicit** - Props make it clear what content areas exist
+2. **TypeScript support** - Can type snippet parameters
+3. **Composable** - Snippets can be passed around like functions
+4. **Cleaner syntax** - Straightforward function-like semantics
+5. **Powerful** - Can define reusable snippets within components
+6. **Consistent** - Everything is a prop

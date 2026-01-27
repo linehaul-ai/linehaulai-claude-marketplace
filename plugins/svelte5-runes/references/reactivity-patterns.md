@@ -122,7 +122,7 @@
 
 **Key points:**
 
-- Replaces `export let` from Svelte 4
+- Destructure all props at once
 - Supports defaults and rest props
 - Props are reactive automatically
 
