@@ -74,14 +74,6 @@
       }
     },
     {
-      "name": "composable-svelte-components",
-      "source": "./plugins/composable-svelte-components",
-      "version": "1.0.0",
-      "author": {
-        "name": "fakebizprez"
-      }
-    },
-    {
       "name": "slack-go-sdk",
       "source": "./plugins/slack-go-sdk",
       "version": "1.0.0",
@@ -110,15 +102,6 @@
       "name": "mycarrierpackets-api",
       "source": "./plugins/mycarrierpackets-api",
       "version": "1.0.0",
-      "author": {
-        "name": "Linehaul AI"
-      }
-    },
-    {
-      "name": "conflict-resolution",
-      "source": "./plugins/conflict-resolution",
-      "version": "1.0.0",
-      "description": "Handle merge conflicts cleanly with systematic resolution, verification, and code integrity",
       "author": {
         "name": "Linehaul AI"
       }
