@@ -1,6 +1,7 @@
 ---
 name: geospatial-postgis-patterns
 description: Implement geofences, spatial queries, real-time tracking, and mapping features in laneweaverTMS using PostGIS and PGRouting. Use when building location-based features, distance calculations, ETA predictions, or fleet visualization.
+keywords: [postgis, geospatial, gis, location-tracking, mapping]
 ---
 
 # Geospatial Patterns - PostGIS for laneweaverTMS

@@ -1,6 +1,7 @@
 ---
 name: load-lifecycle-patterns
 description: Document the critical business logic for load lifecycle and billing workflows in laneweaverTMS. Use when implementing load status transitions, billing workflows, financial calculations, TONU handling, or quick pay features.
+keywords: [freight-tms, load-management, billing, workflow, business-logic]
 ---
 
 # Load Lifecycle Patterns - Business Logic for laneweaverTMS

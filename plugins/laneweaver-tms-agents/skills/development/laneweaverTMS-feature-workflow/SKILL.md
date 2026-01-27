@@ -1,6 +1,7 @@
 ---
 name: laneweaverTMS-feature-workflow
 description: Step-by-step guide for implementing new features in laneweaverTMS, orchestrating use of specialized skills and agents for database, backend, and frontend work.
+keywords: [tms, workflow, orchestration, feature-development, implementation]
 ---
 
 # laneweaverTMS Feature Workflow

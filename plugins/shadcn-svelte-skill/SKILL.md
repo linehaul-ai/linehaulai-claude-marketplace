@@ -4,7 +4,9 @@ description: |
   Build accessible, customizable UI components for Svelte/SvelteKit projects using shadcn-svelte CLI, Tailwind CSS v4.1, and TypeScript. Use when creating component-based Svelte applications that need production-ready, styled UI elements with Tailwind v4.1 + Vite.
   Also covers the broader Svelte UI ecosystem including Skeleton UI and Melt UI for library selection guidance.
   Triggers: "add components", "UI components", "build UI", "install component", "create form", "create dialog", "svelte components", "shadcn-svelte", "skeleton ui", "melt ui"
-license: Open source (uses MIT from shadcn-svelte)
+keywords: [shadcn-svelte, ui-components, tailwind, form-building, svelte, sveltekit]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # shadcn-svelte with Tailwind v4.1 + Vite

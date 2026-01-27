@@ -2,11 +2,7 @@
 name: goth-expert
 description: Expert for troubleshooting Goth OAuth issues, provider selection, and authentication architecture decisions. Use when debugging OAuth flows, choosing between providers, reviewing authentication implementations, or designing secure auth systems.
 model: sonnet
-tools:
-  - Read
-  - Grep
-  - Glob
-  - WebFetch
+tools: Read, Grep, Glob, WebFetch, Write, Execute
 ---
 
 # Goth OAuth Expert

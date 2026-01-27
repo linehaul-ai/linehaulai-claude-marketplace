@@ -1,6 +1,7 @@
 ---
 name: slack-realtime-events
 description: Real-time event handling with Socket Mode and Events API. Use when building interactive Slack bots, handling message events, app mentions, reactions, button clicks, modal submissions, slash commands, or any event-driven Slack application functionality.
+keywords: [slack, socket-mode, events-api, real-time, webhooks]
 ---
 
 # Slack Real-time Events

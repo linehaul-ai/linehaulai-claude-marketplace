@@ -1,6 +1,7 @@
 ---
 name: rbac-authorization-patterns
 description: Provide patterns for implementing Role-Based Access Control and multi-tenant authorization in laneweaverTMS. Use when implementing user roles, permissions, tenant isolation, Echo authorization middleware, RLS policies for multi-tenant access, or JWT claims structure for freight brokerage applications.
+keywords: [rbac, authorization, security, multi-tenant, rls]
 ---
 
 # RBAC Authorization Patterns for laneweaverTMS

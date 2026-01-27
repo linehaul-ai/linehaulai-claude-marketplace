@@ -1,6 +1,7 @@
 ---
 name: slack-client-fundamentals
 description: Foundation skill for Slack Go SDK. Use when setting up a new Slack bot, initializing the API client, choosing between Web API vs Socket Mode vs Events API, implementing error handling patterns, or establishing testing strategies for Slack applications.
+keywords: [slack, sdk, client, websocket, events, api]
 ---
 
 # Slack Go SDK Client Fundamentals

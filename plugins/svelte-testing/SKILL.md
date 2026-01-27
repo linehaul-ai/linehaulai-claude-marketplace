@@ -2,6 +2,9 @@
 name: svelte-testing
 # prettier-ignore
 description: Fix and create Svelte 5 tests with vitest-browser-svelte and Playwright. Use when fixing broken tests, debugging failures, writing unit/SSR/e2e tests, or working with vitest/Playwright.
+keywords: [svelte, testing, vitest, playwright, unit-tests, e2e-testing]
+disable-model-invocation: true
+user-invocable: true
 ---
 
 # Svelte Testing

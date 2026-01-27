@@ -1,6 +1,9 @@
 ---
 name: goth-echo-security
 description: This skill should be used when the user asks to "integrate goth with echo", "oauth echo framework", "echo authentication", "goth session management", "oauth security", "secure oauth", "gorilla sessions", or needs help with session storage, security patterns, or Echo framework integration for Goth.
+keywords: [goth, echo, oauth2, session-management, security]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Goth Echo Integration & Security

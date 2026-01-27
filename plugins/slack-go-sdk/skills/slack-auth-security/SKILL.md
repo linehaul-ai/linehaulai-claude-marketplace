@@ -1,6 +1,7 @@
 ---
 name: slack-auth-security
 description: OAuth flows, token management, and security best practices for Slack apps. Use when implementing app distribution, multi-workspace installations, token storage and rotation, managing scopes and permissions, or securing production Slack applications.
+keywords: [slack, oauth2, authentication, security, token-management]
 ---
 
 # Slack Auth & Security

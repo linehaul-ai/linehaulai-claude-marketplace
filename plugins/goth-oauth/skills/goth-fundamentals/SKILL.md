@@ -1,6 +1,9 @@
 ---
 name: goth-fundamentals
 description: This skill should be used when the user asks to "set up goth", "install goth", "oauth in go", "authentication in golang", "goth package", "goth basics", or mentions "github.com/markbates/goth". Provides foundational guidance for the Goth multi-provider authentication library.
+keywords: [goth, oauth2, authentication, multi-provider, go]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Goth Fundamentals

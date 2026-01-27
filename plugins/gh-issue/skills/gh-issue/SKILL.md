@@ -1,6 +1,7 @@
 ---
 name: gh-issue
 description: Create structured GitHub issues with sub-tasks and proper formatting. Use when organizing development work into trackable issues, breaking down features into parent/child issues, converting discussions into tracked work, or creating issues from conversation context.
+keywords: [github, github-issues, automation, task-management, issue-tracking]
 ---
 
 # GitHub Issue Creator

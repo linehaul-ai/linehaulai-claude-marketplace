@@ -1,6 +1,7 @@
 ---
 name: slack-block-kit
 description: Build Slack Block Kit UIs for messages, modals, and Home tabs. Use when creating Slack notifications, interactive forms, bot responses, app dashboards, or any Slack UI. Covers blocks (Section, Actions, Input, Header), elements (Buttons, Selects, Date pickers), composition objects, and the slack-block-builder library.
+keywords: [slack, ui, block-kit, messaging, interactive-components]
 ---
 
 # Slack Block Kit

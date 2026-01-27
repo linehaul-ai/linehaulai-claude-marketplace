@@ -1,6 +1,9 @@
 ---
 name: echo
 description: Comprehensive guide for the Echo web framework. Use when building scalable, high-performance web applications and REST APIs in Go with features like flexible routing, middleware support, request/response binding, static file serving, and template rendering. Applies to installing Echo, defining routes, implementing middleware, handling requests/responses, and building web services.
+keywords: [echo, routing, middleware, go, web-framework]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Echo Web Framework

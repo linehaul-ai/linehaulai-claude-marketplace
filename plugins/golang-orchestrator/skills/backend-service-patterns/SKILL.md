@@ -1,6 +1,9 @@
 ---
 name: backend-service-patterns
 description: Use when implementing API endpoints, business logic, database operations, or adding new entities to laneweaverTMS Go/Echo backend.
+keywords: [go, echo, handlers, services, repositories, architecture]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Backend Service Patterns - Go/Echo/pgx for laneweaverTMS

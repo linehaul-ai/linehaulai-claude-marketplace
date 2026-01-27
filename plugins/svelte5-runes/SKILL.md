@@ -1,8 +1,9 @@
 ---
 name: svelte5-runes
-# IMPORTANT: Keep description on ONE line for Claude Code compatibility
-# prettier-ignore
 description: Svelte 5 runes guidance. Use for reactive state, props, and effects. Covers $state, $derived, $effect, $props, $bindable. Prevents mixing syntaxes and reactivity mistakes.
+keywords: [svelte, svelte5, reactivity, state-management, runes, frontend]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Svelte 5 Runes

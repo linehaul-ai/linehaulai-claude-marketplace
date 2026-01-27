@@ -1,6 +1,9 @@
 ---
 name: goth-providers
 description: This skill should be used when the user asks to "add a provider", "configure google oauth", "set up microsoft login", "azure ad authentication", "oauth provider setup", "add social login", or needs help with specific OAuth provider configuration in Goth.
+keywords: [goth, oauth2, google, microsoft, azure-ad]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Goth Providers

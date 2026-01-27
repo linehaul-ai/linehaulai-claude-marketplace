@@ -1,6 +1,7 @@
 ---
 name: svelte-flow
 description: Build node-based editors, interactive diagrams, and flow visualizations using Svelte Flow. Use when creating workflow editors, data flow diagrams, organizational charts, mindmaps, process visualizations, DAG editors, or any interactive node-graph UI. Supports custom nodes/edges, layouts (dagre, hierarchical), animations, and advanced features like proximity connect, floating edges, and contextual zoom.
+keywords: [svelte-flow, visualization, nodes, graph-editor, diagrams, interactive-ui]
 ---
 
 # Svelte Flow

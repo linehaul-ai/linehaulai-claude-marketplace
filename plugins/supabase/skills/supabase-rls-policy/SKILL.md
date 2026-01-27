@@ -1,6 +1,9 @@
 ---
 name: supabase-rls-policy
 description: Expert guidance for writing Supabase PostgreSQL row-level security (RLS) policies. Use when creating, modifying, or troubleshooting RLS policies for Supabase databases, implementing access control patterns, or setting up table-level security rules.
+keywords: [supabase, rls, postgresql, security, multi-tenant]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Supabase RLS Policy Expert

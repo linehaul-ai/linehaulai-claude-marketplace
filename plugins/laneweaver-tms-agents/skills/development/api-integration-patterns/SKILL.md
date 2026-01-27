@@ -1,6 +1,7 @@
 ---
 name: api-integration-patterns
 description: Unified patterns for external API integrations including OAuth2 token lifecycle, exponential backoff, webhooks vs polling, rate limiting, error handling, multi-tenant isolation, and webhook security. Use when integrating with QuickBooks, MyCarrierPackets, Slack, or any external OAuth2-based API in laneweaverTMS.
+keywords: [oauth2, webhooks, rate-limiting, token-management, api-integration]
 ---
 
 # API Integration Patterns

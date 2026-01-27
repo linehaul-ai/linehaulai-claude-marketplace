@@ -1,7 +1,9 @@
 ---
 name: mycarrierpackets-api
 description: "This skill should be used when the user asks to 'integrate with MyCarrierPackets', 'set up MCP API', 'onboard carriers', 'Intellivite invitation', 'monitor carriers', 'Assure Advantage', 'get carrier data', 'retrieve COI', 'get W9', 'carrier risk assessment', 'check completed packets', or when implementing TMS carrier management features. Provides comprehensive guidance for MyCarrierPackets API authentication, carrier invitations, data retrieval, monitoring, and document management."
-tags: [mcp, mycarrierpackets, carrier, tms, api, oauth2, monitoring, intellivite]
+keywords: [mcp, mycarrierpackets, carrier, tms, api, oauth2, monitoring, intellivite]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # MyCarrierPackets API Integration Guide

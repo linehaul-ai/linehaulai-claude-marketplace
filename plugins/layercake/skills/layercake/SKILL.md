@@ -1,7 +1,9 @@
 ---
 name: layercake
 description: Expert guide for Layer Cake, a headless Svelte visualization framework managing scales, dimensions, and data flow while supporting SVG, Canvas, HTML, and WebGL rendering contexts for responsive data visualizations.
-license: MIT
+keywords: [visualization, svelte, d3, layercake, data-visualization]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Layer Cake Skill

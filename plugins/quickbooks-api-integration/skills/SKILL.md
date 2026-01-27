@@ -1,8 +1,8 @@
 ---
 name: quickbooks-online-api
 description: Expert guide for QuickBooks Online API integration covering authentication, CRUD operations, batch processing, and best practices for invoicing, payments, and customer management.
+keywords: [quickbooks, accounting, api, oauth2, intuit]
 category: api-integration
-tags: [quickbooks, accounting, api, oauth2, intuit]
 version: 1.0.0
 context7_library: /websites/developer_intuit_app_developer_qbo
 ---

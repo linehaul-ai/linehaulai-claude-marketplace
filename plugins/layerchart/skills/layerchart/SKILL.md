@@ -1,7 +1,9 @@
 ---
 name: layerchart
 description: Expert guide for LayerChart, a Svelte component library for building diverse data visualizations (Cartesian, radial, hierarchical, geo, graph) with unopinionated building blocks, motion primitives, and advanced interactions.
-license: MIT
+keywords: [visualization, charts, svelte, layerchart, data-visualization]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # LayerChart Skill

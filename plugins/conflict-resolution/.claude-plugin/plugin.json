@@ -1,8 +1,0 @@
-{
-  "name": "conflict-resolution",
-  "version": "1.0.0",
-  "description": "Handle merge conflicts cleanly with systematic resolution, verification, and code integrity",
-  "author": {
-    "name": "Linehaul AI"
-  }
-}

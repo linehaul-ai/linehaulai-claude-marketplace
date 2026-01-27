@@ -1,6 +1,9 @@
 ---
 name: sveltekit-spa
 description: Comprehensive guide for building SvelteKit applications in SPA (Single Page Application) mode with client-side rendering only. Use when working on SvelteKit projects that use adapter-static with CSR, especially those with separate backends like Golang/Echo. Covers routing, page options, data loading, and proper SPA configuration while avoiding SSR features.
+keywords: [sveltekit, spa, client-side-rendering, frontend, routing, adapter-static]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # SvelteKit SPA Mode

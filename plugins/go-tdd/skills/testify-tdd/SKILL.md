@@ -1,6 +1,9 @@
 ---
 name: testify-tdd
 description: Use this skill when writing Go tests with stretchr/testify, implementing TDD workflows, creating mocks, or organizing test suites. Covers assert vs require patterns, interface mocking, table-driven tests, and the red-green-refactor cycle.
+keywords: [go, testing, tdd, testify, unit-tests, mocking]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Go Testing with Testify and TDD

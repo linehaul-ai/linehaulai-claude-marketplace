@@ -1,6 +1,7 @@
 ---
 name: freight-domain-glossary
 description: Freight brokerage industry terminology and domain concepts. Use when working with laneweaverTMS to understand loads, tenders, carriers, accounts, facilities, stops, financial terms, status workflows, equipment types, and common abbreviations.
+keywords: [freight, glossary, terminology, tms, domain-knowledge]
 ---
 
 # Freight Brokerage Domain Glossary

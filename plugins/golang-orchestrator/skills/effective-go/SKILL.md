@@ -1,6 +1,9 @@
 ---
 name: Effective Go
 description: "Apply Go best practices, idioms, and conventions from golang.org/doc/effective_go. Use when writing, reviewing, or refactoring Go code to ensure idiomatic, clean, and efficient implementations."
+keywords: [go, best-practices, coding-standards, idioms]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Effective Go

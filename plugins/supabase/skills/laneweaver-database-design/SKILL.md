@@ -1,6 +1,9 @@
 ---
 name: laneweaver-database-design
 description: Design PostgreSQL 17 schemas for laneweaverTMS using Supabase conventions - UUIDs, ENUMs, audit trails, soft deletes, triggers, functions, views, and atomic migration patterns.
+keywords: [postgresql, supabase, schema-design, migrations, database]
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Database Design - PostgreSQL 17 + Supabase for laneweaverTMS
