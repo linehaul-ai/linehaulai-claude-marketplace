@@ -177,7 +177,6 @@ Choose the right skill for each concern:
 | Concern | Skill to Use |
 |---------|--------------|
 | Database tables, migrations, indexes | `supabase:laneweaver-database-design` |
-| Row-level security policies | `supabase:supabase-rls-policy` |
 | Go handlers, services, repositories | `golang-orchestrator:backend-service-patterns` |
 | Go idioms and best practices | `golang-orchestrator:effective-go` |
 | Echo router and middleware | `golang-orchestrator:echo-router-skill` |

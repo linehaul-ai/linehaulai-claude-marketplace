@@ -667,7 +667,6 @@ Error Handling:
 ## Related Skills
 
 - **goth-oauth** - OAuth2 authentication foundation
-- **supabase-rls-policy** - Basic RLS patterns
 - **laneweaver-database-design** - Database schema conventions
 
 ## Reference

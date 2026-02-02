@@ -1,11 +1,10 @@
 # Supabase Plugin
 
-Supabase and PostgreSQL expertise for row-level security policies and laneweaverTMS-specific database patterns.
+Supabase and PostgreSQL expertise for laneweaverTMS-specific database patterns.
 
 ## What This Plugin Provides
 
 **Skills:**
-- `supabase-rls-policy`: Row-level security (RLS) policy patterns and access control for Supabase
 - `laneweaver-database-design`: laneweaverTMS-specific PostgreSQL patterns with UUIDs, ENUMs, audit trails, soft deletes, and atomic migrations
 
 ## Installation
@@ -16,29 +15,6 @@ Supabase and PostgreSQL expertise for row-level security policies and laneweaver
 ```
 
 ## Quick Start
-
-### RLS Policies
-
-Ask Claude: "Create RLS policies for [table/scenario]"
-- The `supabase-rls-policy` skill activates for access control
-- Provides policy patterns for common scenarios
-- Handles multi-tenancy, team-based access, and complex rules
-
-## Skills Overview
-
-### supabase-rls-policy - Access Control
-
-**Use when:**
-- Implementing row-level security
-- Designing multi-tenant access patterns
-- Creating team-based permissions
-- Setting up user-specific data access
-
-**Covers:**
-- RLS policy syntax and patterns
-- Common access control scenarios
-- Policy testing and debugging
-- Performance considerations
 
 ### laneweaver-database-design - Domain-Specific Patterns
 
@@ -70,8 +46,6 @@ Ask Claude: "Create RLS policies for [table/scenario]"
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin manifest
 ├── skills/
-│   ├── supabase-rls-policy/
-│   │   └── SKILL.md             # RLS policy patterns
 │   └── laneweaver-database-design/
 │       └── SKILL.md             # laneweaverTMS domain-specific patterns
 └── README.md                    # This file
@@ -87,20 +61,14 @@ Ask Claude: "Create RLS policies for [table/scenario]"
 ## Skill Triggering
 
 Skills automatically activate based on context:
-- **supabase-rls-policy**: "RLS policy", "row-level security", "access control"
 - **laneweaver-database-design**: "laneweaverTMS", "audit columns", "soft delete", "UUID primary key", "tender", "load"
 
 ## Development Workflow
 
-1. **Access Control** (supabase-rls-policy skill)
-   - Add RLS policies for data protection
-   - Implement multi-tenancy or team-based access
-   - Test policies thoroughly
-
-2. **Domain-Specific Patterns** (laneweaver-database-design skill)
-   - Use laneweaverTMS audit columns and soft deletes
-   - Follow UUID primary key conventions
-   - Implement required ENUM types
+**Domain-Specific Patterns** (laneweaver-database-design skill)
+- Use laneweaverTMS audit columns and soft deletes
+- Follow UUID primary key conventions
+- Implement required ENUM types
 
 ## Integration with Other Plugins
 
@@ -111,9 +79,8 @@ Works seamlessly with:
 
 ## Best Practices
 
-1. **Implement RLS Early** - Add and test RLS policies with `supabase-rls-policy` skill
-2. **Use Domain Patterns** - Follow `laneweaver-database-design` for TMS-specific conventions
-3. **Test Thoroughly** - Verify RLS policies and audit patterns work correctly
+1. **Use Domain Patterns** - Follow `laneweaver-database-design` for TMS-specific conventions
+2. **Test Thoroughly** - Verify audit patterns and migrations work correctly
 
 ## Documentation
 
