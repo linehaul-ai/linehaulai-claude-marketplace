@@ -175,6 +175,16 @@
         "name": "linehaulai"
       },
       "keywords": ["go", "golang", "testcontainers", "integration-testing", "docker", "containers"]
+    },
+    {
+      "name": "deep-wiki",
+      "source": "./plugins/deep-wiki",
+      "version": "2.0.0",
+      "description": "AI-powered wiki generator for code repositories. Generates Mermaid-rich documentation with dark-mode VitePress sites, onboarding guides, deep research, and source citations.",
+      "author": {
+        "name": "thegovind"
+      },
+      "keywords": ["wiki", "documentation", "vitepress", "mermaid", "onboarding", "research", "changelog"]
     }
   ]
 }
