@@ -1,6 +1,6 @@
 ---
 name: testcontainers-go
-description: A comprehensive guide for using Testcontainers for Go to write reliable integration tests with Docker containers in Go projects. Supports 62+ pre-configured modules for databases, message queues, cloud services, and more.
+description: Use this skill when writing Go integration tests with Docker containers, using testcontainers-go modules (postgres, redis, kafka, etc.), setting up container-based test infrastructure, or configuring container networking and wait strategies. Covers 62+ pre-configured modules, cleanup patterns, and multi-container setups.
 keywords: [go, testing, docker, integration-tests, testcontainers]
 license: MIT
 ---
