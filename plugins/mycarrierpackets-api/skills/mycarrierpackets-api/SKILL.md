@@ -28,6 +28,10 @@ MyCarrierPackets (MCP) provides a comprehensive API for Transportation Managemen
 - Managing carrier monitoring lists
 - Implementing fraud detection with associated carriers
 
+## Additional Resources
+
+- **`references/TMS-INTEGRATION.md`** — Official MCP TMS Integration Guide (API Demo): canonical numbered workflow for Intellivite invitations, completed-packet polling, Assure Advantage monitoring, document retrieval, and integration notes. Consult this reference when implementing or auditing a full TMS integration end-to-end.
+
 ---
 
 ## Authentication & Configuration
