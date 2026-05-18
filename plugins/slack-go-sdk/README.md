@@ -138,8 +138,8 @@ slack-client-fundamentals (foundation)
 
 ## Contributing
 
-This plugin is part of the Linehaul AI Claude Marketplace. To suggest improvements or report issues, please contact the plugin maintainer.
+This plugin is part of the linehaul.ai Claude Marketplace. To suggest improvements or report issues, please contact the plugin maintainer.
 
 ## License
 
-Copyright © 2025 Linehaul AI. All rights reserved.
+Copyright © 2025 linehaul.ai. All rights reserved.

@@ -2,10 +2,10 @@
 
 ## Add Marketplace
 
-If you haven't already added the Linehaul AI Claude Marketplace:
+If you haven't already added the linehaul.ai Claude Marketplace:
 
 ```bash
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/linehaulai-claude-marketplace
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/linehaulai-claude-marketplace
 ```
 
 Or use your custom path to the marketplace repository.

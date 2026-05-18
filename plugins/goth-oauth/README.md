@@ -146,7 +146,7 @@ SESSION_SECRET=your-32-byte-random-string
 
 ## Author
 
-Linehaul AI - support@linehaul.ai
+linehaul.ai - support@linehaul.ai
 
 ## License
 

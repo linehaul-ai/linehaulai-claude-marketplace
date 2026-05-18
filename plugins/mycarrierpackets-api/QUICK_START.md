@@ -73,15 +73,24 @@ POST /api/v1/Carrier/CarriersChanges
 Use the `/mycarrierpackets` command for topic-specific guidance:
 
 ```
-/mycarrierpackets auth       # Authentication details
-/mycarrierpackets invite     # Invitation patterns
-/mycarrierpackets monitor    # Monitoring setup
-/mycarrierpackets sync       # Polling strategies
+/mycarrierpackets auth        # Authentication details
+/mycarrierpackets invite      # Invitation patterns
+/mycarrierpackets carrier     # Profile, contacts, risk, incidents
+/mycarrierpackets monitor     # Monitoring setup
+/mycarrierpackets documents   # COI, W9, packet PDFs
+/mycarrierpackets sync        # Polling strategies
+/mycarrierpackets block       # Per-customer deny-list
+/mycarrierpackets fraud       # Phone/email association lookup
+/mycarrierpackets vin         # VIN verification
+/mycarrierpackets factoring   # Factoring directory
+/mycarrierpackets debug       # Error handling
+/mycarrierpackets endpoints   # Full endpoint INDEX
 ```
 
 ## Next Steps
 
-- Review the comprehensive SKILL.md for complete API documentation
-- Set up polling for CompletedPackets (5-15 min intervals)
-- Configure Assure Advantage monitoring for your carrier list
-- Implement error handling with retry logic
+- Browse `skills/mycarrierpackets-api/references/endpoints/INDEX.md` for the full endpoint catalog
+- Read `skills/mycarrierpackets-api/references/TMS-INTEGRATION.md` for the official numbered integration workflow
+- Set up polling for `CompletedPackets` (5–15 min intervals)
+- Configure Assure Advantage monitoring (`CarriersChanges` poll, 5–15 min)
+- Implement error handling with retry + exponential backoff (clear cached token on 401)

@@ -3,8 +3,8 @@
   "version": "1.1.0",
   "description": "Expert guidance for Golang backend development with Echo Router framework. Provides comprehensive skills for architecture, patterns, and best practices",
   "author": {
-    "name": "fakebizprez",
-    "email": "anthony@linehaul.ai"
+    "name": "linehaul.ai",
+    "email": "support@linehaul.ai"
   },
   "keywords": ["golang", "echo", "backend", "guidance", "rest-api", "architecture"]
 }

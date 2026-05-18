@@ -20,7 +20,7 @@ This method installs the plugin from the CloudMachines marketplace repository.
 #### Step 1: Add the Marketplace
 
 ```bash
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/dotfiles cloudmachines-marketplace
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/dotfiles cloudmachines-marketplace
 ```
 
 **Expected Output:**
@@ -61,13 +61,13 @@ This method is useful for plugin development or testing local modifications.
 #### Step 1: Clone or Navigate to Plugin Directory
 
 ```bash
-cd /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration
+cd /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration
 ```
 
 #### Step 2: Add as Local Marketplace
 
 ```bash
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration local-quickbooks
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration local-quickbooks
 ```
 
 #### Step 3: Install the Plugin
@@ -130,7 +130,7 @@ The skill `quickbooks-online-api` should be automatically available to Claude fo
 **Solution:**
 Verify the path is correct and the marketplace.json file exists:
 ```bash
-ls -la /Users/fakebizprez/Developer/repositories/dotfiles/.claude-plugin/marketplace.json
+ls -la /Users/linehaul.ai/Developer/repositories/dotfiles/.claude-plugin/marketplace.json
 ```
 
 If the file doesn't exist, you may need to set up the marketplace first.
@@ -147,7 +147,7 @@ If the file doesn't exist, you may need to set up the marketplace first.
 **Solution:**
 Check that the plugin is listed in the marketplace.json:
 ```bash
-cat /Users/fakebizprez/Developer/repositories/dotfiles/.claude-plugin/marketplace.json
+cat /Users/linehaul.ai/Developer/repositories/dotfiles/.claude-plugin/marketplace.json
 ```
 
 The plugins array should include:
@@ -177,12 +177,12 @@ The plugins array should include:
 
 2. **Verify command file exists:**
    ```bash
-   ls -la /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration/commands/quickbooks.md
+   ls -la /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration/commands/quickbooks.md
    ```
 
 3. **Check frontmatter in command file:**
    ```bash
-   head -10 /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration/commands/quickbooks.md
+   head -10 /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration/commands/quickbooks.md
    ```
 
    Should show:
@@ -205,12 +205,12 @@ Skill doesn't appear when asking QuickBooks API questions.
 
 1. **Verify skill file exists:**
    ```bash
-   ls -la /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration/skills/quickbooks-online-api.md
+   ls -la /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration/skills/quickbooks-online-api.md
    ```
 
 2. **Check skill frontmatter:**
    ```bash
-   head -10 /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration/skills/quickbooks-online-api.md
+   head -10 /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration/skills/quickbooks-online-api.md
    ```
 
    Should show:
@@ -229,18 +229,18 @@ Skill doesn't appear when asking QuickBooks API questions.
 
 **Error:**
 ```
-✗ Permission denied: /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration
+✗ Permission denied: /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration
 ```
 
 **Solution:**
 Check directory permissions:
 ```bash
-ls -la /Users/fakebizprez/Developer/repositories/dotfiles/
+ls -la /Users/linehaul.ai/Developer/repositories/dotfiles/
 ```
 
 Ensure you have read access to the plugin directory. If needed:
 ```bash
-chmod -R 755 /Users/fakebizprez/Developer/repositories/dotfiles/quickbooks-api-integration
+chmod -R 755 /Users/linehaul.ai/Developer/repositories/dotfiles/quickbooks-api-integration
 ```
 
 ---
@@ -252,7 +252,7 @@ To update to a newer version:
 ### Step 1: Pull Latest Changes
 
 ```bash
-cd /Users/fakebizprez/Developer/repositories/dotfiles
+cd /Users/linehaul.ai/Developer/repositories/dotfiles
 git pull origin main
 ```
 

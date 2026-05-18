@@ -1,6 +1,6 @@
 # Instructions for Agents
 
-This document provides guidelines for AI agents working on the Linehaul AI Claude Marketplace repository.
+This document provides guidelines for AI agents working on the linehaul.ai Claude Marketplace repository.
 
 ## Project Structure
 

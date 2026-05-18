@@ -15,7 +15,7 @@ Complete installation guide for the Slack Block Kit plugin.
 **Step 1**: Add the marketplace
 
 ```bash
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/linehaulai-claude-marketplace
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/linehaulai-claude-marketplace
 ```
 
 **Step 2**: Install the plugin

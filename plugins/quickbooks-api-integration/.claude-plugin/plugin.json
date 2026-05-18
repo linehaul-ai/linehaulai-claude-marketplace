@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "QuickBooks Online API integration toolkit for developers building ERP, CRM, TMS, and accounting system integrations with comprehensive OAuth2, invoicing, payments, and sync workflows",
   "author": {
-    "name": "fakebizprez",
-    "email": "anthony@linehaul.ai"
+    "name": "linehaul.ai",
+    "email": "support@linehaul.ai"
   },
   "keywords": [
     "quickbooks",

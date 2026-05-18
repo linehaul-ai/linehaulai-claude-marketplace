@@ -35,7 +35,7 @@ This plugin is designed for:
 
 ```bash
 # Add the CloudMachines marketplace
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/dotfiles cloudmachines-marketplace
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/dotfiles cloudmachines-marketplace
 
 # Install the plugin
 /plugin install quickbooks-api-integration@cloudmachines-marketplace

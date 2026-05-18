@@ -3,8 +3,8 @@
 ## From Marketplace
 
 ```bash
-# Add the Linehaul AI marketplace (if not already added)
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/linehaulai-claude-marketplace
+# Add the linehaul.ai marketplace (if not already added)
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/linehaulai-claude-marketplace
 
 # Install the plugin
 /plugin install mycarrierpackets-api
@@ -38,4 +38,3 @@ export MCP_PASSWORD="your_integration_password"
 
 Obtain credentials from:
 https://mycarrierpackets.com/IntegrationTools
-cca

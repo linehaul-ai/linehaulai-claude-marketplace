@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Build interactive node-based editors, flow diagrams, and interactive visualizations using Svelte Flow (@xyflow/svelte). Includes expert guidance for node/edge design, layout algorithms, and custom components.",
   "author": {
-    "name": "fakebizprez"
+    "name": "linehaul.ai"
   },
   "keywords": [
     "svelte",

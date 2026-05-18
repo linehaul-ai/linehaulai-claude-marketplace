@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Comprehensive guidance for building Slack applications with the official Go SDK",
   "author": {
-    "name": "fakebizprez",
-    "email": "anthony@linehaul.ai"
+    "name": "linehaul.ai",
+    "email": "support@linehaul.ai"
   },
   "keywords": ["slack", "go", "sdk", "bot", "api", "oauth", "events", "socket-mode"]
 }

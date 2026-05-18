@@ -1,0 +1,6413 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "My Carrier Packets Api"
+  },
+  "host": "api.mycarrierpackets.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/v1/Carrier/PreviewCarrier": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Retrieves carrier profile data, risk assessment, certdata. **Excludes** carrier packet data.",
+        "description": "",
+        "operationId": "CarrierController_PreviewCarrier",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. For example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.PreviewCarrier"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetCarrierData": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Retrieves carrier profile data, risk assessment, certdata. **Includes** carrier packet data.",
+        "description": "",
+        "operationId": "CarrierController_GetCarrierData",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. Example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "DocketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierAADTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetCarrierContacts": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Retrieves a list of authorized and verified users for a carrier.",
+        "description": "",
+        "operationId": "CarrierController_GetCarrierContacts",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. For example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.GetCarrierContactsResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/FindAssociatedCarriers": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Searches carrier contact sources within MCP/FMCSA for associated carriers.",
+        "description": "This method searches for carriers associated with the given phone number or email address.",
+        "operationId": "CarrierController_FindAssociatedCarriers",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "The phone number to search for associated carriers.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "The email address to search for associated carriers.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.FindAssociatedCarriersDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetCarrierIncidentReports": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Retrieves incident report details for a given carrier.",
+        "description": "",
+        "operationId": "CarrierController_GetCarrierIncidentReports",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT number of the carrier.For example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierIncidentReportDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetCarrierVINVerifications": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Retrieves Carrier VIN Verification status details.",
+        "description": "",
+        "operationId": "CarrierController_GetCarrierVINVerifications",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT number of the carrier.For example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierVINVerificationDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetMonitoredCarrierContactsData": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Retrieves a list of authorized and verified users for every carrier in the monitored list.",
+        "operationId": "CarrierController_GetMonitoredCarrierContactsData",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "The current page number.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of carriers returned per page. The recommended and default value is 250. The max is 500.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.MonitoredCarriersContactsDataDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetDocument": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Pulls PDF documents so the TMS/customer can store them locally for their records.",
+        "description": "",
+        "operationId": "CarrierController_GetDocument",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the document. Example: company-agreement/12/f9f10ed2-799a-4521-a09b-19fb088e16c2",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/EmailPacketInvitation": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Sends an email with a packet to the carrier based on set parameters.",
+        "description": "",
+        "operationId": "CarrierController_EmailPacketInvitation",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "carrierEmail",
+            "in": "query",
+            "description": "Email of the carrier. Example: abc@somedomain.com",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dotNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. Example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "Username of the customer. Optional parameter. Example: abc",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sendConfirmationEmail",
+            "in": "query",
+            "description": "Indicates whether or not to send a confirmation email that the invitation was sent. Optional Parameter.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "notificationEmails",
+            "in": "query",
+            "description": "Comma-separated list of additional emails to notify. Example: notify1@domain.com, notify2@domain.com",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/RequestUserVerification": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Requests user verification (non-onboarding Intellivite).",
+        "description": "Remarks",
+        "operationId": "CarrierController_RequestUserVerification",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userVerificationEmail",
+            "in": "query",
+            "description": "Email of the user. Example: abc@somedomain.com",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dotNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. Example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "Username of the customer. Optional parameter. Example: abc",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/RequestVINVerification": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Requests Vehicle Identification Number (VIN) verification.",
+        "description": "VIN validation requests are sent via text message only. Email VIN validations are no longer supported.",
+        "operationId": "CarrierController_RequestVINVerification",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "deliveryOption",
+            "in": "query",
+            "description": "Method for sending the request. Only PhoneNumber (2) is supported.Value/Type List: 1 = Email, 2 = PhoneNumber; Value Only List: ",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vinVerificationEmail",
+            "in": "query",
+            "description": "Not used. Email VIN validations are no longer supported.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "vinVerificationPhoneNumber",
+            "in": "query",
+            "description": "Phone number to send the request to",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "dotNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. Example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC12345",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "Username of the customer. Optional parameter. Example: abc",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "outputVINVerificationRequestID",
+            "in": "query",
+            "description": "Output VIN Verification Request ID. Example: false",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns either a plain text string containing a message when outputVINVerificationRequestID is false, or an object with 'VinVerificationRequestID' and 'Message' when outputVINVerificationRequestID is true.",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.RequestVINVerificationOutput"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/CompletedPackets": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Displays carriers that have completed packets within a specified date range.",
+        "description": "Common practice is to poll this API every 5-15 minutes.",
+        "operationId": "CarrierController_CompletedPackets",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From Date. Example: 2021-07-01T01:00:00",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To Date. Required parameter. Example: 2021-07-01T14:00:00",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CompletedPacketDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/CarriersChanges": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Monitors changes to carrier insurance, risk assessment, and other important details.",
+        "description": "Common practice is to poll this API every 5-15 minutes.\r\n\r\nIf pagination parameters are not supplied, all carrier changes are returned. Otherwise, the number of carrier changes returned is limited to the pageSize.\r\nIf paging is requested, the response header will contain an \"X-Pagination\" item containing the details of the paged response.",
+        "operationId": "CarrierController_CarriersChanges",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From Date. Required parameter. Example: 2021-07-01T01:00:00",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To Date. Required parameter. Example: 2021-07-01T23:00:00",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "The current page number.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of carriers returned per page. The recommended and default value is 250. The max is 500.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierChangesResultDTO"
+            },
+            "headers": {
+              "X-Pagination": {
+                "description": "Pagination data formatted as {\"pageNumber\":1,\"pageSize\":250,\"totalPages\":10,\"totalCount\":2500}",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/RequestMonitoring": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Adds a carrier to the monitoring list.",
+        "description": "Remarks",
+        "operationId": "CarrierController_RequestMonitoring",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT Number",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "DocketNumber",
+            "in": "query",
+            "description": "Docket number or MC Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IntrastateNumber",
+            "in": "query",
+            "description": "Intrastate Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.RequestMonitoringOutput"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/CancelMonitoring": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Removes a carrier from the monitoring list.",
+        "description": "",
+        "operationId": "CarrierController_CancelMonitoring",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT Number",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "DocketNumber",
+            "in": "query",
+            "description": "Docket number or MC Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IntrastateNumber",
+            "in": "query",
+            "description": "Intrastate Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CancelMonitoringOutput"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/BlockCarrier": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Blocks a carrier.",
+        "description": "",
+        "operationId": "CarrierController_BlockCarrier",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT Number",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "DocketNumber",
+            "in": "query",
+            "description": "Docket number or MC Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IntrastateNumber",
+            "in": "query",
+            "description": "Intrastate Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.BlockCarrierOutput"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/UnblockCarrier": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Unblocks a carrier.",
+        "description": "",
+        "operationId": "CarrierController_UnblockCarrier",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "DOTNumber",
+            "in": "query",
+            "description": "DOT Number",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "DocketNumber",
+            "in": "query",
+            "description": "Docket number or MC Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IntrastateNumber",
+            "in": "query",
+            "description": "Intrastate Number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.UnblockCarrierOutput"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetUpdatedFactoringCompanies": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Returns list of MyCarrierPortal Factoring Companies with their unique identifiers.",
+        "description": "Retrieves updated factoring companies for a given date range.",
+        "operationId": "CarrierController_GetUpdatedFactoringCompanies",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "Start date for the update period. For example: 2024-01-01T00:00:00Z",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "End date for the update period. For example: 2024-01-01T23:59:59Z",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.UpdatedFactoringCompaniesDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetCarrierRiskAssessment": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Returns carrier's risk assessment with provided DOT number and Docket number.",
+        "description": "",
+        "operationId": "CarrierController_GetCarrierRiskAssessment",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "dotNumber",
+            "in": "query",
+            "description": "DOT number of the carrier. Example: 12345",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "docketNumber",
+            "in": "query",
+            "description": "Docket number of the carrier. Example: MC010203. Optional",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierRiskAssessmentDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/GetMonitoredCarriersRiskAssessment": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Returns all monitored carrier risk assessments in bulk. Includes paging.",
+        "description": "",
+        "operationId": "CarrierController_GetMonitoredCarriersRiskAssessment",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "Default: 1",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Default: 250. If set to more than 500, or less than 1, the default value will be used.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.MonitoredCarriersRiskAssessmentDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/MonitoredCarriers": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Provides a list of monitored carriers.",
+        "description": "If pagination parameters are not supplied, all monitored carriers are returned. Otherwise, the number of monitored carriers returned is limited to the pageSize.\r\nIf paging is requested, the response header will contain an \"X-Pagination\" item containing the details of the paged response.",
+        "operationId": "CarrierController_MonitoredCarriers",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "The current page number.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of carriers returned per page. The recommended and default value is 2500. The max is 5000.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.MonitoredCarrierDTO"
+              }
+            },
+            "headers": {
+              "X-Pagination": {
+                "description": "Pagination data formatted as {\"pageNumber\":1,\"pageSize\":2500,\"totalPages\":10,\"totalCount\":25000}",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/MonitoredCarrierData": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Calls GetCarrierData for all carriers on the monitored list.",
+        "description": "This is a paginated API call to be used for bulk sync.",
+        "operationId": "CarrierController_MonitoredCarrierData",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "The current page number.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of carriers returned per page. The recommended and default value is 250. The max is 500.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.MonitoredCarrierDataDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Carrier/BlockedCarriers": {
+      "post": {
+        "tags": [
+          "CarrierController"
+        ],
+        "summary": "Provides a list of blocked carriers.",
+        "description": "If pagination parameters are not supplied, all blocked carriers are returned. Otherwise, the number of blocked carriers returned is limited to the pageSize.\r\nIf paging is requested, the response header will contain an \"X-Pagination\" item containing the details of the paged response.",
+        "operationId": "CarrierController_BlockedCarriers",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "The current page number.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of carriers returned per page. The recommended and default value is 2500. The max is 5000.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "bearer access_token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CustomerBlockedCarrierDTO"
+              }
+            },
+            "headers": {
+              "X-Pagination": {
+                "description": "Pagination data formatted as {\"pageNumber\":1,\"pageSize\":2500,\"totalPages\":10,\"totalCount\":25000}",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.PreviewCarrier": {
+      "type": "object",
+      "properties": {
+        "CarrierID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DotNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "Street": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "ZipCode": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "StatusDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "InProcessState": {
+          "type": "string"
+        },
+        "PossibleFraud": {
+          "type": "string"
+        },
+        "DoubleBrokering": {
+          "type": "string"
+        },
+        "IncidentReports": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.IncidentReports"
+        },
+        "FraudCallNumber": {
+          "type": "string"
+        },
+        "HasSaferWatchKey": {
+          "type": "boolean"
+        },
+        "WatchdogReports": {
+          "type": "string"
+        },
+        "OnCurrentCustomerAgreement": {
+          "type": "boolean"
+        },
+        "CarrierRating": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Carriers.CarrierRating"
+        },
+        "RiskAssessment": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessment"
+        },
+        "RiskAssessmentDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetails"
+        },
+        "CertData": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.CertData"
+        },
+        "Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.CarrierEmail"
+          }
+        },
+        "Source": {
+          "format": "int32",
+          "description": "Value/Type List: 0 = Unknown, 1 = ThirdParty, 2 = MyCarrierPackets, 3 = FMCSAData; Value Only List: ",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "IsIntrastateCarrier": {
+          "type": "boolean"
+        },
+        "IsMonitored": {
+          "type": "boolean"
+        },
+        "IsBlocked": {
+          "type": "boolean"
+        },
+        "FreightValidateStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.IncidentReports": {
+      "type": "object",
+      "properties": {
+        "TotalIncidentReports": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TotalIncidentReportsWithFraud": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Carriers.CarrierRating": {
+      "type": "object",
+      "properties": {
+        "CarrierID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CustomerID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CustomerRating": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RatingSum": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TotalRatings": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LowRatings": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TotalRatingPercent": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "CustomerRatingPercent": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "RatingValue": {
+          "format": "double",
+          "type": "number",
+          "readOnly": true
+        },
+        "RatingValueText": {
+          "type": "string",
+          "readOnly": true
+        },
+        "AvgRatingText": {
+          "type": "string",
+          "readOnly": true
+        },
+        "AvgRatingBasisText": {
+          "type": "string",
+          "readOnly": true
+        },
+        "AvgRatingTextPlusRatingBasisText": {
+          "type": "string",
+          "readOnly": true
+        },
+        "CustomerRatingText": {
+          "type": "string",
+          "readOnly": true
+        },
+        "HasCompletedPacket": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessment": {
+      "type": "object",
+      "properties": {
+        "Overall": {
+          "type": "string"
+        },
+        "Authority": {
+          "type": "string"
+        },
+        "Insurance": {
+          "type": "string"
+        },
+        "Safety": {
+          "type": "string"
+        },
+        "Operation": {
+          "type": "string"
+        },
+        "Other": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetails": {
+      "type": "object",
+      "properties": {
+        "IsIntrastateCarrier": {
+          "type": "boolean"
+        },
+        "TotalPoints": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OverallRating": {
+          "type": "string"
+        },
+        "Authority": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetail"
+        },
+        "Insurance": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetail"
+        },
+        "Safety": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetail"
+        },
+        "Operation": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetail"
+        },
+        "Other": {
+          "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetail"
+        },
+        "ReviewState": {
+          "type": "string"
+        },
+        "ReviewDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsRiskAssessmentModels.ReviewDetails"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.CertData": {
+      "type": "object",
+      "properties": {
+        "Status": {
+          "type": "string"
+        },
+        "Noncoop": {
+          "type": "boolean"
+        },
+        "Certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.Certificate"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.CarrierEmail": {
+      "type": "object",
+      "properties": {
+        "EmailType": {
+          "format": "int32",
+          "description": "Value/Type List: 1 = McpEmail, 2 = CompanyEmail, 3 = FMCSAEmail; Value Only List: ",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentDetail": {
+      "type": "object",
+      "properties": {
+        "TotalPoints": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OverallRating": {
+          "type": "string"
+        },
+        "HasRuleOverride": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "Infractions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentInfraction"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsRiskAssessmentModels.ReviewDetails": {
+      "type": "object",
+      "properties": {
+        "ReviewID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PreReviewOverall": {
+          "type": "string"
+        },
+        "PreReviewAuthority": {
+          "type": "string"
+        },
+        "PreReviewInsurance": {
+          "type": "string"
+        },
+        "PreReviewSafety": {
+          "type": "string"
+        },
+        "PreReviewOperation": {
+          "type": "string"
+        },
+        "PreReviewOther": {
+          "type": "string"
+        },
+        "ReviewUser": {
+          "type": "string"
+        },
+        "ReviewDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ReviewReason": {
+          "type": "string"
+        },
+        "ReviewNote": {
+          "type": "string"
+        },
+        "ReviewExpirationDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.Certificate": {
+      "type": "object",
+      "properties": {
+        "CertificateID": {
+          "type": "string"
+        },
+        "ProducerName": {
+          "type": "string"
+        },
+        "ProducerAddress": {
+          "type": "string"
+        },
+        "ProducerCity": {
+          "type": "string"
+        },
+        "ProducerState": {
+          "type": "string"
+        },
+        "ProducerZip": {
+          "type": "string"
+        },
+        "ProducerPhone": {
+          "type": "string"
+        },
+        "ProducerFax": {
+          "type": "string"
+        },
+        "ProducerEmail": {
+          "type": "string"
+        },
+        "PaidFor": {
+          "type": "string"
+        },
+        "Coverages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.Coverage"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.RiskAssessmentInfraction": {
+      "type": "object",
+      "properties": {
+        "Points": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RuleName": {
+          "type": "string"
+        },
+        "RiskLevel": {
+          "type": "string"
+        },
+        "RuleText": {
+          "type": "string"
+        },
+        "RuleOutput": {
+          "type": "string"
+        },
+        "PreReviewScore": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PreReviewRiskLevel": {
+          "type": "string"
+        },
+        "RuleEnforced": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.Coverage": {
+      "type": "object",
+      "properties": {
+        "InsurerName": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "PolicyNumber": {
+          "type": "string"
+        },
+        "ExpirationDate": {
+          "type": "string"
+        },
+        "CoverageLimit": {
+          "type": "string"
+        },
+        "Deductible": {
+          "type": "string"
+        },
+        "ReferBreakdown": {
+          "type": "string"
+        },
+        "ReferBreakDeduct": {
+          "type": "string"
+        },
+        "CancellationDate": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierAADTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LegalName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Zipcode": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "CellPhone": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "Fax": {
+          "type": "string"
+        },
+        "FreePhone": {
+          "type": "string"
+        },
+        "EmergencyPhone": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "FraudIdentityTheftStatus": {
+          "type": "string"
+        },
+        "MCNumber": {
+          "type": "string"
+        },
+        "SCAC": {
+          "type": "string"
+        },
+        "MailingAddress1": {
+          "type": "string"
+        },
+        "MailingAddress2": {
+          "type": "string"
+        },
+        "MailingCity": {
+          "type": "string"
+        },
+        "MailingState": {
+          "type": "string"
+        },
+        "MailingZipcode": {
+          "type": "string"
+        },
+        "MailingCountry": {
+          "type": "string"
+        },
+        "AfterHrsWkDaySupportName": {
+          "type": "string"
+        },
+        "AfterHrsWkDaySupportPhone": {
+          "type": "string"
+        },
+        "AfterHrsWkDaySupportFax": {
+          "type": "string"
+        },
+        "AfterHrsWkDaySupportFrom": {
+          "type": "string"
+        },
+        "AfterHrsWkDaySupportTo": {
+          "type": "string"
+        },
+        "AfterHrsWkEndSupportName": {
+          "type": "string"
+        },
+        "AfterHrsWkEndSupportPhone": {
+          "type": "string"
+        },
+        "AfterHrsWkEndSupportFax": {
+          "type": "string"
+        },
+        "AfterHrsWkEndSupportFrom": {
+          "type": "string"
+        },
+        "AfterHrsWkEndSupportTo": {
+          "type": "string"
+        },
+        "Website": {
+          "type": "string"
+        },
+        "OperationManagerName": {
+          "type": "string"
+        },
+        "OnlineAccessToAvailableLoads": {
+          "type": "boolean"
+        },
+        "AvailableLoadsEmail": {
+          "type": "string"
+        },
+        "DriverLogsSafeyDeptManagerName": {
+          "type": "string"
+        },
+        "DriverLogsSafeyDeptManagerPhone": {
+          "type": "string"
+        },
+        "Dispatchers": {
+          "type": "string"
+        },
+        "ClaimsContactName": {
+          "type": "string"
+        },
+        "ClaimsContactPhone": {
+          "type": "string"
+        },
+        "ClaimsContactEmail": {
+          "type": "string"
+        },
+        "DispatchServiceUsed": {
+          "type": "boolean"
+        },
+        "DispatchServiceName": {
+          "type": "string"
+        },
+        "DispatchServicePhone": {
+          "type": "string"
+        },
+        "BrokerOutExtraFreight": {
+          "type": "boolean"
+        },
+        "References1": {
+          "type": "string"
+        },
+        "References2": {
+          "type": "string"
+        },
+        "References3": {
+          "type": "string"
+        },
+        "DriversTrackedBy": {
+          "type": "string"
+        },
+        "AccessOnlineGPSTracking": {
+          "type": "boolean"
+        },
+        "DriversTrackedByOtherMethod": {
+          "type": "string"
+        },
+        "CreatedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ModifiedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "CarrierCustomerAgreements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierCustomerAgreementDTO"
+          }
+        },
+        "CarrierCustomerPacketStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierCustomerPacketStatusDTO"
+          }
+        },
+        "CarrierCargoHauled": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierCargoHauledDTO"
+        },
+        "CarrierCompanyClassification": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierCompanyClassificationDTO"
+        },
+        "CarrierDrivers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierDriverDTO"
+          }
+        },
+        "CarrierDispatchers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierDispatcherDTO"
+          }
+        },
+        "CarrierLane": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierLaneDTO"
+        },
+        "CarrierOperationalDetail": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierOperationalDetailDTO"
+        },
+        "CarrierPaymentInfo": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierPaymentInfoDTO"
+        },
+        "CarrierRemit": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierRemitDTO"
+        },
+        "FactoringRemit": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.FactoringRemitDTO"
+        },
+        "CarrierBank": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierBankDTO"
+        },
+        "CarrierPaymentTerms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierPaymentTermDTO"
+          }
+        },
+        "CarrierPaymentTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierPaymentTypeDTO"
+          }
+        },
+        "CarrierPayerType": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.PayerTypeDTO"
+        },
+        "CarrierTruckClass": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierTruckClassDTO"
+        },
+        "CarrierTruckType": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierTruckTypeDTO"
+        },
+        "CarrierW9Forms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierW9FormDTO"
+          }
+        },
+        "CarrierCertification": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierCertificationDTO"
+        },
+        "AssureAdvantage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.FMCSACarrier"
+          }
+        },
+        "CarrierMode": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierModeDTO"
+        },
+        "CarrierELDProvider": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierELDProviderDTO"
+        },
+        "OwnerContactName": {
+          "type": "string"
+        },
+        "OwnerContactPhone": {
+          "type": "string"
+        },
+        "OwnerContactEmail": {
+          "type": "string"
+        },
+        "CarrierTINMatchings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierTINMatchingDTO"
+          }
+        },
+        "Message": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierCustomerAgreementDTO": {
+      "type": "object",
+      "properties": {
+        "SignatureDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "SignaturePerson": {
+          "type": "string"
+        },
+        "SignaturePersonTitle": {
+          "type": "string"
+        },
+        "SignaturePersonUserName": {
+          "type": "string"
+        },
+        "SignaturePersonEmail": {
+          "type": "string"
+        },
+        "SignaturePersonPhoneNumber": {
+          "type": "string"
+        },
+        "OnCurrentCustomerAgreement": {
+          "type": "boolean"
+        },
+        "CustomerAgreement": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CustomerAgreementDTO"
+        },
+        "CarrierCustomerAgreementImages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierCustomerAgreementImageDTO"
+          }
+        },
+        "IsActive": {
+          "type": "boolean"
+        },
+        "IPAddress": {
+          "type": "string"
+        },
+        "GeoLocLat": {
+          "format": "double",
+          "type": "number"
+        },
+        "GeoLocLng": {
+          "format": "double",
+          "type": "number"
+        },
+        "GeoLocMethod": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierCustomerPacketStatusDTO": {
+      "type": "object",
+      "properties": {
+        "Customer": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CustomerDTO"
+        },
+        "CarrierPacketStatus": {
+          "type": "string"
+        },
+        "CustomerID": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierCargoHauledDTO": {
+      "type": "object",
+      "properties": {
+        "GeneralFreight": {
+          "type": "boolean"
+        },
+        "LiquidsGas": {
+          "type": "boolean"
+        },
+        "Chemicals": {
+          "type": "boolean"
+        },
+        "HouseholdGoods": {
+          "type": "boolean"
+        },
+        "IntermodalContainers": {
+          "type": "boolean"
+        },
+        "CommoditiesDryBulk": {
+          "type": "boolean"
+        },
+        "MetalSheetsCoilsRolls": {
+          "type": "boolean"
+        },
+        "Passengers": {
+          "type": "boolean"
+        },
+        "RefrigeratedFood": {
+          "type": "boolean"
+        },
+        "MotorVehicles": {
+          "type": "boolean"
+        },
+        "OilfieldEquipment": {
+          "type": "boolean"
+        },
+        "Beverages": {
+          "type": "boolean"
+        },
+        "DrivewayTowaway": {
+          "type": "boolean"
+        },
+        "LivestockContainers": {
+          "type": "boolean"
+        },
+        "PaperProducts": {
+          "type": "boolean"
+        },
+        "LogsPolesBeamsLumber": {
+          "type": "boolean"
+        },
+        "GrainFeedHay": {
+          "type": "boolean"
+        },
+        "Utility": {
+          "type": "boolean"
+        },
+        "BuildingMaterials": {
+          "type": "boolean"
+        },
+        "CoalCoke": {
+          "type": "boolean"
+        },
+        "FarmSupplies": {
+          "type": "boolean"
+        },
+        "MobileHomes": {
+          "type": "boolean"
+        },
+        "Meat": {
+          "type": "boolean"
+        },
+        "Construction": {
+          "type": "boolean"
+        },
+        "MachineryLargeObjects": {
+          "type": "boolean"
+        },
+        "GarbageRefuseTrash": {
+          "type": "boolean"
+        },
+        "WaterWell": {
+          "type": "boolean"
+        },
+        "FreshProduce": {
+          "type": "boolean"
+        },
+        "USMail": {
+          "type": "boolean"
+        },
+        "Other": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierCompanyClassificationDTO": {
+      "type": "object",
+      "properties": {
+        "AuthForHire": {
+          "type": "boolean"
+        },
+        "Migrant": {
+          "type": "boolean"
+        },
+        "IndianNation": {
+          "type": "boolean"
+        },
+        "ExemptForHire": {
+          "type": "boolean"
+        },
+        "USMail": {
+          "type": "boolean"
+        },
+        "PrivateProperty": {
+          "type": "boolean"
+        },
+        "FederalGovernment": {
+          "type": "boolean"
+        },
+        "PrivPassBusiness": {
+          "type": "boolean"
+        },
+        "StateGovernment": {
+          "type": "boolean"
+        },
+        "PrivPassNonBusiness": {
+          "type": "boolean"
+        },
+        "LocalGovernment": {
+          "type": "boolean"
+        },
+        "WOSB": {
+          "type": "boolean"
+        },
+        "VOSB": {
+          "type": "boolean"
+        },
+        "MBE": {
+          "type": "boolean"
+        },
+        "AsianPacificAmerican": {
+          "type": "boolean"
+        },
+        "SubcontinentAmerican": {
+          "type": "boolean"
+        },
+        "NOB": {
+          "type": "boolean"
+        },
+        "HispanicAmerican": {
+          "type": "boolean"
+        },
+        "AfricanAmerican": {
+          "type": "boolean"
+        },
+        "WBE": {
+          "type": "boolean"
+        },
+        "DBE": {
+          "type": "boolean"
+        },
+        "SBA8a": {
+          "type": "boolean"
+        },
+        "EDWOSB": {
+          "type": "boolean"
+        },
+        "SDVOSB": {
+          "type": "boolean"
+        },
+        "HUBZone": {
+          "type": "boolean"
+        },
+        "LGBTQIA": {
+          "type": "boolean"
+        },
+        "Other": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierDriverDTO": {
+      "type": "object",
+      "properties": {
+        "DriverName": {
+          "type": "string"
+        },
+        "CellPhone": {
+          "type": "string"
+        },
+        "ComCheck": {
+          "type": "boolean"
+        },
+        "FuelAdvance": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierDispatcherDTO": {
+      "type": "object",
+      "properties": {
+        "DispatcherName": {
+          "type": "string"
+        },
+        "PhoneNumber": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierLaneDTO": {
+      "type": "object",
+      "properties": {
+        "UnitedStates": {
+          "type": "boolean"
+        },
+        "Mexico": {
+          "type": "boolean"
+        },
+        "Canada": {
+          "type": "boolean"
+        },
+        "NortheastRegion": {
+          "type": "boolean"
+        },
+        "MidwestRegion": {
+          "type": "boolean"
+        },
+        "SouthRegion": {
+          "type": "boolean"
+        },
+        "WestRegion": {
+          "type": "boolean"
+        },
+        "Alabama": {
+          "type": "boolean"
+        },
+        "Alaska": {
+          "type": "boolean"
+        },
+        "Arizona": {
+          "type": "boolean"
+        },
+        "Arkansas": {
+          "type": "boolean"
+        },
+        "California": {
+          "type": "boolean"
+        },
+        "Colorado": {
+          "type": "boolean"
+        },
+        "Delaware": {
+          "type": "boolean"
+        },
+        "Florida": {
+          "type": "boolean"
+        },
+        "Georgia": {
+          "type": "boolean"
+        },
+        "Hawaii": {
+          "type": "boolean"
+        },
+        "Idaho": {
+          "type": "boolean"
+        },
+        "Illinois": {
+          "type": "boolean"
+        },
+        "Indiana": {
+          "type": "boolean"
+        },
+        "Iowa": {
+          "type": "boolean"
+        },
+        "Kansas": {
+          "type": "boolean"
+        },
+        "Kentucky": {
+          "type": "boolean"
+        },
+        "Louisiana": {
+          "type": "boolean"
+        },
+        "Maine": {
+          "type": "boolean"
+        },
+        "Maryland": {
+          "type": "boolean"
+        },
+        "Massachusetts": {
+          "type": "boolean"
+        },
+        "Michigan": {
+          "type": "boolean"
+        },
+        "Minnesota": {
+          "type": "boolean"
+        },
+        "Mississippi": {
+          "type": "boolean"
+        },
+        "Missouri": {
+          "type": "boolean"
+        },
+        "Montana": {
+          "type": "boolean"
+        },
+        "Nebraska": {
+          "type": "boolean"
+        },
+        "Nevada": {
+          "type": "boolean"
+        },
+        "NewHampshire": {
+          "type": "boolean"
+        },
+        "NewJersey": {
+          "type": "boolean"
+        },
+        "NewMexico": {
+          "type": "boolean"
+        },
+        "NewYork": {
+          "type": "boolean"
+        },
+        "NorthCarolina": {
+          "type": "boolean"
+        },
+        "NorthDakota": {
+          "type": "boolean"
+        },
+        "Ohio": {
+          "type": "boolean"
+        },
+        "Oklahoma": {
+          "type": "boolean"
+        },
+        "Oregon": {
+          "type": "boolean"
+        },
+        "Pennsylvania": {
+          "type": "boolean"
+        },
+        "RhodeIsland": {
+          "type": "boolean"
+        },
+        "SouthCarolina": {
+          "type": "boolean"
+        },
+        "SouthDakota": {
+          "type": "boolean"
+        },
+        "Tennessee": {
+          "type": "boolean"
+        },
+        "Utah": {
+          "type": "boolean"
+        },
+        "Vermont": {
+          "type": "boolean"
+        },
+        "Virginia": {
+          "type": "boolean"
+        },
+        "Washington": {
+          "type": "boolean"
+        },
+        "WashingtonDC": {
+          "type": "boolean"
+        },
+        "WestVirginia": {
+          "type": "boolean"
+        },
+        "Wisconsin": {
+          "type": "boolean"
+        },
+        "Wyoming": {
+          "type": "boolean"
+        },
+        "Connecticut": {
+          "type": "boolean"
+        },
+        "Texas": {
+          "type": "boolean"
+        },
+        "Alberta": {
+          "type": "boolean"
+        },
+        "BritishColumbia": {
+          "type": "boolean"
+        },
+        "Manitoba": {
+          "type": "boolean"
+        },
+        "NewBrunswick": {
+          "type": "boolean"
+        },
+        "NewfoundlandAndLabrador": {
+          "type": "boolean"
+        },
+        "NorthwestTerritories": {
+          "type": "boolean"
+        },
+        "NovaScotia": {
+          "type": "boolean"
+        },
+        "Nunavut": {
+          "type": "boolean"
+        },
+        "Ontario": {
+          "type": "boolean"
+        },
+        "PrinceEdwardIsland": {
+          "type": "boolean"
+        },
+        "Quebec": {
+          "type": "boolean"
+        },
+        "Saskatchewan": {
+          "type": "boolean"
+        },
+        "YukonTerritory": {
+          "type": "boolean"
+        },
+        "Aguascalientes": {
+          "type": "boolean"
+        },
+        "BajaCalifornia": {
+          "type": "boolean"
+        },
+        "BajaCaliforniaNorte": {
+          "type": "boolean"
+        },
+        "BajaCaliforniaSur": {
+          "type": "boolean"
+        },
+        "Chihuahua": {
+          "type": "boolean"
+        },
+        "Colima": {
+          "type": "boolean"
+        },
+        "Campeche": {
+          "type": "boolean"
+        },
+        "Coahuila": {
+          "type": "boolean"
+        },
+        "Chiapas": {
+          "type": "boolean"
+        },
+        "Durango": {
+          "type": "boolean"
+        },
+        "Guerrero": {
+          "type": "boolean"
+        },
+        "Guanajuato": {
+          "type": "boolean"
+        },
+        "Hidalgo": {
+          "type": "boolean"
+        },
+        "Jalisco": {
+          "type": "boolean"
+        },
+        "MexicoCity": {
+          "type": "boolean"
+        },
+        "MexicoState": {
+          "type": "boolean"
+        },
+        "Michoacan": {
+          "type": "boolean"
+        },
+        "Morelos": {
+          "type": "boolean"
+        },
+        "Nayarit": {
+          "type": "boolean"
+        },
+        "NuevoLeon": {
+          "type": "boolean"
+        },
+        "Oaxaca": {
+          "type": "boolean"
+        },
+        "Puebla": {
+          "type": "boolean"
+        },
+        "QuintanaRoo": {
+          "type": "boolean"
+        },
+        "Queretaro": {
+          "type": "boolean"
+        },
+        "Sinaloa": {
+          "type": "boolean"
+        },
+        "SanLuisPotosi": {
+          "type": "boolean"
+        },
+        "Sonora": {
+          "type": "boolean"
+        },
+        "Tabasco": {
+          "type": "boolean"
+        },
+        "Tlaxcala": {
+          "type": "boolean"
+        },
+        "Tamaulipas": {
+          "type": "boolean"
+        },
+        "Veracruz": {
+          "type": "boolean"
+        },
+        "Yucatan": {
+          "type": "boolean"
+        },
+        "Zacatecas": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierOperationalDetailDTO": {
+      "type": "object",
+      "properties": {
+        "FleetSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TotalPowerUnits": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NumberOfVehicles": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferEquipment": {
+          "type": "boolean"
+        },
+        "VanEquipment": {
+          "type": "boolean"
+        },
+        "FlatbedStepDeckEquipment": {
+          "type": "boolean"
+        },
+        "OwnedTractors": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OwnedTrucks": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OwnedTrailers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TermLeasedTractors": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TermLeasedTrucks": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TermLeasedTrailers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TripLeasedTractors": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TripLeasedTrucks": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TripLeasedTrailers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "InterstateAndIntrastateDrivers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CDLEmployedDrivers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MonthlyAverageLeasedDrivers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "InterstateDriversTotal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "InterstateDriversGT100Miles": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "InterstateDriversLT100Miles": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "IntrastateDriversTotal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "IntrastateDriversGT100Miles": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "IntrastateDriversLT100Miles": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PowerOnly": {
+          "type": "boolean"
+        },
+        "SatelliteEquipment": {
+          "type": "boolean"
+        },
+        "TeamDrivers": {
+          "type": "boolean"
+        },
+        "DropTrailer": {
+          "type": "boolean"
+        },
+        "ELDCompliant": {
+          "type": "boolean"
+        },
+        "ELDCompliantBy": {
+          "type": "string"
+        },
+        "ELDIdentifier": {
+          "type": "string"
+        },
+        "NumberOfTractors": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NumberOfVans": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NumberOfReefers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NumberOfFlats": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NumberOfStepDecks": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NumberOfTanks": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierPaymentInfoDTO": {
+      "type": "object",
+      "properties": {
+        "BankRoutingNumber": {
+          "type": "string"
+        },
+        "BankAccountNumber": {
+          "type": "string"
+        },
+        "BankAccountName": {
+          "type": "string"
+        },
+        "BankName": {
+          "type": "string"
+        },
+        "BankAddress": {
+          "type": "string"
+        },
+        "BankPhone": {
+          "type": "string"
+        },
+        "BankFax": {
+          "type": "string"
+        },
+        "FactoringCompanyName": {
+          "type": "string"
+        },
+        "RemitAddress1": {
+          "type": "string"
+        },
+        "RemitAddress2": {
+          "type": "string"
+        },
+        "RemitCity": {
+          "type": "string"
+        },
+        "RemitZipCode": {
+          "type": "string"
+        },
+        "BankAccountType": {
+          "type": "string"
+        },
+        "RemitState": {
+          "type": "string"
+        },
+        "RemitCountry": {
+          "type": "string"
+        },
+        "RemitEmail": {
+          "type": "string"
+        },
+        "Require1099": {
+          "type": "boolean"
+        },
+        "EpayManagerID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RemitCurrency": {
+          "type": "string"
+        },
+        "PayAdvanceOptionID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PayAdvanceOptionType": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierRemitDTO": {
+      "type": "object",
+      "properties": {
+        "CarrierRemitEmail": {
+          "type": "string"
+        },
+        "CarrierRemitAddress1": {
+          "type": "string"
+        },
+        "CarrierRemitAddress2": {
+          "type": "string"
+        },
+        "CarrierRemitCity": {
+          "type": "string"
+        },
+        "CarrierRemitCountry": {
+          "type": "string"
+        },
+        "CarrierRemitStateProvince": {
+          "type": "string"
+        },
+        "CarrierRemitZipCode": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.FactoringRemitDTO": {
+      "type": "object",
+      "properties": {
+        "FactoringCompanyID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FactoringCompanyName": {
+          "type": "string"
+        },
+        "FactoringRemitEmail": {
+          "type": "string"
+        },
+        "FactoringRemitAddress": {
+          "type": "string"
+        },
+        "FactoringRemitAddress2": {
+          "type": "string"
+        },
+        "FactoringRemitCity": {
+          "type": "string"
+        },
+        "FactoringRemitCountry": {
+          "type": "string"
+        },
+        "FactoringRemitStateProvince": {
+          "type": "string"
+        },
+        "FactoringRemitZipcode": {
+          "type": "string"
+        },
+        "FactoringPhone": {
+          "type": "string"
+        },
+        "BankRoutingNumber": {
+          "type": "string"
+        },
+        "BankAccountNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierBankDTO": {
+      "type": "object",
+      "properties": {
+        "CarrierBankRoutingNumber": {
+          "type": "string"
+        },
+        "CarrierBankAccountNumber": {
+          "type": "string"
+        },
+        "CarrierBankAccountName": {
+          "type": "string"
+        },
+        "CarrierBankName": {
+          "type": "string"
+        },
+        "CarrierBankAddress": {
+          "type": "string"
+        },
+        "CarrierBankPhone": {
+          "type": "string"
+        },
+        "CarrierBankFax": {
+          "type": "string"
+        },
+        "CarrierBankAccountType": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierPaymentTermDTO": {
+      "type": "object",
+      "properties": {
+        "PaymentTerm": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CustomerPaymentTermDTO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierPaymentTypeDTO": {
+      "type": "object",
+      "properties": {
+        "PaymentType": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CustomerPaymentTypeDTO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.PayerTypeDTO": {
+      "type": "object",
+      "properties": {
+        "PayerTypeID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierTruckClassDTO": {
+      "type": "object",
+      "properties": {
+        "Conestoga": {
+          "type": "boolean"
+        },
+        "Containers": {
+          "type": "boolean"
+        },
+        "DecksSpecialized": {
+          "type": "boolean"
+        },
+        "DecksStandard": {
+          "type": "boolean"
+        },
+        "DryBulk": {
+          "type": "boolean"
+        },
+        "Flatbeds": {
+          "type": "boolean"
+        },
+        "HazardousMaterials": {
+          "type": "boolean"
+        },
+        "Reefers": {
+          "type": "boolean"
+        },
+        "Tankers": {
+          "type": "boolean"
+        },
+        "VansSpecialized": {
+          "type": "boolean"
+        },
+        "VansStandard": {
+          "type": "boolean"
+        },
+        "Other": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierTruckTypeDTO": {
+      "type": "object",
+      "properties": {
+        "AFrameTrailer": {
+          "type": "boolean"
+        },
+        "AFrameTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "AcidTanker": {
+          "type": "boolean"
+        },
+        "AcidTankerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "AugerTrailer": {
+          "type": "boolean"
+        },
+        "AugerTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "AutoCarrier": {
+          "type": "boolean"
+        },
+        "AutoCarrierCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BeamTrailer": {
+          "type": "boolean"
+        },
+        "BeamTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BellyDumpTrailer": {
+          "type": "boolean"
+        },
+        "BellyDumpTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BTrain": {
+          "type": "boolean"
+        },
+        "BTrainCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BoatTrailer": {
+          "type": "boolean"
+        },
+        "BoatTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Chassis": {
+          "type": "boolean"
+        },
+        "ChassisCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ChemicalTankTrailer": {
+          "type": "boolean"
+        },
+        "ChemicalTankTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CompressedGasTanker": {
+          "type": "boolean"
+        },
+        "CompressedGasTankerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Conestoga": {
+          "type": "boolean"
+        },
+        "ConestogaCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Container": {
+          "type": "boolean"
+        },
+        "ContainerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ContainerChassisTrailer20Foot": {
+          "type": "boolean"
+        },
+        "ContainerChassisTrailer20FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ContainerChassisTrailer40Foot": {
+          "type": "boolean"
+        },
+        "ContainerChassisTrailer40FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ContainerChassisTrailerComboChassis": {
+          "type": "boolean"
+        },
+        "ContainerChassisTrailerComboChassisCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ContainerInsulated": {
+          "type": "boolean"
+        },
+        "ContainerInsulatedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ContainerRefrigerated": {
+          "type": "boolean"
+        },
+        "ContainerRefrigeratedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ContainerStandard": {
+          "type": "boolean"
+        },
+        "ContainerStandardCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ConvertibleTrailer": {
+          "type": "boolean"
+        },
+        "ConvertibleTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Conveyor": {
+          "type": "boolean"
+        },
+        "ConveyorCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CryogenicLiquidTanker": {
+          "type": "boolean"
+        },
+        "CryogenicLiquidTankerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Dolly": {
+          "type": "boolean"
+        },
+        "DollyCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DoubleDrop": {
+          "type": "boolean"
+        },
+        "DoubleDropCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DropDeckLandoll": {
+          "type": "boolean"
+        },
+        "DropDeckLandollCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DryBulkTanker": {
+          "type": "boolean"
+        },
+        "DryBulkTankerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DualLaneTrailer": {
+          "type": "boolean"
+        },
+        "DualLaneTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DumpTrailer": {
+          "type": "boolean"
+        },
+        "DumpTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "EightToTenCarHauler": {
+          "type": "boolean"
+        },
+        "EightToTenCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "EndDumpTrailer": {
+          "type": "boolean"
+        },
+        "EndDumpTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ExtendableFlatbedTrailer": {
+          "type": "boolean"
+        },
+        "ExtendableFlatbedTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FertilizerHopperTrailer": {
+          "type": "boolean"
+        },
+        "FertilizerHopperTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Flatbed": {
+          "type": "boolean"
+        },
+        "FlatbedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedAirRide": {
+          "type": "boolean"
+        },
+        "FlatbedAirRideCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedConestoga": {
+          "type": "boolean"
+        },
+        "FlatbedConestogaCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedDouble": {
+          "type": "boolean"
+        },
+        "FlatbedDoubleCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedHazMat": {
+          "type": "boolean"
+        },
+        "FlatbedHazMatCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedHotshot": {
+          "type": "boolean"
+        },
+        "FlatbedHotshotCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedMaxi": {
+          "type": "boolean"
+        },
+        "FlatbedMaxiCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedOrStepDeck": {
+          "type": "boolean"
+        },
+        "FlatbedOrStepDeckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedOverdimension": {
+          "type": "boolean"
+        },
+        "FlatbedOverdimensionCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedSpecialized": {
+          "type": "boolean"
+        },
+        "FlatbedSpecializedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedWithchains": {
+          "type": "boolean"
+        },
+        "FlatbedWithchainsCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedWithSides": {
+          "type": "boolean"
+        },
+        "FlatbedWithSidesCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedWithTarps": {
+          "type": "boolean"
+        },
+        "FlatbedWithTarpsCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedWithTeam": {
+          "type": "boolean"
+        },
+        "FlatbedWithTeamCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FlatbedVanReefer": {
+          "type": "boolean"
+        },
+        "FlatbedVanReeferCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FoodGradeTankTrailer": {
+          "type": "boolean"
+        },
+        "FoodGradeTankTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FourToFiveCarHauler": {
+          "type": "boolean"
+        },
+        "FourToFiveCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FuelTankTrailer": {
+          "type": "boolean"
+        },
+        "FuelTankTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "GasCylinderTrailer": {
+          "type": "boolean"
+        },
+        "GasCylinderTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "GrainHopperTrailer": {
+          "type": "boolean"
+        },
+        "GrainHopperTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HazmatTanker": {
+          "type": "boolean"
+        },
+        "HazmatTankerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HopperBottom": {
+          "type": "boolean"
+        },
+        "HopperBottomCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HopperHighSide": {
+          "type": "boolean"
+        },
+        "HopperHighSideCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HopperLowSide": {
+          "type": "boolean"
+        },
+        "HopperLowSideCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HopperTrailer": {
+          "type": "boolean"
+        },
+        "HopperTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HorseTrailer": {
+          "type": "boolean"
+        },
+        "HorseTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "HotshotTrailer": {
+          "type": "boolean"
+        },
+        "HotshotTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "InsulatedVanOrReefer": {
+          "type": "boolean"
+        },
+        "InsulatedVanOrReeferCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Landoll": {
+          "type": "boolean"
+        },
+        "LandollCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LivestockTrailer": {
+          "type": "boolean"
+        },
+        "LivestockTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LiveBottomTrailer": {
+          "type": "boolean"
+        },
+        "LiveBottomTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LoggingTrailer": {
+          "type": "boolean"
+        },
+        "LoggingTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Lowboy": {
+          "type": "boolean"
+        },
+        "LowboyCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LowboyOrRemGooseneck": {
+          "type": "boolean"
+        },
+        "LowboyOrRemGooseneckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LowboyOverdimension": {
+          "type": "boolean"
+        },
+        "LowboyOverdimensionCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MiniDeckTrailer": {
+          "type": "boolean"
+        },
+        "MiniDeckTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MilkTankTrailer": {
+          "type": "boolean"
+        },
+        "MilkTankTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MovingVan": {
+          "type": "boolean"
+        },
+        "MovingVanCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MultiAxleHeavyHaulTrailer": {
+          "type": "boolean"
+        },
+        "MultiAxleHeavyHaulTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MultiLevelCarHauler": {
+          "type": "boolean"
+        },
+        "MultiLevelCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OneToTwoCarHauler": {
+          "type": "boolean"
+        },
+        "OneToTwoCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PerimeterTrailer": {
+          "type": "boolean"
+        },
+        "PerimeterTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PintleHitch": {
+          "type": "boolean"
+        },
+        "PintleHitchCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PintleHitchTrailer": {
+          "type": "boolean"
+        },
+        "PintleHitchTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PoleTrailer": {
+          "type": "boolean"
+        },
+        "PoleTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Pneumatic": {
+          "type": "boolean"
+        },
+        "PneumaticCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PowerOnly": {
+          "type": "boolean"
+        },
+        "PowerOnlyCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Reefer": {
+          "type": "boolean"
+        },
+        "ReeferCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferAirRide": {
+          "type": "boolean"
+        },
+        "ReeferAirRideCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferDouble": {
+          "type": "boolean"
+        },
+        "ReeferDoubleCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferHazMat": {
+          "type": "boolean"
+        },
+        "ReeferHazMatCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferIntermodal": {
+          "type": "boolean"
+        },
+        "ReeferIntermodalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferLogistics": {
+          "type": "boolean"
+        },
+        "ReeferLogisticsCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferOrVentedVan": {
+          "type": "boolean"
+        },
+        "ReeferOrVentedVanCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferPalletExchange": {
+          "type": "boolean"
+        },
+        "ReeferPalletExchangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferSpecialized": {
+          "type": "boolean"
+        },
+        "ReeferSpecializedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferStandard48Foot": {
+          "type": "boolean"
+        },
+        "ReeferStandard48FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferStandard53Foot": {
+          "type": "boolean"
+        },
+        "ReeferStandard53FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReeferWithTeam": {
+          "type": "boolean"
+        },
+        "ReeferWithTeamCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RemovableGooseneck": {
+          "type": "boolean"
+        },
+        "RemovableGooseneckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SideDumpTrailer": {
+          "type": "boolean"
+        },
+        "SideDumpTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SingleLevelCarHauler": {
+          "type": "boolean"
+        },
+        "SingleLevelCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SixToSevenCarHauler": {
+          "type": "boolean"
+        },
+        "SixToSevenCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StandardFlatbed48Foot": {
+          "type": "boolean"
+        },
+        "StandardFlatbed48FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StandardFlatbed53Foot": {
+          "type": "boolean"
+        },
+        "StandardFlatbed53FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SteerableStepDeckStretch": {
+          "type": "boolean"
+        },
+        "SteerableStepDeckStretchCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StepDeck": {
+          "type": "boolean"
+        },
+        "StepDeckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StepDeckOrRemGooseneck": {
+          "type": "boolean"
+        },
+        "StepDeckOrRemGooseneckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StepDeckSpecialized": {
+          "type": "boolean"
+        },
+        "StepDeckSpecializedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StepDeckStandard48Foot": {
+          "type": "boolean"
+        },
+        "StepDeckStandard48FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StepDeckStandard53Foot": {
+          "type": "boolean"
+        },
+        "StepDeckStandard53FootCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StepdeckConestoga": {
+          "type": "boolean"
+        },
+        "StepdeckConestogaCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StraightBoxTruck": {
+          "type": "boolean"
+        },
+        "StraightBoxTruckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StretchFlatbed": {
+          "type": "boolean"
+        },
+        "StretchFlatbedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StretchRGN": {
+          "type": "boolean"
+        },
+        "StretchRGNCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StretchStepDeck": {
+          "type": "boolean"
+        },
+        "StretchStepDeckCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StretchTrailer": {
+          "type": "boolean"
+        },
+        "StretchTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TankerAluminum": {
+          "type": "boolean"
+        },
+        "TankerAluminumCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TankerIntermodal": {
+          "type": "boolean"
+        },
+        "TankerIntermodalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TankerSteel": {
+          "type": "boolean"
+        },
+        "TankerSteelCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ThreeCarHauler": {
+          "type": "boolean"
+        },
+        "ThreeCarHaulerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TinWideTrailer": {
+          "type": "boolean"
+        },
+        "TinWideTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Toter": {
+          "type": "boolean"
+        },
+        "ToterCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TruckAndTrailer": {
+          "type": "boolean"
+        },
+        "TruckAndTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Van": {
+          "type": "boolean"
+        },
+        "VanCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanAirRide": {
+          "type": "boolean"
+        },
+        "VanAirRideCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanBlanketWrap": {
+          "type": "boolean"
+        },
+        "VanBlanketWrapCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanConestoga": {
+          "type": "boolean"
+        },
+        "VanConestogaCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanDouble": {
+          "type": "boolean"
+        },
+        "VanDoubleCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanHazMat": {
+          "type": "boolean"
+        },
+        "VanHazMatCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanHeated": {
+          "type": "boolean"
+        },
+        "VanHeatedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanHotshot": {
+          "type": "boolean"
+        },
+        "VanHotshotCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanInsulated": {
+          "type": "boolean"
+        },
+        "VanInsulatedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanIntermodal": {
+          "type": "boolean"
+        },
+        "VanIntermodalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanLiftGate": {
+          "type": "boolean"
+        },
+        "VanLiftGateCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanLogistics": {
+          "type": "boolean"
+        },
+        "VanLogisticsCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanOpenTop": {
+          "type": "boolean"
+        },
+        "VanOpenTopCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanOrFlatbed": {
+          "type": "boolean"
+        },
+        "VanOrFlatbedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanOrFlatbedwTarps": {
+          "type": "boolean"
+        },
+        "VanOrFlatbedwTarpsCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanOrReefer": {
+          "type": "boolean"
+        },
+        "VanOrReeferCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanPalletExchange": {
+          "type": "boolean"
+        },
+        "VanPalletExchangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanRollerBed": {
+          "type": "boolean"
+        },
+        "VanRollerBedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanSpecialized": {
+          "type": "boolean"
+        },
+        "VanSpecializedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanSprinter": {
+          "type": "boolean"
+        },
+        "VanSprinterCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanStandard": {
+          "type": "boolean"
+        },
+        "VanStandardCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanTriple": {
+          "type": "boolean"
+        },
+        "VanTripleCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanVented": {
+          "type": "boolean"
+        },
+        "VanVentedCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanWithCurtains": {
+          "type": "boolean"
+        },
+        "VanWithCurtainsCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "VanWithTeam": {
+          "type": "boolean"
+        },
+        "VanWithTeamCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "WalkingFloorTrailer": {
+          "type": "boolean"
+        },
+        "WalkingFloorTrailerCount": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierW9FormDTO": {
+      "type": "object",
+      "properties": {
+        "FullName": {
+          "type": "string"
+        },
+        "BusinessName": {
+          "type": "string"
+        },
+        "IndividualOrSingleMemberLLC": {
+          "type": "boolean"
+        },
+        "CCorporation": {
+          "type": "boolean"
+        },
+        "SCorporation": {
+          "type": "boolean"
+        },
+        "Partnership": {
+          "type": "boolean"
+        },
+        "RequesterNameAddress": {
+          "type": "string"
+        },
+        "TrustOrEstate": {
+          "type": "boolean"
+        },
+        "LimitedLiabilityCompany": {
+          "type": "boolean"
+        },
+        "TaxClassification": {
+          "type": "string"
+        },
+        "Other": {
+          "type": "boolean"
+        },
+        "OtherDetail": {
+          "type": "string"
+        },
+        "ExemptPayeeCode": {
+          "type": "string"
+        },
+        "ExemptionFATCACode": {
+          "type": "string"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "CityStateZipCode": {
+          "type": "string"
+        },
+        "ListAccountNumber": {
+          "type": "string"
+        },
+        "SSN": {
+          "type": "string"
+        },
+        "EIN": {
+          "type": "string"
+        },
+        "SignatureDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "SignaturePerson": {
+          "type": "string"
+        },
+        "IsActive": {
+          "type": "boolean"
+        },
+        "City": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "ZipCode": {
+          "type": "string"
+        },
+        "CarrierW9FormImages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierW9FormImageDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierCertificationDTO": {
+      "type": "object",
+      "properties": {
+        "Hazmat": {
+          "type": "boolean"
+        },
+        "HazmatNumber": {
+          "type": "string"
+        },
+        "SmartWay": {
+          "type": "boolean"
+        },
+        "CARB": {
+          "type": "boolean"
+        },
+        "TWIC": {
+          "type": "boolean"
+        },
+        "CTPATCertified": {
+          "type": "boolean"
+        },
+        "CTPATSVINumber": {
+          "type": "string"
+        },
+        "TankerEndorsed": {
+          "type": "boolean"
+        },
+        "TankerEndorsedNumOfDrivers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CBP": {
+          "type": "boolean"
+        },
+        "CBSA": {
+          "type": "boolean"
+        },
+        "ANAM": {
+          "type": "boolean"
+        },
+        "ACE": {
+          "type": "boolean"
+        },
+        "ACI": {
+          "type": "boolean"
+        },
+        "CSA": {
+          "type": "boolean"
+        },
+        "FAST": {
+          "type": "boolean"
+        },
+        "PIP": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.FMCSACarrier": {
+      "type": "object",
+      "properties": {
+        "CarrierDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.CarrierDetails"
+        },
+        "ResponseDO": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.ResponseDO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierModeDTO": {
+      "type": "object",
+      "properties": {
+        "LessThanTruckLoad": {
+          "type": "boolean"
+        },
+        "Partial": {
+          "type": "boolean"
+        },
+        "Truckload": {
+          "type": "boolean"
+        },
+        "Rail": {
+          "type": "boolean"
+        },
+        "Intermodal": {
+          "type": "boolean"
+        },
+        "Air": {
+          "type": "boolean"
+        },
+        "Expedite": {
+          "type": "boolean"
+        },
+        "Ocean": {
+          "type": "boolean"
+        },
+        "Drayage": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierELDProviderDTO": {
+      "type": "object",
+      "properties": {
+        "ComplianceStatusID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ComplianceStatus": {
+          "type": "string"
+        },
+        "ProviderName": {
+          "type": "string"
+        },
+        "ProviderIdentifier": {
+          "type": "string"
+        },
+        "ExemptionID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Exemption": {
+          "type": "string"
+        },
+        "CompliantBy": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierTINMatchingDTO": {
+      "type": "object",
+      "properties": {
+        "TINTypeID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TIN": {
+          "type": "string"
+        },
+        "TINName": {
+          "type": "string"
+        },
+        "TINMatchingStatusID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TINMatchingResultID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CreatedOnUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "SubmittedOnUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ProcessedOnUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ContactEmail": {
+          "type": "string"
+        },
+        "ContactPhoneNumber": {
+          "type": "string"
+        },
+        "MatchingResult": {
+          "type": "string"
+        },
+        "MatchingStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CustomerAgreementDTO": {
+      "type": "object",
+      "properties": {
+        "AgreementName": {
+          "type": "string"
+        },
+        "CreatedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "CreatedBy": {
+          "type": "string"
+        },
+        "BlobName": {
+          "type": "string"
+        },
+        "Customer": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CustomerDTO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierCustomerAgreementImageDTO": {
+      "type": "object",
+      "properties": {
+        "BlobName": {
+          "type": "string"
+        },
+        "CreatedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CustomerDTO": {
+      "type": "object",
+      "properties": {
+        "CustomerID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "MiddleName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "TypeCompany": {
+          "type": "string"
+        },
+        "CellPhone": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "Fax": {
+          "type": "string"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Apartment": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "Zipcode": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "CustomerKey": {
+          "type": "string"
+        },
+        "PacketCompletionNotificationType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PacketCompletionNotificationEmail": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CustomerPaymentTermDTO": {
+      "type": "object",
+      "properties": {
+        "PaymentTermID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Days": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Term": {
+          "type": "string"
+        },
+        "QuickPay": {
+          "type": "boolean"
+        },
+        "PaymentFeeType": {
+          "type": "string"
+        },
+        "PaymentFeeAmount": {
+          "format": "double",
+          "type": "number"
+        },
+        "CustomerID": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CustomerPaymentTypeDTO": {
+      "type": "object",
+      "properties": {
+        "PaymentTypeID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "CustomerID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PaymentType": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.PaymentTypeDTO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierW9FormImageDTO": {
+      "type": "object",
+      "properties": {
+        "BlobName": {
+          "type": "string"
+        },
+        "CreatedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "CreatedBy": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.CarrierDetails": {
+      "type": "object",
+      "properties": {
+        "docketNumber": {
+          "type": "string"
+        },
+        "dotNumber": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.DotNumber"
+        },
+        "carrierType": {
+          "type": "string"
+        },
+        "isMonitored": {
+          "type": "boolean"
+        },
+        "isBlocked": {
+          "type": "boolean"
+        },
+        "Identity": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Identity"
+        },
+        "Authority": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Authority"
+        },
+        "FMCSAInsurance": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.FMCSAInsurance"
+        },
+        "CertData": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.CertData"
+        },
+        "Safety": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Safety"
+        },
+        "Inspection": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Inspection"
+        },
+        "Crash": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Crash"
+        },
+        "Review": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Review"
+        },
+        "Operation": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Operation"
+        },
+        "Cargo": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Cargo"
+        },
+        "Drivers": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Drivers"
+        },
+        "Equipment": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Equipment"
+        },
+        "Other": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.Other"
+        },
+        "RiskAssessment": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessment"
+        },
+        "RiskAssessmentDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetails"
+        },
+        "CarrierRatings": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.CarrierRatings"
+        },
+        "LatestInvitation": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.LatestInvitation"
+        },
+        "IncidentReports": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.IncidentReports"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.ResponseDO": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "displayMsg": {
+          "type": "string"
+        },
+        "techMsg": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.PaymentTypeDTO": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.DotNumber": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Identity": {
+      "type": "object",
+      "properties": {
+        "legalName": {
+          "type": "string"
+        },
+        "dbaName": {
+          "type": "string"
+        },
+        "businessStreet": {
+          "type": "string"
+        },
+        "businessCity": {
+          "type": "string"
+        },
+        "businessState": {
+          "type": "string"
+        },
+        "businessZipCode": {
+          "type": "string"
+        },
+        "businessColonia": {
+          "type": "string"
+        },
+        "businessCountry": {
+          "type": "string"
+        },
+        "businessPhone": {
+          "type": "string"
+        },
+        "businessFax": {
+          "type": "string"
+        },
+        "mailingStreet": {
+          "type": "string"
+        },
+        "mailingCity": {
+          "type": "string"
+        },
+        "mailingState": {
+          "type": "string"
+        },
+        "mailingZipCode": {
+          "type": "string"
+        },
+        "mailingColonia": {
+          "type": "string"
+        },
+        "mailingCountry": {
+          "type": "string"
+        },
+        "mailingPhone": {
+          "type": "string"
+        },
+        "mailingFax": {
+          "type": "string"
+        },
+        "undeliverableMail": {
+          "type": "string"
+        },
+        "companyRep1": {
+          "type": "string"
+        },
+        "companyRep2": {
+          "type": "string"
+        },
+        "cellPhone": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "dunBradstreetNum": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Authority": {
+      "type": "object",
+      "properties": {
+        "authGrantDate": {
+          "type": "string"
+        },
+        "commonAuthority": {
+          "type": "string"
+        },
+        "commonAuthorityPending": {
+          "type": "string"
+        },
+        "commonAuthorityRevocation": {
+          "type": "string"
+        },
+        "contractAuthority": {
+          "type": "string"
+        },
+        "contractAuthorityPending": {
+          "type": "string"
+        },
+        "contractAuthorityRevocation": {
+          "type": "string"
+        },
+        "brokerAuthority": {
+          "type": "string"
+        },
+        "brokerAuthorityPending": {
+          "type": "string"
+        },
+        "brokerAuthorityRevocation": {
+          "type": "string"
+        },
+        "freight": {
+          "type": "string"
+        },
+        "passenger": {
+          "type": "string"
+        },
+        "householdGoods": {
+          "type": "string"
+        },
+        "private": {
+          "type": "string"
+        },
+        "enterprise": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.FMCSAInsurance": {
+      "type": "object",
+      "properties": {
+        "bipdRequired": {
+          "type": "string"
+        },
+        "bipdOnFile": {
+          "type": "string"
+        },
+        "cargoRequired": {
+          "type": "string"
+        },
+        "cargoOnFile": {
+          "type": "string"
+        },
+        "bondSuretyRequired": {
+          "type": "string"
+        },
+        "bondSuretyOnFile": {
+          "type": "string"
+        },
+        "PolicyList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.PolicyOutput"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.CertData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "noncoop": {
+          "type": "boolean"
+        },
+        "Certificate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CertificateDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Safety": {
+      "type": "object",
+      "properties": {
+        "rating": {
+          "type": "string"
+        },
+        "ratingDate": {
+          "type": "string"
+        },
+        "unsafeDrvPCT": {
+          "type": "string"
+        },
+        "unsafeDrvOT": {
+          "type": "string"
+        },
+        "unsafeDrvSV": {
+          "type": "string"
+        },
+        "unsafeDrvAlert": {
+          "type": "string"
+        },
+        "unsafeDrvTrend": {
+          "type": "string"
+        },
+        "unsafeDrvCNT": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hosPCT": {
+          "type": "string"
+        },
+        "hosOT": {
+          "type": "string"
+        },
+        "hosSV": {
+          "type": "string"
+        },
+        "hosAlert": {
+          "type": "string"
+        },
+        "hosTrend": {
+          "type": "string"
+        },
+        "hosCNT": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "drvFitPCT": {
+          "type": "string"
+        },
+        "drvFitOT": {
+          "type": "string"
+        },
+        "drvFitSV": {
+          "type": "string"
+        },
+        "drvFitAlert": {
+          "type": "string"
+        },
+        "drvFitTrend": {
+          "type": "string"
+        },
+        "drvFitCNT": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "controlSubPCT": {
+          "type": "string"
+        },
+        "controlSubOT": {
+          "type": "string"
+        },
+        "controlSubSV": {
+          "type": "string"
+        },
+        "controlSubAlert": {
+          "type": "string"
+        },
+        "controlSubTrend": {
+          "type": "string"
+        },
+        "controlSubCNT": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "vehMaintPCT": {
+          "type": "string"
+        },
+        "vehMaintOT": {
+          "type": "string"
+        },
+        "vehMaintSV": {
+          "type": "string"
+        },
+        "vehMaintAlert": {
+          "type": "string"
+        },
+        "vehMaintTrend": {
+          "type": "string"
+        },
+        "vehMaintCNT": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hazMatPCT": {
+          "type": "string"
+        },
+        "hazMatOT": {
+          "type": "string"
+        },
+        "hazMatSV": {
+          "type": "string"
+        },
+        "hazMatAlert": {
+          "type": "string"
+        },
+        "hazMatTrend": {
+          "type": "string"
+        },
+        "hazMatCNT": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Inspection": {
+      "type": "object",
+      "properties": {
+        "inspectVehUS": {
+          "type": "string"
+        },
+        "inspectVehOOSUS": {
+          "type": "string"
+        },
+        "inspectVehOOSPctUS": {
+          "type": "string"
+        },
+        "inspectDrvUS": {
+          "type": "string"
+        },
+        "inspectDrvOOSUS": {
+          "type": "string"
+        },
+        "inspectDrvOOSPctUS": {
+          "type": "string"
+        },
+        "inspectHazUS": {
+          "type": "string"
+        },
+        "inspectHazOOSUS": {
+          "type": "string"
+        },
+        "inspectHazOOSPctUS": {
+          "type": "string"
+        },
+        "inspectIEPUS": {
+          "type": "string"
+        },
+        "inspectIEPOOSUS": {
+          "type": "string"
+        },
+        "inspectIEPOOSPctUS": {
+          "type": "string"
+        },
+        "inspectTotalIEPUS": {
+          "type": "string"
+        },
+        "inspectTotalUS": {
+          "type": "string"
+        },
+        "inspectVehCAN": {
+          "type": "string"
+        },
+        "inspectVehOOSCAN": {
+          "type": "string"
+        },
+        "inspectVehOOSPctCAN": {
+          "type": "string"
+        },
+        "inspectDrvCAN": {
+          "type": "string"
+        },
+        "inspectDrvOOSCAN": {
+          "type": "string"
+        },
+        "inspectDrvOOSPctCAN": {
+          "type": "string"
+        },
+        "inspectTotalCAN": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Crash": {
+      "type": "object",
+      "properties": {
+        "crashFatalUS": {
+          "type": "string"
+        },
+        "crashInjuryUS": {
+          "type": "string"
+        },
+        "crashTowUS": {
+          "type": "string"
+        },
+        "crashTotalUS": {
+          "type": "string"
+        },
+        "crashFatalCAN": {
+          "type": "string"
+        },
+        "crashInjuryCAN": {
+          "type": "string"
+        },
+        "crashTowCAN": {
+          "type": "string"
+        },
+        "crashTotalCAN": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Review": {
+      "type": "object",
+      "properties": {
+        "reviewType": {
+          "type": "string"
+        },
+        "reviewDate": {
+          "type": "string"
+        },
+        "reviewDocNum": {
+          "type": "string"
+        },
+        "reviewMiles": {
+          "type": "string"
+        },
+        "mcs150Date": {
+          "type": "string"
+        },
+        "mcs150MileYear": {
+          "type": "string"
+        },
+        "mcs150Miles": {
+          "type": "string"
+        },
+        "accidentRate": {
+          "type": "string"
+        },
+        "accidentRatePrevent": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Operation": {
+      "type": "object",
+      "properties": {
+        "dotAddDate": {
+          "type": "string"
+        },
+        "carrierOperation": {
+          "type": "string"
+        },
+        "shipperOperation": {
+          "type": "string"
+        },
+        "mxOperationType": {
+          "type": "string"
+        },
+        "mxRFCNumber": {
+          "type": "string"
+        },
+        "outOfService": {
+          "type": "string"
+        },
+        "outOfServiceDate": {
+          "type": "string"
+        },
+        "outOfServiceReason": {
+          "type": "string"
+        },
+        "entityCarrier": {
+          "type": "string"
+        },
+        "entityShipper": {
+          "type": "string"
+        },
+        "entityBroker": {
+          "type": "string"
+        },
+        "entityFreightFowarder": {
+          "type": "string"
+        },
+        "entityCargoTank": {
+          "type": "string"
+        },
+        "classAuthForHire": {
+          "type": "string"
+        },
+        "classMigrant": {
+          "type": "string"
+        },
+        "classIndianNation": {
+          "type": "string"
+        },
+        "classExemptForHire": {
+          "type": "string"
+        },
+        "classUSMail": {
+          "type": "string"
+        },
+        "classPrivateProperty": {
+          "type": "string"
+        },
+        "classFederalGovernment": {
+          "type": "string"
+        },
+        "classPrivPassBusiness": {
+          "type": "string"
+        },
+        "classStateGovernment": {
+          "type": "string"
+        },
+        "classPrivPassNonBusiness": {
+          "type": "string"
+        },
+        "classLocalGovernment": {
+          "type": "string"
+        },
+        "classOther": {
+          "type": "string"
+        },
+        "operatingStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Cargo": {
+      "type": "object",
+      "properties": {
+        "hazmatIndicator": {
+          "type": "string"
+        },
+        "cargoGenFreight": {
+          "type": "string"
+        },
+        "cargoHousehold": {
+          "type": "string"
+        },
+        "cargoMetal": {
+          "type": "string"
+        },
+        "cargoMotorVeh": {
+          "type": "string"
+        },
+        "cargoDriveTow": {
+          "type": "string"
+        },
+        "cargoLogPole": {
+          "type": "string"
+        },
+        "cargoBldgMaterial": {
+          "type": "string"
+        },
+        "cargoMobileHome": {
+          "type": "string"
+        },
+        "cargoMachLarge": {
+          "type": "string"
+        },
+        "cargoProduce": {
+          "type": "string"
+        },
+        "cargoLiqGas": {
+          "type": "string"
+        },
+        "cargoIntermodal": {
+          "type": "string"
+        },
+        "cargoPassengers": {
+          "type": "string"
+        },
+        "cargoOilfield": {
+          "type": "string"
+        },
+        "cargoLivestock": {
+          "type": "string"
+        },
+        "cargoGrainfeed": {
+          "type": "string"
+        },
+        "cargoCoalcoke": {
+          "type": "string"
+        },
+        "cargoMeat": {
+          "type": "string"
+        },
+        "cargoGarbage": {
+          "type": "string"
+        },
+        "cargoUSMail": {
+          "type": "string"
+        },
+        "cargoChemicals": {
+          "type": "string"
+        },
+        "cargoDryBulk": {
+          "type": "string"
+        },
+        "cargoRefrigerated": {
+          "type": "string"
+        },
+        "cargoBeverages": {
+          "type": "string"
+        },
+        "cargoPaperProd": {
+          "type": "string"
+        },
+        "cargoUtilities": {
+          "type": "string"
+        },
+        "cargoFarmSupplies": {
+          "type": "string"
+        },
+        "cargoConstruction": {
+          "type": "string"
+        },
+        "cargoWaterwell": {
+          "type": "string"
+        },
+        "cargoOther": {
+          "type": "string"
+        },
+        "cargoOtherDesc": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Drivers": {
+      "type": "object",
+      "properties": {
+        "driversTotal": {
+          "type": "string"
+        },
+        "driversAvgLeased": {
+          "type": "string"
+        },
+        "driversCDL": {
+          "type": "string"
+        },
+        "driversInter": {
+          "type": "string"
+        },
+        "driversInterLT100": {
+          "type": "string"
+        },
+        "driversInterGT100": {
+          "type": "string"
+        },
+        "driversIntra": {
+          "type": "string"
+        },
+        "driversIntraLT100": {
+          "type": "string"
+        },
+        "driversIntraGT100": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Equipment": {
+      "type": "object",
+      "properties": {
+        "trucksTotal": {
+          "type": "string"
+        },
+        "totalPower": {
+          "type": "string"
+        },
+        "fleetsize": {
+          "type": "string"
+        },
+        "trucksOwned": {
+          "type": "string"
+        },
+        "trucksTerm": {
+          "type": "string"
+        },
+        "trucksTrip": {
+          "type": "string"
+        },
+        "trailersOwned": {
+          "type": "string"
+        },
+        "trailersTerm": {
+          "type": "string"
+        },
+        "trailersTrip": {
+          "type": "string"
+        },
+        "tractorsOwned": {
+          "type": "string"
+        },
+        "tractorsTerm": {
+          "type": "string"
+        },
+        "tractorsTrip": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.Other": {
+      "type": "object",
+      "properties": {
+        "carbTru": {
+          "type": "string"
+        },
+        "smartway": {
+          "type": "string"
+        },
+        "watchdogReports": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.RiskAssessment": {
+      "type": "object",
+      "properties": {
+        "Overall": {
+          "type": "string"
+        },
+        "Authority": {
+          "type": "string"
+        },
+        "Insurance": {
+          "type": "string"
+        },
+        "Safety": {
+          "type": "string"
+        },
+        "Operation": {
+          "type": "string"
+        },
+        "Other": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.RiskAssessmentDetails": {
+      "type": "object",
+      "properties": {
+        "IsIntrastateCarrier": {
+          "type": "boolean"
+        },
+        "TotalPoints": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OverallRating": {
+          "type": "string"
+        },
+        "ReviewState": {
+          "type": "string"
+        },
+        "Authority": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetail"
+        },
+        "Insurance": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetail"
+        },
+        "Safety": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetail"
+        },
+        "Operation": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetail"
+        },
+        "Other": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetail"
+        },
+        "ReviewDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsRiskAssessmentModels.ReviewDetails"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.CarrierRatings": {
+      "type": "object",
+      "properties": {
+        "myRating": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRatings": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "lowRatings": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "avgRating": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.LatestInvitation": {
+      "type": "object",
+      "properties": {
+        "InvitedByUserName": {
+          "type": "string"
+        },
+        "InvitedByEmail": {
+          "type": "string"
+        },
+        "InvitedByFirstName": {
+          "type": "string"
+        },
+        "InvitedByLastName": {
+          "type": "string"
+        },
+        "InvitationSentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "InvitationRecipient": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.IncidentReports": {
+      "type": "object",
+      "properties": {
+        "TotalIncidentReports": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TotalIncidentReportsWithFraud": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.PolicyOutput": {
+      "type": "object",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "attnToName": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "insuranceType": {
+          "type": "string"
+        },
+        "policyNumber": {
+          "type": "string"
+        },
+        "postedDate": {
+          "type": "string"
+        },
+        "effectiveDate": {
+          "type": "string"
+        },
+        "cancelationDate": {
+          "type": "string"
+        },
+        "coverageFrom": {
+          "type": "string"
+        },
+        "coverageTo": {
+          "type": "string"
+        },
+        "amBestRating": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CertificateDTO": {
+      "type": "object",
+      "properties": {
+        "certificateID": {
+          "type": "string"
+        },
+        "producerName": {
+          "type": "string"
+        },
+        "producerAddress": {
+          "type": "string"
+        },
+        "producerCity": {
+          "type": "string"
+        },
+        "producerState": {
+          "type": "string"
+        },
+        "producerZip": {
+          "type": "string"
+        },
+        "producerPhone": {
+          "type": "string"
+        },
+        "producerFax": {
+          "type": "string"
+        },
+        "producerEmail": {
+          "type": "string"
+        },
+        "paidFor": {
+          "type": "string"
+        },
+        "BlobName": {
+          "type": "string"
+        },
+        "Coverage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CoverageDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.RiskAssessmentDetail": {
+      "type": "object",
+      "properties": {
+        "TotalPoints": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OverallRating": {
+          "type": "string"
+        },
+        "HasRuleOverride": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "Infractions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentInfraction"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CoverageDTO": {
+      "type": "object",
+      "properties": {
+        "insurerName": {
+          "type": "string"
+        },
+        "insurerAMBestRating": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "policyNumber": {
+          "type": "string"
+        },
+        "expirationDate": {
+          "type": "string"
+        },
+        "coverageLimit": {
+          "type": "string"
+        },
+        "deductable": {
+          "type": "string"
+        },
+        "referBreakdown": {
+          "type": "string"
+        },
+        "referBreakDeduct": {
+          "type": "string"
+        },
+        "cancellationDate": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.RiskAssessmentInfraction": {
+      "type": "object",
+      "properties": {
+        "Points": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RuleName": {
+          "type": "string"
+        },
+        "RiskLevel": {
+          "type": "string"
+        },
+        "RuleText": {
+          "type": "string"
+        },
+        "RuleOutput": {
+          "type": "string"
+        },
+        "PreReviewScore": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PreReviewRiskLevel": {
+          "type": "string"
+        },
+        "RuleEnforced": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MyCarrierPacketsBusiness.Services.FMCSACarrierServices.Data.GetCarrierContactsResponse": {
+      "type": "object",
+      "properties": {
+        "Success": {
+          "type": "boolean"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "Carrier": {
+          "$ref": "#/definitions/MyCarrierPacketsDomain.CarrierContacts.Carrier"
+        }
+      }
+    },
+    "MyCarrierPacketsDomain.CarrierContacts.Carrier": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "LegalName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "Contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsDomain.CarrierContacts.CarrierContact"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsDomain.CarrierContacts.CarrierContact": {
+      "type": "object",
+      "properties": {
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "AuthorizedForPackets": {
+          "type": "boolean"
+        },
+        "VerificationStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.FindAssociatedCarriersDTO": {
+      "type": "object",
+      "properties": {
+        "Success": {
+          "type": "boolean"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "AssociatedCarriersCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "AssociatedCarriers": {
+          "description": "The list of associated carriers.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.AssociatedCarriersDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.AssociatedCarriersDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "Street": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "ZipCode": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "PhoneAssociationTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.AssociationTypeDTO"
+          }
+        },
+        "EmailAssociationTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.AssociationTypeDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.FindAssociatedCarriers.AssociationTypeDTO": {
+      "type": "object",
+      "properties": {
+        "AssociationType": {
+          "format": "int32",
+          "description": "Value/Type List: 1 = Company, 2 = Support, 3 = Claims, 4 = SafetyManager, 5 = DispatchService, 6 = Owner, 7 = AvailableLoads, 8 = AuthorizedUser, 9 = UserAuthorizationPending, 10 = UserAuthorizationDenied, 11 = UserAuthorizationFollowUp, 12 = VerifiedUser, 13 = UserVerificationPending, 14 = UserVerificationDenied, 15 = UserVerificationFollowUp, 16 = Driver, 17 = Dispatcher, 18 = MCRecord, 19 = DOTRecord; Value Only List: ",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierIncidentReportDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "LegalName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "IncidentReports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierIncidentReportDetailDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierIncidentReportDetailDTO": {
+      "type": "object",
+      "properties": {
+        "IncidentDate": {
+          "type": "string"
+        },
+        "OriginCity": {
+          "type": "string"
+        },
+        "OriginStateProvinceName": {
+          "type": "string"
+        },
+        "OriginCountryName": {
+          "type": "string"
+        },
+        "DestinationCity": {
+          "type": "string"
+        },
+        "DestinationStateProvinceName": {
+          "type": "string"
+        },
+        "DestinationCountryName": {
+          "type": "string"
+        },
+        "ReportedByCompany": {
+          "type": "string"
+        },
+        "CarrierEmails": {
+          "type": "string"
+        },
+        "CreatedBy": {
+          "type": "string"
+        },
+        "CreatedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ModifiedBy": {
+          "type": "string"
+        },
+        "ModifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "IncidentTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierIncidentReportCommentDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierIncidentReportCommentDTO": {
+      "type": "object",
+      "properties": {
+        "CommenterType": {
+          "type": "string"
+        },
+        "CommentBy": {
+          "type": "string"
+        },
+        "CommentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Comment": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierVINVerificationDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "LegalName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "VINVerifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierVINVerificationDetailDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierVINVerificationDetailDTO": {
+      "type": "object",
+      "properties": {
+        "VIN": {
+          "type": "string"
+        },
+        "VINVerificationStatus": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.VINVerificationStatusDTO"
+        },
+        "CreatedOnUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ModifiedOnUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "OtherCarrier": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierVINVerificationDetailOtherCarrierDTO"
+        },
+        "Requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierVINVerificationRequestDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.VINVerificationStatusDTO": {
+      "type": "object",
+      "properties": {
+        "StatusID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierVINVerificationDetailOtherCarrierDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "Street": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "StateProvince": {
+          "type": "string"
+        },
+        "Zipcode": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierVINVerificationRequestDTO": {
+      "type": "object",
+      "properties": {
+        "RequestSentTo": {
+          "type": "string"
+        },
+        "RequestedByUser": {
+          "type": "string"
+        },
+        "RequestedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ImageUploadedByFirstName": {
+          "type": "string"
+        },
+        "ImageUploadedByLastName": {
+          "type": "string"
+        },
+        "ImageUploadedFromIPAddress": {
+          "type": "string"
+        },
+        "ImageUploadedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ImageFileName": {
+          "type": "string"
+        },
+        "ImageBlobName": {
+          "type": "string"
+        },
+        "VIN": {
+          "type": "string"
+        },
+        "VINVerificationStatus": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.VINVerificationStatusDTO"
+        },
+        "OtherCarrier": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierVINVerificationDetailOtherCarrierDTO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.MonitoredCarriersContactsDataDTO": {
+      "type": "object",
+      "properties": {
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "succeeded": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.MonitoredCarriersContacts"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.MonitoredCarriersContacts": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "LegalName": {
+          "type": "string"
+        },
+        "DBAName": {
+          "type": "string"
+        },
+        "CarriersContacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.MonitoredCarriersContact"
+          }
+        },
+        "Success": {
+          "type": "boolean"
+        },
+        "Messages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.MonitoredCarriersContact": {
+      "type": "object",
+      "properties": {
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "AuthorizedForPackets": {
+          "type": "boolean"
+        },
+        "VerificationStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.RequestVINVerificationOutput": {
+      "type": "object",
+      "properties": {
+        "VinVerificationRequestID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Message": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CompletedPacketDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "LegalName": {
+          "type": "string"
+        },
+        "CompletedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierChangesResultDTO": {
+      "type": "object",
+      "properties": {
+        "FromDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ToDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "RequestDateTimeUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "InsuranceChangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FMCSAChangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RiskAssessmentChangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CarrierCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CarrierList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.FMCSACarrierChanged"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.FMCSA.FMCSACarrierChanged": {
+      "type": "object",
+      "properties": {
+        "ChangeDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ChangeCategories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "CarrierDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.CarrierDetails"
+        },
+        "ResponseDO": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.ResponseDO"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.RequestMonitoringOutput": {
+      "type": "object",
+      "properties": {
+        "MonitoringID": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "RequestDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CancelMonitoringOutput": {
+      "type": "object",
+      "properties": {
+        "MonitoringID": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "CancelDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.BlockCarrierOutput": {
+      "type": "object",
+      "properties": {
+        "Result": {
+          "type": "boolean"
+        },
+        "Message": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.UnblockCarrierOutput": {
+      "type": "object",
+      "properties": {
+        "Result": {
+          "type": "boolean"
+        },
+        "Message": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.UpdatedFactoringCompaniesDTO": {
+      "type": "object",
+      "properties": {
+        "FromDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ToDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "RequestDateTimeUtc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "FactoringCompaniesCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FactoringCompanies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.UpdatedFactoring"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.UpdatedFactoring": {
+      "type": "object",
+      "properties": {
+        "FactoringCompanyID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FactoringCompanyName": {
+          "type": "string"
+        },
+        "FactoringRemitEmail": {
+          "type": "string"
+        },
+        "FactoringRemitAddress": {
+          "type": "string"
+        },
+        "FactoringRemitAddress2": {
+          "type": "string"
+        },
+        "FactoringRemitCity": {
+          "type": "string"
+        },
+        "FactoringRemitCountry": {
+          "type": "string"
+        },
+        "FactoringRemitStateProvince": {
+          "type": "string"
+        },
+        "FactoringRemitZipcode": {
+          "type": "string"
+        },
+        "FactoringPhone": {
+          "type": "string"
+        },
+        "CreatedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "UpdatedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CarrierRiskAssessmentDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "RiskAssessmentDetails": {
+          "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.RiskAssessmentDetails"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.MonitoredCarriersRiskAssessmentDTO": {
+      "type": "object",
+      "properties": {
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "succeeded": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.DTOs.CarrierRiskAssessmentDTO"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.MonitoredCarrierDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "IntrastateNumber": {
+          "type": "string"
+        },
+        "CreatedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "CreatedBy": {
+          "type": "string"
+        },
+        "LastModifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "LastModifiedBy": {
+          "type": "string"
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.MonitoredCarrierDataDTO": {
+      "type": "object",
+      "properties": {
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "succeeded": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MyCarrierPacketsApi.FMCSA.CarrierDetails"
+          }
+        }
+      }
+    },
+    "MyCarrierPacketsApi.DTOs.CustomerBlockedCarrierDTO": {
+      "type": "object",
+      "properties": {
+        "DOTNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DocketNumber": {
+          "type": "string"
+        },
+        "IntrastateNumber": {
+          "type": "string"
+        },
+        "CreatedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "CreatedBy": {
+          "type": "string"
+        },
+        "LastModifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "LastModifiedBy": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

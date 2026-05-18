@@ -6,7 +6,7 @@ Get started with QuickBooks API integration in 3 steps.
 
 ```bash
 # 1. Install the plugin
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/dotfiles cloudmachines-marketplace
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/dotfiles cloudmachines-marketplace
 /plugin install quickbooks-api-integration@cloudmachines-marketplace
 
 # 2. See what's available
@@ -23,7 +23,7 @@ Get started with QuickBooks API integration in 3 steps.
 ### Add Marketplace and Install Plugin
 
 ```bash
-/plugin marketplace add /Users/fakebizprez/Developer/repositories/dotfiles cloudmachines-marketplace
+/plugin marketplace add /Users/linehaul.ai/Developer/repositories/dotfiles cloudmachines-marketplace
 /plugin install quickbooks-api-integration@cloudmachines-marketplace
 ```
 

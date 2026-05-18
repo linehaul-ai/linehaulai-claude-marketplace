@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Context preservation for long-running conversations. Create structured handoff documents and resume work across sessions.",
   "author": {
-    "name": "fakebizprez"
+    "name": "linehaul.ai"
   },
   "keywords": ["handoff", "context", "session", "continuity", "resume"]
 }
