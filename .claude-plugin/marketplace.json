@@ -101,13 +101,13 @@
     {
       "name": "mycarrierpackets-api",
       "source": "./plugins/mycarrierpackets-api",
-      "version": "1.1.0",
-      "description": "MyCarrierPackets API integration for TMS systems. 23 endpoints with per-endpoint reference files: Intellivite invitations, Assure Advantage monitoring, document retrieval, fraud detection, VIN verification, block/unblock, factoring, OAuth2.",
+      "version": "1.2.0",
+      "description": "MyCarrierPackets API integration for TMS systems. 23 endpoints with per-endpoint reference files: Intellivite invitations, Assure Advantage monitoring, document retrieval, fraud detection, VIN verification, block/unblock, factoring, OAuth2, and webhook event handling (packet completion, incident reports, VIN/user verification).",
       "author": {
         "name": "linehaul.ai",
         "email": "support@linehaul.ai"
       },
-      "keywords": ["mcp", "mycarrierpackets", "carrier", "tms", "api", "monitoring", "intellivite", "assure-advantage", "fraud", "vin", "coi", "w9", "factoring", "oauth2", "freight", "logistics"]
+      "keywords": ["mcp", "mycarrierpackets", "carrier", "tms", "api", "monitoring", "intellivite", "assure-advantage", "fraud", "vin", "coi", "w9", "factoring", "oauth2", "freight", "logistics", "webhook", "webhooks", "events", "hmac", "signature-verification"]
     },
     {
       "name": "roadmap",

@@ -1,7 +1,7 @@
 {
   "name": "mycarrierpackets-api",
-  "version": "1.1.0",
-  "description": "Expert guidance for MyCarrierPackets API integration with TMS systems. Covers all 23 endpoints: carrier invitations (Intellivite), data retrieval, Assure Advantage monitoring, document retrieval, block/unblock, fraud detection, VIN verification, factoring, and OAuth2 authentication. Includes per-endpoint reference files generated from the official Swagger 2.0 spec.",
+  "version": "1.2.0",
+  "description": "Expert guidance for MyCarrierPackets API integration with TMS systems. Covers all 23 endpoints: carrier invitations (Intellivite), data retrieval, Assure Advantage monitoring, document retrieval, block/unblock, fraud detection, VIN verification, factoring, OAuth2 authentication, and webhook event handling (packet completion, incident reports, VIN/user verification). Includes per-endpoint reference files generated from the official Swagger 2.0 spec.",
   "author": {
     "name": "linehaul.ai",
     "email": "support@linehaul.ai"
@@ -22,6 +22,11 @@
     "factoring",
     "oauth2",
     "freight",
-    "logistics"
+    "logistics",
+    "webhook",
+    "webhooks",
+    "events",
+    "hmac",
+    "signature-verification"
   ]
 }
